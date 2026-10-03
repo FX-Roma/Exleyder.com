@@ -1,0 +1,10 @@
+.home-page-wrapper {
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.section-scroll-target {
+  position: relative;
+  width: 100%;
+}

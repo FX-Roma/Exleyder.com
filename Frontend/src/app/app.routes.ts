@@ -1,16 +1,16 @@
 import { Routes } from '@angular/router';
-import { OverviewComponent } from './components/overview/overview';
 import { ProjectsComponent } from './components/projects/projects';
 import { SkillsComponent } from './components/skills/skills';
 import { ContactComponent } from './components/contact/contact';
 import {  StudiesComponent } from './components/studies/studies';
+import { HomeComponent } from './pages/home/home';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'overview', pathMatch: 'full' },
-  { path: 'overview', component: OverviewComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
   { path: 'projects', component: ProjectsComponent },
   { path: 'skills', component: SkillsComponent },
   { path: 'studies', component: StudiesComponent },
   { path: 'contact', component: ContactComponent },
-  { path: '**', redirectTo: 'overview' }
+  { path: '**', redirectTo: 'home' }
 ];

@@ -1,7 +1,7 @@
 // src/app/components/skills/skills.ts
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SkillCategory, SKILLS_DATA } from '../../pageObjects/skills.model';
+import { SkillCategory, SKILLS_DATA } from '../../ObjectsForComponents/skills.model';
 
 @Component({
   selector: 'app-skills',

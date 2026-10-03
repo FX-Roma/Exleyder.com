@@ -9,12 +9,12 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   templateUrl: './navbar.html',
   styleUrl: './navbar.css'
 })
-export class Navbar {
+export class NavbarComponent {
   public developerName: string = 'EXLEYDER GALLEGO';
   public isScrolled: boolean = false;
 
   public navLinks = [
-  { label: 'About', path: '/overview' },
+  { label: 'Home', path: '/home' },
   { label: 'Projects', path: '/projects' },
   { label: 'Studies', path: '/studies' },
   { label: 'Skills', path: '/skills' },

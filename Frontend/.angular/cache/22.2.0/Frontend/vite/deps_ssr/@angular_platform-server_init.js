@@ -1,4 +1,4 @@
-import { t as index } from "./bundled-domino-BbrxLBd3.js";
+import { t as index } from "./bundled-domino-COZHq1SD.js";
 //#region node_modules/@angular/platform-server/fesm2022/init.mjs
 /**
 * @license Angular v22.2.0

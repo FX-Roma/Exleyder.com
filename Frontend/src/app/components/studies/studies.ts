@@ -2,7 +2,7 @@
 
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StudyItem, STUDIES_DATA } from '../../pageObjects/studies/studies.model';
+import { StudyItem, STUDIES_DATA } from '../../ObjectsForComponents/studies/studies.model';
 
 @Component({
   selector: 'app-studies',

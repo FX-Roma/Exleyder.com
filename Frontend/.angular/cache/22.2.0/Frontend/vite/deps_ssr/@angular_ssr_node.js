@@ -1,5 +1,7 @@
-import { i as __toESM, n as __exportAll, r as __require, t as __commonJSMin } from "./rolldown-runtime-B4iAMlE-.js";
-import { S as validateUrl, _ as renderModule, b as normalizeTrustProxyHeaders, g as renderApplication, h as SERVER_CONTEXT, t as AngularAppEngine, v as getFirstHeaderValue, x as parseForwardedHeader, y as isProxyHeaderAllowed } from "./ssr-BrO5cmk2.js";
+import { a as __toESM, i as __require, r as __exportAll, t as __commonJSMin } from "./rolldown-runtime-CbG-q-O0.js";
+import { i as init_defineProperty, n as init_objectSpread2, r as _defineProperty, t as _objectSpread2 } from "./objectSpread2-BY0ivYo0.js";
+import { gc as init_asyncToGenerator, hc as _asyncToGenerator, mc as init_objectWithoutProperties, pc as _objectWithoutProperties } from "./core-BB6wcSEG.js";
+import { S as validateUrl, _ as renderModule, b as normalizeTrustProxyHeaders, g as renderApplication, h as SERVER_CONTEXT, t as AngularAppEngine, v as getFirstHeaderValue, x as parseForwardedHeader, y as isProxyHeaderAllowed } from "./ssr-DpWyjgmT.js";
 import * as fs from "node:fs";
 import { readFile, writeFile } from "node:fs";
 import path, { dirname, isAbsolute, join, relative, resolve } from "node:path";
@@ -1161,16 +1163,14 @@ var require_comment = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 //#endregion
 //#region node_modules/postcss/lib/declaration.js
 var require_declaration = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+	init_objectSpread2();
 	var Node = require_node();
 	var Declaration = class extends Node {
 		get variable() {
 			return this.prop.startsWith("--") || this.prop[0] === "$";
 		}
 		constructor(defaults) {
-			if (defaults && typeof defaults.value !== "undefined" && typeof defaults.value !== "string") defaults = {
-				...defaults,
-				value: String(defaults.value)
-			};
+			if (defaults && typeof defaults.value !== "undefined" && typeof defaults.value !== "string") defaults = _objectSpread2(_objectSpread2({}, defaults), {}, { value: String(defaults.value) });
 			super(defaults);
 			this.type = "decl";
 		}
@@ -1539,15 +1539,13 @@ var require_at_rule = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 //#endregion
 //#region node_modules/postcss/lib/document.js
 var require_document = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+	init_objectSpread2();
 	var Container = require_container();
 	var LazyResult;
 	var Processor;
 	var Document = class extends Container {
 		constructor(defaults) {
-			super({
-				type: "document",
-				...defaults
-			});
+			super(_objectSpread2({ type: "document" }, defaults));
 			if (!this.nodes) this.nodes = [];
 		}
 		toResult(opts = {}) {
@@ -3700,7 +3698,7 @@ var require_previous_map = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	function realPath(path) {
 		try {
 			return realpathSync(path);
-		} catch {
+		} catch (_unused) {
 			return path;
 		}
 	}
@@ -3787,7 +3785,7 @@ var require_previous_map = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 				if (unknown) try {
 					/* c8 ignore next 4 */
 					this.json = JSON.parse(unknown.replace(/^\)]}'[^\n]*\n/, ""));
-				} catch {
+				} catch (_unused2) {
 					return;
 				}
 				return unknown;
@@ -3807,6 +3805,7 @@ var require_previous_map = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 //#endregion
 //#region node_modules/postcss/lib/input.js
 var require_input = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+	init_objectSpread2();
 	var { nanoid } = require_non_secure();
 	var { isAbsolute: isAbsolute$1, resolve: resolve$2 } = __require("path");
 	var { SourceMapConsumer, SourceMapGenerator } = require_source_map();
@@ -3993,7 +3992,7 @@ var require_input = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 				"id"
 			]) if (this[name] != null) json[name] = this[name];
 			if (this.map) {
-				json.map = { ...this.map };
+				json.map = _objectSpread2({}, this.map);
 				if (json.map.consumerCache) json.map.consumerCache = void 0;
 			}
 			return json;
@@ -4127,6 +4126,9 @@ var require_rule = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 //#endregion
 //#region node_modules/postcss/lib/fromJSON.js
 var require_fromJSON = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+	init_objectSpread2();
+	init_objectWithoutProperties();
+	var _excluded = ["inputId"];
 	var AtRule = require_at_rule();
 	var Comment = require_comment();
 	var Declaration = require_declaration();
@@ -4137,24 +4139,18 @@ var require_fromJSON = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	function hydrateInputs(json, inputs) {
 		if (!json.inputs) return inputs;
 		return json.inputs.map((input) => {
-			let inputHydrated = {
-				...input,
-				__proto__: Input.prototype
-			};
-			if (inputHydrated.map) inputHydrated.map = {
-				...inputHydrated.map,
-				__proto__: PreviousMap.prototype
-			};
+			let inputHydrated = _objectSpread2(_objectSpread2({}, input), {}, { __proto__: Input.prototype });
+			if (inputHydrated.map) inputHydrated.map = _objectSpread2(_objectSpread2({}, inputHydrated.map), {}, { __proto__: PreviousMap.prototype });
 			return inputHydrated;
 		});
 	}
 	function constructNode(json, inputs, children) {
-		let defaults = { ...json };
+		let defaults = _objectSpread2({}, json);
 		delete defaults.inputs;
 		delete defaults.nodes;
 		if (defaults.source) {
-			let { inputId, ...source } = defaults.source;
-			defaults.source = source;
+			let _defaults$source = defaults.source, { inputId } = _defaults$source;
+			defaults.source = _objectWithoutProperties(_defaults$source, _excluded);
 			if (inputId != null) defaults.source.input = inputs[inputId];
 		}
 		let node;
@@ -5041,6 +5037,8 @@ var require_warn_once = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 //#endregion
 //#region node_modules/postcss/lib/lazy-result.js
 var require_lazy_result = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+	init_objectSpread2();
+	init_asyncToGenerator();
 	var Container = require_container();
 	var Document = require_document();
 	var MapGenerator = require_map_generator();
@@ -5195,16 +5193,12 @@ var require_lazy_result = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 				Container.rebuild(root);
 			}
 			this.result = new Result(processor, root, opts);
-			this.helpers = {
-				...postcss,
+			this.helpers = _objectSpread2(_objectSpread2({}, postcss), {}, {
 				postcss,
 				result: this.result
-			};
+			});
 			this.plugins = this.processor.plugins.map((plugin) => {
-				if (typeof plugin === "object" && plugin.prepare) return {
-					...plugin,
-					...plugin.prepare(this.result)
-				};
+				if (typeof plugin === "object" && plugin.prepare) return _objectSpread2(_objectSpread2({}, plugin), plugin.prepare(this.result));
 				else return plugin;
 			});
 		}
@@ -5263,47 +5257,50 @@ var require_lazy_result = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 			}
 			this.hasListener = Object.keys(this.listeners).length > 0;
 		}
-		async runAsync() {
-			this.plugin = 0;
-			for (let i = 0; i < this.plugins.length; i++) {
-				let plugin = this.plugins[i];
-				let promise = this.runOnRoot(plugin);
-				if (isPromise(promise)) try {
-					await promise;
-				} catch (error) {
-					throw this.handleError(error);
+		runAsync() {
+			var _this = this;
+			return _asyncToGenerator(function* () {
+				_this.plugin = 0;
+				for (let i = 0; i < _this.plugins.length; i++) {
+					let plugin = _this.plugins[i];
+					let promise = _this.runOnRoot(plugin);
+					if (isPromise(promise)) try {
+						yield promise;
+					} catch (error) {
+						throw _this.handleError(error);
+					}
 				}
-			}
-			this.prepareVisitors();
-			if (this.hasListener) {
-				let root = this.result.root;
-				while (!root[isClean]) {
-					root[isClean] = true;
-					let stack = [toStack(root)];
-					while (stack.length > 0) {
-						let promise = this.visitTick(stack);
-						if (isPromise(promise)) try {
-							await promise;
+				_this.prepareVisitors();
+				if (_this.hasListener) {
+					let root = _this.result.root;
+					while (!root[isClean]) {
+						root[isClean] = true;
+						let stack = [toStack(root)];
+						while (stack.length > 0) {
+							let promise = _this.visitTick(stack);
+							if (isPromise(promise)) try {
+								yield promise;
+							} catch (e) {
+								let node = stack[stack.length - 1].node;
+								throw _this.handleError(e, node);
+							}
+						}
+					}
+					if (_this.listeners.OnceExit) for (let [plugin, visitor] of _this.listeners.OnceExit) {
+						_this.result.lastPlugin = plugin;
+						try {
+							if (root.type === "document") {
+								let roots = root.nodes.map((subRoot) => visitor(subRoot, _this.helpers));
+								yield Promise.all(roots);
+							} else yield visitor(root, _this.helpers);
 						} catch (e) {
-							let node = stack[stack.length - 1].node;
-							throw this.handleError(e, node);
+							throw _this.handleError(e);
 						}
 					}
 				}
-				if (this.listeners.OnceExit) for (let [plugin, visitor] of this.listeners.OnceExit) {
-					this.result.lastPlugin = plugin;
-					try {
-						if (root.type === "document") {
-							let roots = root.nodes.map((subRoot) => visitor(subRoot, this.helpers));
-							await Promise.all(roots);
-						} else await visitor(root, this.helpers);
-					} catch (e) {
-						throw this.handleError(e);
-					}
-				}
-			}
-			this.processed = true;
-			return this.stringify();
+				_this.processed = true;
+				return _this.stringify();
+			})();
 		}
 		runOnRoot(plugin) {
 			this.result.lastPlugin = plugin;
@@ -6682,21 +6679,45 @@ var CDATA$1 = ElementType.CDATA;
 ElementType.Doctype;
 //#endregion
 //#region node_modules/domhandler/dist/node.js
+init_defineProperty();
+init_objectSpread2();
 /**
 * This object will be used as the prototype for Nodes when creating a
 * DOM-Level-1-compliant structure.
 */
 var Node = class {
-	/** Parent of the node */
-	parent = null;
-	/** Previous sibling */
-	prev = null;
-	/** Next sibling */
-	next = null;
-	/** The start index of the node. Requires `withStartIndices` on the handler to be `true. */
-	startIndex = null;
-	/** The end index of the node. Requires `withEndIndices` on the handler to be `true. */
-	endIndex = null;
+	constructor() {
+		_defineProperty(
+			this,
+			/** Parent of the node */
+			"parent",
+			null
+		);
+		_defineProperty(
+			this,
+			/** Previous sibling */
+			"prev",
+			null
+		);
+		_defineProperty(
+			this,
+			/** Next sibling */
+			"next",
+			null
+		);
+		_defineProperty(
+			this,
+			/** The start index of the node. Requires `withStartIndices` on the handler to be `true. */
+			"startIndex",
+			null
+		);
+		_defineProperty(
+			this,
+			/** The end index of the node. Requires `withEndIndices` on the handler to be `true. */
+			"endIndex",
+			null
+		);
+	}
 	/**
 	* Same as {@link parent}.
 	* [DOM spec](https://dom.spec.whatwg.org)-compatible alias.
@@ -6740,12 +6761,12 @@ var Node = class {
 * A node that contains some data.
 */
 var DataNode = class extends Node {
-	data;
 	/**
 	* @param data The content of the data node
 	*/
 	constructor(data) {
 		super();
+		_defineProperty(this, "data", void 0);
 		this.data = data;
 	}
 	/**
@@ -6763,7 +6784,10 @@ var DataNode = class extends Node {
 * Text within the document.
 */
 var Text = class extends DataNode {
-	type = ElementType.Text;
+	constructor(..._args) {
+		super(..._args);
+		_defineProperty(this, "type", ElementType.Text);
+	}
 	get nodeType() {
 		return 3;
 	}
@@ -6772,7 +6796,10 @@ var Text = class extends DataNode {
 * Comments within the document.
 */
 var Comment = class extends DataNode {
-	type = ElementType.Comment;
+	constructor(..._args2) {
+		super(..._args2);
+		_defineProperty(this, "type", ElementType.Comment);
+	}
 	get nodeType() {
 		return 8;
 	}
@@ -6781,37 +6808,50 @@ var Comment = class extends DataNode {
 * Processing instructions, including doc types.
 */
 var ProcessingInstruction = class extends DataNode {
-	type = ElementType.Directive;
-	name;
 	constructor(name, data) {
 		super(data);
+		_defineProperty(this, "type", ElementType.Directive);
+		_defineProperty(this, "name", void 0);
+		_defineProperty(
+			this,
+			/** If this is a doctype, the document type name (parse5 only). */
+			"x-name",
+			void 0
+		);
+		_defineProperty(
+			this,
+			/** If this is a doctype, the document type public identifier (parse5 only). */
+			"x-publicId",
+			void 0
+		);
+		_defineProperty(
+			this,
+			/** If this is a doctype, the document type system identifier (parse5 only). */
+			"x-systemId",
+			void 0
+		);
 		this.name = name;
 	}
 	get nodeType() {
 		return 1;
 	}
-	/** If this is a doctype, the document type name (parse5 only). */
-	"x-name";
-	/** If this is a doctype, the document type public identifier (parse5 only). */
-	"x-publicId";
-	/** If this is a doctype, the document type system identifier (parse5 only). */
-	"x-systemId";
 };
 /**
 * A node that can have children.
 */
 var NodeWithChildren = class extends Node {
-	children;
 	/**
 	* @param children Children of the node. Only certain node types can have children.
 	*/
 	constructor(children) {
 		super();
+		_defineProperty(this, "children", void 0);
 		this.children = children;
 	}
 	/** First child of the node. */
 	get firstChild() {
-		return this.children[0] ?? null;
+		var _this$children$;
+		return (_this$children$ = this.children[0]) !== null && _this$children$ !== void 0 ? _this$children$ : null;
 	}
 	/** Last child of the node. */
 	get lastChild() {
@@ -6832,7 +6872,10 @@ var NodeWithChildren = class extends Node {
 * CDATA nodes.
 */
 var CDATA = class extends NodeWithChildren {
-	type = ElementType.CDATA;
+	constructor(..._args3) {
+		super(..._args3);
+		_defineProperty(this, "type", ElementType.CDATA);
+	}
 	get nodeType() {
 		return 4;
 	}
@@ -6841,7 +6884,10 @@ var CDATA = class extends NodeWithChildren {
 * The root node of the document.
 */
 var Document = class extends NodeWithChildren {
-	type = ElementType.Root;
+	constructor(..._args4) {
+		super(..._args4);
+		_defineProperty(this, "type", ElementType.Root);
+	}
 	get nodeType() {
 		return 9;
 	}
@@ -6850,9 +6896,6 @@ var Document = class extends NodeWithChildren {
 * An element within the DOM.
 */
 var Element = class extends NodeWithChildren {
-	name;
-	attribs;
-	type;
 	/**
 	* @param name Name of the tag, eg. `div`, `span`.
 	* @param attribs Object mapping attribute names to attribute values.
@@ -6861,6 +6904,27 @@ var Element = class extends NodeWithChildren {
 	*/
 	constructor(name, attribs, children = [], type = name === "script" ? ElementType.Script : name === "style" ? ElementType.Style : ElementType.Tag) {
 		super(children);
+		_defineProperty(this, "name", void 0);
+		_defineProperty(this, "attribs", void 0);
+		_defineProperty(this, "type", void 0);
+		_defineProperty(
+			this,
+			/** Element namespace (parse5 only). */
+			"namespace",
+			void 0
+		);
+		_defineProperty(
+			this,
+			/** Element attribute namespaces (parse5 only). */
+			"x-attribsNamespace",
+			void 0
+		);
+		_defineProperty(
+			this,
+			/** Element attribute namespace-related prefixes (parse5 only). */
+			"x-attribsPrefix",
+			void 0
+		);
 		this.name = name;
 		this.attribs = attribs;
 		this.type = type;
@@ -6879,19 +6943,16 @@ var Element = class extends NodeWithChildren {
 		this.name = name;
 	}
 	get attributes() {
-		return Object.keys(this.attribs).map((name) => ({
-			name,
-			value: this.attribs[name],
-			namespace: this["x-attribsNamespace"]?.[name],
-			prefix: this["x-attribsPrefix"]?.[name]
-		}));
+		return Object.keys(this.attribs).map((name) => {
+			var _this$xAttribsNamesp, _this$xAttribsPrefix;
+			return {
+				name,
+				value: this.attribs[name],
+				namespace: (_this$xAttribsNamesp = this["x-attribsNamespace"]) === null || _this$xAttribsNamesp === void 0 ? void 0 : _this$xAttribsNamesp[name],
+				prefix: (_this$xAttribsPrefix = this["x-attribsPrefix"]) === null || _this$xAttribsPrefix === void 0 ? void 0 : _this$xAttribsPrefix[name]
+			};
+		});
 	}
-	/** Element namespace (parse5 only). */
-	namespace;
-	/** Element attribute namespaces (parse5 only). */
-	"x-attribsNamespace";
-	/** Element attribute namespace-related prefixes (parse5 only). */
-	"x-attribsPrefix";
 };
 /**
 * Checks if `node` is an element node.
@@ -6961,11 +7022,11 @@ function cloneNode(node, recursive = false) {
 	else if (isComment(node)) result = new Comment(node.data);
 	else if (isTag(node)) {
 		const children = recursive ? cloneChildren(node.children) : [];
-		const clone = new Element(node.name, { ...node.attribs }, children);
+		const clone = new Element(node.name, _objectSpread2({}, node.attribs), children);
 		for (const child of children) child.parent = clone;
 		if (node.namespace != null) clone.namespace = node.namespace;
-		if (node["x-attribsNamespace"]) clone["x-attribsNamespace"] = { ...node["x-attribsNamespace"] };
-		if (node["x-attribsPrefix"]) clone["x-attribsPrefix"] = { ...node["x-attribsPrefix"] };
+		if (node["x-attribsNamespace"]) clone["x-attribsNamespace"] = _objectSpread2({}, node["x-attribsNamespace"]);
+		if (node["x-attribsPrefix"]) clone["x-attribsPrefix"] = _objectSpread2({}, node["x-attribsPrefix"]);
 		result = clone;
 	} else if (isCDATA(node)) {
 		const children = recursive ? cloneChildren(node.children) : [];
@@ -7007,6 +7068,7 @@ function cloneChildren(childs) {
 }
 //#endregion
 //#region node_modules/domhandler/dist/index.js
+init_defineProperty();
 var defaultOptions$1 = {
 	withStartIndices: false,
 	withEndIndices: false,
@@ -7016,30 +7078,67 @@ var defaultOptions$1 = {
 * Event-based handler that builds a DOM tree from parser callbacks.
 */
 var DomHandler = class {
-	/** The elements of the DOM */
-	dom = [];
-	/** The root element for the DOM */
-	root = new Document(this.dom);
-	/** Called once parsing has completed. */
-	callback;
-	/** Settings for the handler. */
-	options;
-	/** Callback whenever a tag is closed. */
-	elementCB;
-	/** Indicated whether parsing has been completed. */
-	done = false;
-	/** Stack of open tags. */
-	tagStack = [this.root];
-	/** A data node that is still being written to. */
-	lastNode = null;
-	/** Reference to the parser instance. Used for location information. */
-	parser = null;
 	/**
 	* @param callback Called once parsing has completed.
 	* @param options Settings for the handler.
 	* @param elementCB Callback whenever a tag is closed.
 	*/
 	constructor(callback, options, elementCB) {
+		var _callback, _options, _elementCB;
+		_defineProperty(
+			this,
+			/** The elements of the DOM */
+			"dom",
+			[]
+		);
+		_defineProperty(
+			this,
+			/** The root element for the DOM */
+			"root",
+			new Document(this.dom)
+		);
+		_defineProperty(
+			this,
+			/** Called once parsing has completed. */
+			"callback",
+			void 0
+		);
+		_defineProperty(
+			this,
+			/** Settings for the handler. */
+			"options",
+			void 0
+		);
+		_defineProperty(
+			this,
+			/** Callback whenever a tag is closed. */
+			"elementCB",
+			void 0
+		);
+		_defineProperty(
+			this,
+			/** Indicated whether parsing has been completed. */
+			"done",
+			false
+		);
+		_defineProperty(
+			this,
+			/** Stack of open tags. */
+			"tagStack",
+			[this.root]
+		);
+		_defineProperty(
+			this,
+			/** A data node that is still being written to. */
+			"lastNode",
+			null
+		);
+		_defineProperty(
+			this,
+			/** Reference to the parser instance. Used for location information. */
+			"parser",
+			null
+		);
 		if (typeof options === "function") {
 			elementCB = options;
 			options = defaultOptions$1;
@@ -7048,9 +7147,9 @@ var DomHandler = class {
 			options = callback;
 			callback = void 0;
 		}
-		this.callback = callback ?? null;
-		this.options = options ?? defaultOptions$1;
-		this.elementCB = elementCB ?? null;
+		this.callback = (_callback = callback) !== null && _callback !== void 0 ? _callback : null;
+		this.options = (_options = options) !== null && _options !== void 0 ? _options : defaultOptions$1;
+		this.elementCB = (_elementCB = elementCB) !== null && _elementCB !== void 0 ? _elementCB : null;
 	}
 	onparserinit(parser) {
 		this.parser = parser;
@@ -7682,6 +7781,7 @@ var BinTrieFlags;
 })(BinTrieFlags || (BinTrieFlags = {}));
 //#endregion
 //#region node_modules/entities/dist/decode.js
+init_defineProperty();
 var CharCodes$1;
 (function(CharCodes) {
 	CharCodes[CharCodes["AMP"] = 38] = "AMP";
@@ -7743,33 +7843,61 @@ var DecodingMode;
 * Token decoder with support of writing partial entities.
 */
 var EntityDecoder = class {
-	decodeTree;
-	emitCodePoint;
-	errors;
-	/** The current state of the decoder. */
-	state = EntityDecoderState.EntityStart;
-	/** Characters that were consumed while parsing an entity. */
-	consumed = 1;
-	/**
-	* The result of the entity.
-	*
-	* For named entities: the trie index of the best legacy match so far
-	* (0 = none). For numeric entities: the accumulated code point.
-	*/
-	result = 0;
-	/** The current index in the decode tree. */
-	treeIndex = 0;
-	/**
-	* Characters consumed since the last recorded legacy match, plus one.
-	* Invariant at the top of the `stateNamedEntity` loop: `excess` equals
-	* the number of unrecorded consumed characters + 1.
-	*/
-	excess = 1;
-	/** The mode in which the decoder is operating. */
-	decodeMode = DecodingMode.Strict;
-	/** The number of characters that have been consumed in the current run. */
-	runConsumed = 0;
 	constructor(decodeTree, emitCodePoint, errors) {
+		_defineProperty(this, "decodeTree", void 0);
+		_defineProperty(this, "emitCodePoint", void 0);
+		_defineProperty(this, "errors", void 0);
+		_defineProperty(
+			this,
+			/** The current state of the decoder. */
+			"state",
+			EntityDecoderState.EntityStart
+		);
+		_defineProperty(
+			this,
+			/** Characters that were consumed while parsing an entity. */
+			"consumed",
+			1
+		);
+		_defineProperty(
+			this,
+			/**
+			* The result of the entity.
+			*
+			* For named entities: the trie index of the best legacy match so far
+			* (0 = none). For numeric entities: the accumulated code point.
+			*/
+			"result",
+			0
+		);
+		_defineProperty(
+			this,
+			/** The current index in the decode tree. */
+			"treeIndex",
+			0
+		);
+		_defineProperty(
+			this,
+			/**
+			* Characters consumed since the last recorded legacy match, plus one.
+			* Invariant at the top of the `stateNamedEntity` loop: `excess` equals
+			* the number of unrecorded consumed characters + 1.
+			*/
+			"excess",
+			1
+		);
+		_defineProperty(
+			this,
+			/** The mode in which the decoder is operating. */
+			"decodeMode",
+			DecodingMode.Strict
+		);
+		_defineProperty(
+			this,
+			/** The number of characters that have been consumed in the current run. */
+			"runConsumed",
+			0
+		);
 		this.decodeTree = decodeTree;
 		this.emitCodePoint = emitCodePoint;
 		this.errors = errors;
@@ -7905,7 +8033,8 @@ var EntityDecoder = class {
 	*/
 	emitNumericEntity(lastCp, expectedLength) {
 		if (this.consumed <= expectedLength) {
-			this.errors?.absenceOfDigitsInNumericCharacterReference(this.consumed);
+			var _this$errors;
+			(_this$errors = this.errors) === null || _this$errors === void 0 || _this$errors.absenceOfDigitsInNumericCharacterReference(this.consumed);
 			return 0;
 		}
 		if (lastCp === CharCodes$1.SEMI) this.consumed += 1;
@@ -8038,10 +8167,11 @@ var EntityDecoder = class {
 	* @returns The number of characters consumed.
 	*/
 	emitNotTerminatedNamedEntity() {
+		var _this$errors2;
 		const { result, decodeTree } = this;
 		const valueLength = decodeTree[result] >>> 14;
 		this.emitNamedEntityData(result, valueLength, this.consumed);
-		this.errors?.missingSemicolonAfterCharacterReference();
+		(_this$errors2 = this.errors) === null || _this$errors2 === void 0 || _this$errors2.missingSemicolonAfterCharacterReference();
 		return this.consumed;
 	}
 	/**
@@ -8069,7 +8199,8 @@ var EntityDecoder = class {
 			case EntityDecoderState.NumericDecimal: return this.emitNumericEntity(0, 2);
 			case EntityDecoderState.NumericHex: return this.emitNumericEntity(0, 3);
 			case EntityDecoderState.NumericStart:
-				this.errors?.absenceOfDigitsInNumericCharacterReference(this.consumed);
+				var _this$errors3;
+				(_this$errors3 = this.errors) === null || _this$errors3 === void 0 || _this$errors3.absenceOfDigitsInNumericCharacterReference(this.consumed);
 				return 0;
 			default: return 0;
 		}
@@ -8294,8 +8425,9 @@ var foreignModeIntegrationPoints = new Set("mi mo mn ms mtext annotation-xml for
 * @param options Changes serialization behavior
 */
 function render(node, options = {}) {
+	var _options$xmlMode;
 	const nodes = "length" in node ? node : [node];
-	const xmlMode = options.xmlMode ?? false;
+	const xmlMode = (_options$xmlMode = options.xmlMode) !== null && _options$xmlMode !== void 0 ? _options$xmlMode : false;
 	let output = "";
 	for (let index = 0; index < nodes.length; index++) output += renderNode(nodes[index], options, xmlMode);
 	return output;
@@ -8321,16 +8453,18 @@ function renderNode(node, options, xmlMode) {
 		case Style:
 		case Tag: return renderTag(node, options, xmlMode);
 		case Text$1: {
+			var _options$encodeEntiti;
 			const element = node;
 			const data = element.data || "";
-			if ((options.encodeEntities ?? options.decodeEntities) !== false && !(!xmlMode && element.parent && unencodedElements.has(element.parent.name))) return xmlMode || options.encodeEntities !== "utf8" ? encodeXML(data) : escapeText(data);
+			if (((_options$encodeEntiti = options.encodeEntities) !== null && _options$encodeEntiti !== void 0 ? _options$encodeEntiti : options.decodeEntities) !== false && !(!xmlMode && element.parent && unencodedElements.has(element.parent.name))) return xmlMode || options.encodeEntities !== "utf8" ? encodeXML(data) : escapeText(data);
 			return data;
 		}
 	}
 }
 function renderTag(element, options, xmlMode) {
 	if (xmlMode === "foreign") {
-		element.name = elementNames.get(element.name) ?? element.name;
+		var _elementNames$get;
+		element.name = (_elementNames$get = elementNames.get(element.name)) !== null && _elementNames$get !== void 0 ? _elementNames$get : element.name;
 		if (element.parent && foreignModeIntegrationPoints.has(element.parent.name)) xmlMode = false;
 	}
 	if (!xmlMode && foreignElements.has(element.name)) xmlMode = "foreign";
@@ -8359,15 +8493,17 @@ function replaceQuotes(value) {
 * @param xmlMode
 */
 function formatAttributes(attributes, options, xmlMode) {
+	var _options$encodeEntiti2, _options$emptyAttrs;
 	if (!attributes) return "";
-	const encode = (options.encodeEntities ?? options.decodeEntities) === false ? replaceQuotes : xmlMode || options.encodeEntities !== "utf8" ? encodeXML : escapeAttribute;
+	const encode = ((_options$encodeEntiti2 = options.encodeEntities) !== null && _options$encodeEntiti2 !== void 0 ? _options$encodeEntiti2 : options.decodeEntities) === false ? replaceQuotes : xmlMode || options.encodeEntities !== "utf8" ? encodeXML : escapeAttribute;
 	const isForeign = xmlMode === "foreign";
-	const showEmpty = !!(options.emptyAttrs ?? xmlMode);
+	const showEmpty = !!((_options$emptyAttrs = options.emptyAttrs) !== null && _options$emptyAttrs !== void 0 ? _options$emptyAttrs : xmlMode);
 	let result = "";
 	for (const key in attributes) {
+		var _attributeNames$get;
 		if (!Object.hasOwn(attributes, key)) continue;
 		const value = attributes[key];
-		const k = isForeign ? attributeNames.get(key) ?? key : key;
+		const k = isForeign ? (_attributeNames$get = attributeNames.get(key)) !== null && _attributeNames$get !== void 0 ? _attributeNames$get : key : key;
 		result += !showEmpty && (value == null || value === "") ? ` ${k}` : ` ${k}="${encode(value == null ? "" : String(value))}"`;
 	}
 	return result;
@@ -8457,15 +8593,17 @@ function getFeed(document) {
 * @returns The parsed feed.
 */
 function getAtomFeed(feedRoot) {
+	var _getOneElement2;
 	const childs = feedRoot.children;
 	const feed = {
 		type: "atom",
 		items: getElementsByTagName("entry", childs).map((item) => {
+			var _getOneElement;
 			const { children } = item;
 			const entry = { media: getMediaElements(children) };
 			addConditionally(entry, "id", "id", children);
 			addConditionally(entry, "title", "title", children);
-			const href = getOneElement("link", children)?.attribs["href"];
+			const href = (_getOneElement = getOneElement("link", children)) === null || _getOneElement === void 0 ? void 0 : _getOneElement.attribs["href"];
 			if (href) entry.link = href;
 			const description = fetch$1("summary", children) || fetch$1("content", children);
 			if (description) entry.description = description;
@@ -8476,7 +8614,7 @@ function getAtomFeed(feedRoot) {
 	};
 	addConditionally(feed, "id", "id", childs);
 	addConditionally(feed, "title", "title", childs);
-	const href = getOneElement("link", childs)?.attribs["href"];
+	const href = (_getOneElement2 = getOneElement("link", childs)) === null || _getOneElement2 === void 0 ? void 0 : _getOneElement2.attribs["href"];
 	if (href) feed.link = href;
 	addConditionally(feed, "description", "subtitle", childs);
 	const updated = fetch$1("updated", childs);
@@ -8491,7 +8629,8 @@ function getAtomFeed(feedRoot) {
 * @returns The parsed feed.
 */
 function getRssFeed(feedRoot) {
-	const childs = getOneElement("channel", feedRoot.children)?.children ?? [];
+	var _getOneElement$childr, _getOneElement3;
+	const childs = (_getOneElement$childr = (_getOneElement3 = getOneElement("channel", feedRoot.children)) === null || _getOneElement3 === void 0 ? void 0 : _getOneElement3.children) !== null && _getOneElement$childr !== void 0 ? _getOneElement$childr : [];
 	const feed = {
 		type: feedRoot.name.substr(0, 3),
 		id: "",
@@ -8873,7 +9012,7 @@ function getSiblings(element) {
 */
 function getAttributeValue(element, name) {
 	const { attribs } = element;
-	return attribs?.[name];
+	return attribs === null || attribs === void 0 ? void 0 : attribs[name];
 }
 /**
 * Checks whether an element has an attribute.
@@ -9090,7 +9229,10 @@ var attributeRules = {
 				return attribute != null && attribute.length >= length && attribute.substr(0, length).toLowerCase() === value && next(element);
 			};
 		}
-		return (element) => !!adapter.getAttributeValue(element, name)?.startsWith(value) && next(element);
+		return (element) => {
+			var _adapter$getAttribute;
+			return !!((_adapter$getAttribute = adapter.getAttributeValue(element, name)) === null || _adapter$getAttribute === void 0 ? void 0 : _adapter$getAttribute.startsWith(value)) && next(element);
+		};
 	},
 	end(next, data, options) {
 		const { adapter } = options;
@@ -9100,9 +9242,15 @@ var attributeRules = {
 		if (length === 0) return falseFunc;
 		if (shouldIgnoreCase(data, options)) {
 			value = value.toLowerCase();
-			return (element) => adapter.getAttributeValue(element, name)?.substr(length).toLowerCase() === value && next(element);
+			return (element) => {
+				var _adapter$getAttribute2;
+				return ((_adapter$getAttribute2 = adapter.getAttributeValue(element, name)) === null || _adapter$getAttribute2 === void 0 ? void 0 : _adapter$getAttribute2.substr(length).toLowerCase()) === value && next(element);
+			};
 		}
-		return (element) => !!adapter.getAttributeValue(element, name)?.endsWith(value) && next(element);
+		return (element) => {
+			var _adapter$getAttribute3;
+			return !!((_adapter$getAttribute3 = adapter.getAttributeValue(element, name)) === null || _adapter$getAttribute3 === void 0 ? void 0 : _adapter$getAttribute3.endsWith(value)) && next(element);
+		};
 	},
 	any(next, data, options) {
 		const { adapter } = options;
@@ -9115,7 +9263,10 @@ var attributeRules = {
 				return attribute != null && attribute.length >= value.length && regex.test(attribute) && next(element);
 			};
 		}
-		return (element) => !!adapter.getAttributeValue(element, name)?.includes(value) && next(element);
+		return (element) => {
+			var _adapter$getAttribute4;
+			return !!((_adapter$getAttribute4 = adapter.getAttributeValue(element, name)) === null || _adapter$getAttribute4 === void 0 ? void 0 : _adapter$getAttribute4.includes(value)) && next(element);
+		};
 	},
 	not(next, data, options) {
 		const { adapter } = options;
@@ -9330,8 +9481,9 @@ function parse(formula) {
 	let sign = readSign();
 	let number = readNumber();
 	if (index < formula.length && formula.charAt(index) === "n") {
+		var _number;
 		index++;
-		a = sign * (number ?? 1);
+		a = sign * ((_number = number) !== null && _number !== void 0 ? _number : 1);
 		skipWhitespace();
 		if (index < formula.length) {
 			sign = readSign();
@@ -9416,7 +9568,10 @@ function cacheParentResults(next, { adapter, cacheResults }, matches) {
 	}
 	return function cachedMatcher(element) {
 		if (!next(element)) return false;
-		if (resultCache.has(element)) return resultCache.get(element) ?? false;
+		if (resultCache.has(element)) {
+			var _resultCache$get;
+			return (_resultCache$get = resultCache.get(element)) !== null && _resultCache$get !== void 0 ? _resultCache$get : false;
+		}
 		let node = element;
 		do {
 			const parent = getElementParent(node, adapter);
@@ -9428,6 +9583,8 @@ function cacheParentResults(next, { adapter, cacheResults }, matches) {
 }
 //#endregion
 //#region node_modules/css-select/dist/helpers/options.js
+init_objectWithoutProperties();
+var _excluded = ["context", "rootFunc"];
 /**
 * Create a copy of options, omitting `context` and `rootFunc`.
 *
@@ -9435,8 +9592,8 @@ function cacheParentResults(next, { adapter, cacheResults }, matches) {
 * `:nth-child(… of S)`) so that the parent compilation state doesn't leak.
 */
 function copyOptions(options) {
-	const { context: _, rootFunc: __, ...copied } = options;
-	return copied;
+	const { context: _, rootFunc: __ } = options;
+	return _objectWithoutProperties(options, _excluded);
 }
 //#endregion
 //#region node_modules/css-select/dist/pseudo-selectors/filters.js
@@ -9457,7 +9614,7 @@ function extendedFilter(tag, range) {
 	return true;
 }
 /** @see {@link https://www.w3.org/TR/selectors-4/#the-nth-child-pseudo} */
-var nthOfRegex = /^(.+?)\s+of\s+(.+)$/is;
+var nthOfRegex = new RegExp("^(.+?)\\s+of\\s+(.+)$", "is");
 function compileNth(reverse, ofType) {
 	return function nth(next, rule, options, context, compileToken) {
 		const { adapter, equals } = options;
@@ -9522,7 +9679,8 @@ var filters = {
 		return function lang(element) {
 			let node = element;
 			while (node != null) {
-				const value = adapter.getAttributeValue(node, "xml:lang") ?? adapter.getAttributeValue(node, "lang");
+				var _adapter$getAttribute;
+				const value = (_adapter$getAttribute = adapter.getAttributeValue(node, "xml:lang")) !== null && _adapter$getAttribute !== void 0 ? _adapter$getAttribute : adapter.getAttributeValue(node, "lang");
 				if (value != null) {
 					if (!value) return ranges.some((r) => r[0] === "") && next(element);
 					const tag = value.toLowerCase().split("-");
@@ -9745,12 +9903,13 @@ var subselects = {
 * @param compileToken Function used to compile nested selector tokens.
 */
 function compilePseudoSelector(next, selector, options, context, compileToken) {
+	var _options$pseudos;
 	const { name, data } = selector;
 	if (Array.isArray(data)) {
 		if (!(name in subselects)) throw new Error(`Unknown pseudo-class :${name}(${data})`);
 		return subselects[name](next, data, options, context, compileToken);
 	}
-	const userPseudo = options.pseudos?.[name];
+	const userPseudo = (_options$pseudos = options.pseudos) === null || _options$pseudos === void 0 ? void 0 : _options$pseudos[name];
 	const stringPseudo = typeof userPseudo === "string" ? userPseudo : aliases[name];
 	if (typeof stringPseudo === "string") {
 		if (data != null) throw new Error(`Pseudo ${name} doesn't have any arguments`);
@@ -9811,7 +9970,8 @@ function compileGeneralSelector(next, selector, options, context, compileToken, 
 				while (current = getElementParent(current, adapter)) {
 					const cached = resultCache.get(current);
 					if (cached === void 0) {
-						result ??= { matches: false };
+						var _result;
+						(_result = result) !== null && _result !== void 0 || (result = { matches: false });
 						result.matches = next(current);
 						resultCache.set(current, result);
 						if (result.matches) return true;
@@ -9875,7 +10035,7 @@ var SCOPE_TOKEN = {
 	data: null
 };
 function absolutize(token, { adapter }, context) {
-	const hasContext = !!context?.every((element) => element === PLACEHOLDER_ELEMENT || adapter.isTag(element) && getElementParent(element, adapter) !== null);
+	const hasContext = !!(context === null || context === void 0 ? void 0 : context.every((element) => element === PLACEHOLDER_ELEMENT || adapter.isTag(element) && getElementParent(element, adapter) !== null));
 	for (const t of token) {
 		if (t.length > 0 && isTraversal(t[0]) && t[0].type !== SelectorType.Descendant) {} else if (hasContext && !t.some(includesScopePseudo)) t.unshift(DESCENDANT_TOKEN);
 		else continue;
@@ -9921,18 +10081,17 @@ function or(a, b) {
 }
 //#endregion
 //#region node_modules/css-select/dist/index.js
+init_objectSpread2();
 var defaultEquals = (a, b) => a === b;
 var defaultOptions = {
-	adapter: {
-		...dist_exports,
-		isTag
-	},
+	adapter: _objectSpread2(_objectSpread2({}, dist_exports), {}, { isTag }),
 	equals: defaultEquals
 };
 function convertOptionFormats(options) {
-	const finalOptions = options ?? defaultOptions;
-	finalOptions.adapter ??= defaultOptions.adapter;
-	finalOptions.equals ??= finalOptions.adapter?.equals ?? defaultEquals;
+	var _finalOptions$adapter, _finalOptions$equals, _finalOptions$adapter2, _finalOptions$adapter3;
+	const finalOptions = options !== null && options !== void 0 ? options : defaultOptions;
+	(_finalOptions$adapter = finalOptions.adapter) !== null && _finalOptions$adapter !== void 0 || (finalOptions.adapter = defaultOptions.adapter);
+	(_finalOptions$equals = finalOptions.equals) !== null && _finalOptions$equals !== void 0 || (finalOptions.equals = (_finalOptions$adapter2 = (_finalOptions$adapter3 = finalOptions.adapter) === null || _finalOptions$adapter3 === void 0 ? void 0 : _finalOptions$adapter3.equals) !== null && _finalOptions$adapter2 !== void 0 ? _finalOptions$adapter2 : defaultEquals);
 	return finalOptions;
 }
 /**
@@ -9993,6 +10152,7 @@ var selectAll = getSelectorFunction((query, elements, options) => query === fals
 var selectOne = getSelectorFunction((query, elements, options) => query === falseFunc || !elements || elements.length === 0 ? null : findOne(query, elements, options));
 //#endregion
 //#region node_modules/htmlparser2/dist/Tokenizer.js
+init_defineProperty();
 var CharCodes;
 (function(CharCodes) {
 	CharCodes[CharCodes["Tab"] = 9] = "Tab";
@@ -10220,30 +10380,68 @@ var specialStartSequences = /* @__PURE__ */ new Map([
 * Tokenizer implementation used by `Parser`.
 */
 var Tokenizer = class {
-	cbs;
-	/** The current state the tokenizer is in. */
-	state = State.Text;
-	/** The read buffer. */
-	buffer = "";
-	/** The beginning of the section that is currently being read. */
-	sectionStart = 0;
-	/** The index within the buffer that we are currently looking at. */
-	index = 0;
-	/** The start of the last entity. */
-	entityStart = 0;
-	/** Some behavior, eg. when decoding entities, is done while we are in another state. This keeps track of the other state type. */
-	baseState = State.Text;
-	/** For special parsing behavior inside of script and style tags. */
-	isSpecial = false;
-	/** Indicates whether the tokenizer has been paused. */
-	running = true;
-	/** The offset of the current buffer. */
-	offset = 0;
-	xmlMode;
-	decodeEntities;
-	recognizeSelfClosing;
-	entityDecoder;
 	constructor({ xmlMode = false, decodeEntities = true, recognizeSelfClosing = xmlMode }, cbs) {
+		_defineProperty(this, "cbs", void 0);
+		_defineProperty(
+			this,
+			/** The current state the tokenizer is in. */
+			"state",
+			State.Text
+		);
+		_defineProperty(
+			this,
+			/** The read buffer. */
+			"buffer",
+			""
+		);
+		_defineProperty(
+			this,
+			/** The beginning of the section that is currently being read. */
+			"sectionStart",
+			0
+		);
+		_defineProperty(
+			this,
+			/** The index within the buffer that we are currently looking at. */
+			"index",
+			0
+		);
+		_defineProperty(
+			this,
+			/** The start of the last entity. */
+			"entityStart",
+			0
+		);
+		_defineProperty(
+			this,
+			/** Some behavior, eg. when decoding entities, is done while we are in another state. This keeps track of the other state type. */
+			"baseState",
+			State.Text
+		);
+		_defineProperty(
+			this,
+			/** For special parsing behavior inside of script and style tags. */
+			"isSpecial",
+			false
+		);
+		_defineProperty(
+			this,
+			/** Indicates whether the tokenizer has been paused. */
+			"running",
+			true
+		);
+		_defineProperty(
+			this,
+			/** The offset of the current buffer. */
+			"offset",
+			0
+		);
+		_defineProperty(this, "xmlMode", void 0);
+		_defineProperty(this, "decodeEntities", void 0);
+		_defineProperty(this, "recognizeSelfClosing", void 0);
+		_defineProperty(this, "entityDecoder", void 0);
+		_defineProperty(this, "currentSequence", Sequences.Empty);
+		_defineProperty(this, "sequenceIndex", 0);
 		this.cbs = cbs;
 		this.xmlMode = xmlMode;
 		this.decodeEntities = decodeEntities;
@@ -10284,8 +10482,6 @@ var Tokenizer = class {
 			this.sectionStart = this.index;
 		} else if (this.decodeEntities && c === CharCodes.Amp) this.startEntity();
 	}
-	currentSequence = Sequences.Empty;
-	sequenceIndex = 0;
 	enterTagBody() {
 		if (this.currentSequence === Sequences.Plaintext) {
 			this.currentSequence = Sequences.Empty;
@@ -10460,8 +10656,9 @@ var Tokenizer = class {
 				this.sectionStart = this.index;
 			}
 		} else if (this.isTagStartChar(c)) {
+			var _this$cbs$isInForeign, _this$cbs;
 			this.sectionStart = this.index;
-			const special = this.xmlMode || this.cbs.isInForeignContext?.() ? void 0 : specialStartSequences.get(c | 32);
+			const special = this.xmlMode || ((_this$cbs$isInForeign = (_this$cbs = this.cbs).isInForeignContext) === null || _this$cbs$isInForeign === void 0 ? void 0 : _this$cbs$isInForeign.call(_this$cbs)) ? void 0 : specialStartSequences.get(c | 32);
 			if (special === void 0) this.state = State.InTagName;
 			else {
 				this.isSpecial = true;
@@ -10900,6 +11097,7 @@ var Tokenizer = class {
 };
 //#endregion
 //#region node_modules/htmlparser2/dist/Parser.js
+init_defineProperty();
 var { fromCodePoint } = String;
 var formTags = /* @__PURE__ */ new Set([
 	"input",
@@ -11075,45 +11273,70 @@ var reNameEnd = /\s|\//;
 * Incremental parser implementation.
 */
 var Parser = class {
-	options;
-	/** The start index of the last event. */
-	startIndex = 0;
-	/** The end index of the last event. */
-	endIndex = 0;
-	/**
-	* Store the start index of the current open tag,
-	* so we can update the start index for attributes.
-	*/
-	openTagStart = 0;
-	tagname = "";
-	attribname = "";
-	attribvalue = "";
-	attribs = null;
-	stack = [];
-	foreignContext;
-	cbs;
-	lowerCaseTagNames;
-	lowerCaseAttributeNames;
-	recognizeSelfClosing;
-	/** We are parsing HTML. Inverse of the `xmlMode` option. */
-	htmlMode;
-	tokenizer;
-	buffers = [];
-	bufferOffset = 0;
-	/** The index of the last written buffer. Used when resuming after a `pause()`. */
-	writeIndex = 0;
-	/** Indicates whether the parser has finished running / `.end` has been called. */
-	ended = false;
 	constructor(cbs, options = {}) {
+		var _options$lowerCaseTag, _options$lowerCaseAtt, _options$recognizeSel, _options$Tokenizer, _this$cbs$onparserini, _this$cbs;
+		_defineProperty(this, "options", void 0);
+		_defineProperty(
+			this,
+			/** The start index of the last event. */
+			"startIndex",
+			0
+		);
+		_defineProperty(
+			this,
+			/** The end index of the last event. */
+			"endIndex",
+			0
+		);
+		_defineProperty(
+			this,
+			/**
+			* Store the start index of the current open tag,
+			* so we can update the start index for attributes.
+			*/
+			"openTagStart",
+			0
+		);
+		_defineProperty(this, "tagname", "");
+		_defineProperty(this, "attribname", "");
+		_defineProperty(this, "attribvalue", "");
+		_defineProperty(this, "attribs", null);
+		_defineProperty(this, "stack", []);
+		_defineProperty(this, "foreignContext", void 0);
+		_defineProperty(this, "cbs", void 0);
+		_defineProperty(this, "lowerCaseTagNames", void 0);
+		_defineProperty(this, "lowerCaseAttributeNames", void 0);
+		_defineProperty(this, "recognizeSelfClosing", void 0);
+		_defineProperty(
+			this,
+			/** We are parsing HTML. Inverse of the `xmlMode` option. */
+			"htmlMode",
+			void 0
+		);
+		_defineProperty(this, "tokenizer", void 0);
+		_defineProperty(this, "buffers", []);
+		_defineProperty(this, "bufferOffset", 0);
+		_defineProperty(
+			this,
+			/** The index of the last written buffer. Used when resuming after a `pause()`. */
+			"writeIndex",
+			0
+		);
+		_defineProperty(
+			this,
+			/** Indicates whether the parser has finished running / `.end` has been called. */
+			"ended",
+			false
+		);
 		this.options = options;
-		this.cbs = cbs ?? {};
+		this.cbs = cbs !== null && cbs !== void 0 ? cbs : {};
 		this.htmlMode = !this.options.xmlMode;
-		this.lowerCaseTagNames = options.lowerCaseTags ?? this.htmlMode;
-		this.lowerCaseAttributeNames = options.lowerCaseAttributeNames ?? this.htmlMode;
-		this.recognizeSelfClosing = options.recognizeSelfClosing ?? !this.htmlMode;
-		this.tokenizer = new (options.Tokenizer ?? Tokenizer)(this.options, this);
+		this.lowerCaseTagNames = (_options$lowerCaseTag = options.lowerCaseTags) !== null && _options$lowerCaseTag !== void 0 ? _options$lowerCaseTag : this.htmlMode;
+		this.lowerCaseAttributeNames = (_options$lowerCaseAtt = options.lowerCaseAttributeNames) !== null && _options$lowerCaseAtt !== void 0 ? _options$lowerCaseAtt : this.htmlMode;
+		this.recognizeSelfClosing = (_options$recognizeSel = options.recognizeSelfClosing) !== null && _options$recognizeSel !== void 0 ? _options$recognizeSel : !this.htmlMode;
+		this.tokenizer = new ((_options$Tokenizer = options.Tokenizer) !== null && _options$Tokenizer !== void 0 ? _options$Tokenizer : Tokenizer)(this.options, this);
 		this.foreignContext = [ForeignContext.None];
-		this.cbs.onparserinit?.(this);
+		(_this$cbs$onparserini = (_this$cbs = this.cbs).onparserinit) === null || _this$cbs$onparserini === void 0 || _this$cbs$onparserini.call(_this$cbs, this);
 	}
 	/**
 	* @param start Start index for the current parser event.
@@ -11121,9 +11344,10 @@ var Parser = class {
 	* @internal
 	*/
 	ontext(start, endIndex) {
+		var _this$cbs$ontext, _this$cbs2;
 		const data = this.getSlice(start, endIndex);
 		this.endIndex = endIndex - 1;
-		this.cbs.ontext?.(data);
+		(_this$cbs$ontext = (_this$cbs2 = this.cbs).ontext) === null || _this$cbs$ontext === void 0 || _this$cbs$ontext.call(_this$cbs2, data);
 		this.startIndex = endIndex;
 	}
 	/**
@@ -11132,8 +11356,9 @@ var Parser = class {
 	* @internal
 	*/
 	ontextentity(cp, endIndex) {
+		var _this$cbs$ontext2, _this$cbs3;
 		this.endIndex = endIndex - 1;
-		this.cbs.ontext?.(fromCodePoint(cp));
+		(_this$cbs$ontext2 = (_this$cbs3 = this.cbs).ontext) === null || _this$cbs$ontext2 === void 0 || _this$cbs$ontext2.call(_this$cbs3, fromCodePoint(cp));
 		this.startIndex = endIndex;
 	}
 	/** @internal */
@@ -11160,7 +11385,10 @@ var Parser = class {
 	readTagName(start, endIndex) {
 		const name = this.lowerCaseTagNames ? this.getSlice(start, endIndex).toLowerCase() : this.getSlice(start, endIndex);
 		if (!(this.lowerCaseTagNames && this.htmlMode)) return name;
-		if (this.foreignContext[0] === ForeignContext.Svg) return svgTagNameAdjustments.get(name) ?? name;
+		if (this.foreignContext[0] === ForeignContext.Svg) {
+			var _svgTagNameAdjustment;
+			return (_svgTagNameAdjustment = svgTagNameAdjustments.get(name)) !== null && _svgTagNameAdjustment !== void 0 ? _svgTagNameAdjustment : name;
+		}
 		if (this.foreignContext.length > 1) {
 			const adjusted = svgTagNameAdjustments.get(name);
 			if (adjusted !== void 0 && this.stack.includes(adjusted)) return adjusted;
@@ -11178,6 +11406,7 @@ var Parser = class {
 		this.emitOpenTag(this.readTagName(start, endIndex));
 	}
 	emitOpenTag(name) {
+		var _this$cbs$onopentagna, _this$cbs4;
 		this.openTagStart = this.startIndex;
 		this.tagname = name;
 		if (this.htmlMode && name === "form" && this.stack.includes("form")) {
@@ -11194,13 +11423,14 @@ var Parser = class {
 				else if (htmlIntegrationElements.has(name)) this.foreignContext.unshift(ForeignContext.None);
 			}
 		}
-		this.cbs.onopentagname?.(name);
+		(_this$cbs$onopentagna = (_this$cbs4 = this.cbs).onopentagname) === null || _this$cbs$onopentagna === void 0 || _this$cbs$onopentagna.call(_this$cbs4, name);
 		if (this.cbs.onopentag) this.attribs = {};
 	}
 	endOpenTag(isImplied) {
 		this.startIndex = this.openTagStart;
 		if (this.attribs) {
-			this.cbs.onopentag?.(this.tagname, this.attribs, isImplied);
+			var _this$cbs$onopentag, _this$cbs5;
+			(_this$cbs$onopentag = (_this$cbs5 = this.cbs).onopentag) === null || _this$cbs$onopentag === void 0 || _this$cbs$onopentag.call(_this$cbs5, this.tagname, this.attribs, isImplied);
 			this.attribs = null;
 		}
 		if (this.cbs.onclosetag && this.isVoidElement(this.tagname)) this.cbs.onclosetag(this.tagname, true);
@@ -11233,9 +11463,10 @@ var Parser = class {
 				this.closeCurrentTag(true);
 			}
 		} else if (this.htmlMode && name === "br") {
-			this.cbs.onopentagname?.("br");
-			this.cbs.onopentag?.("br", {}, true);
-			this.cbs.onclosetag?.("br", false);
+			var _this$cbs$onopentagna2, _this$cbs6, _this$cbs$onopentag2, _this$cbs7, _this$cbs$onclosetag, _this$cbs8;
+			(_this$cbs$onopentagna2 = (_this$cbs6 = this.cbs).onopentagname) === null || _this$cbs$onopentagna2 === void 0 || _this$cbs$onopentagna2.call(_this$cbs6, "br");
+			(_this$cbs$onopentag2 = (_this$cbs7 = this.cbs).onopentag) === null || _this$cbs$onopentag2 === void 0 || _this$cbs$onopentag2.call(_this$cbs7, "br", {}, true);
+			(_this$cbs$onclosetag = (_this$cbs8 = this.cbs).onclosetag) === null || _this$cbs$onclosetag === void 0 || _this$cbs$onclosetag.call(_this$cbs8, "br", false);
 		}
 		this.startIndex = endIndex + 1;
 	}
@@ -11256,9 +11487,10 @@ var Parser = class {
 	* @param implied Whether this close is implied (not from an explicit end tag).
 	*/
 	popElement(implied) {
+		var _this$cbs$onclosetag2, _this$cbs9;
 		const element = this.stack.shift();
 		if (this.htmlMode && (foreignContextElements.has(element) || htmlIntegrationElements.has(element))) this.foreignContext.shift();
-		this.cbs.onclosetag?.(element, implied);
+		(_this$cbs$onclosetag2 = (_this$cbs9 = this.cbs).onclosetag) === null || _this$cbs$onclosetag2 === void 0 || _this$cbs$onclosetag2.call(_this$cbs9, element, implied);
 	}
 	closeCurrentTag(isOpenImplied) {
 		const name = this.tagname;
@@ -11296,8 +11528,9 @@ var Parser = class {
 	* @internal
 	*/
 	onattribend(quote, endIndex) {
+		var _this$cbs$onattribute, _this$cbs10;
 		this.endIndex = endIndex;
-		this.cbs.onattribute?.(this.attribname, this.attribvalue, quote === QuoteType.Double ? "\"" : quote === QuoteType.Single ? "'" : quote === QuoteType.NoValue ? void 0 : null);
+		(_this$cbs$onattribute = (_this$cbs10 = this.cbs).onattribute) === null || _this$cbs$onattribute === void 0 || _this$cbs$onattribute.call(_this$cbs10, this.attribname, this.attribvalue, quote === QuoteType.Double ? "\"" : quote === QuoteType.Single ? "'" : quote === QuoteType.NoValue ? void 0 : null);
 		if (this.attribs && !Object.hasOwn(this.attribs, this.attribname)) this.attribs[this.attribname] = this.attribvalue;
 		this.attribvalue = "";
 	}
@@ -11342,9 +11575,10 @@ var Parser = class {
 	* @internal
 	*/
 	oncomment(start, endIndex, offset) {
+		var _this$cbs$oncomment, _this$cbs11, _this$cbs$oncommenten, _this$cbs12;
 		this.endIndex = endIndex;
-		this.cbs.oncomment?.(this.getSlice(start, endIndex - offset));
-		this.cbs.oncommentend?.();
+		(_this$cbs$oncomment = (_this$cbs11 = this.cbs).oncomment) === null || _this$cbs$oncomment === void 0 || _this$cbs$oncomment.call(_this$cbs11, this.getSlice(start, endIndex - offset));
+		(_this$cbs$oncommenten = (_this$cbs12 = this.cbs).oncommentend) === null || _this$cbs$oncommenten === void 0 || _this$cbs$oncommenten.call(_this$cbs12);
 		this.startIndex = endIndex + 1;
 	}
 	/**
@@ -11357,29 +11591,35 @@ var Parser = class {
 		this.endIndex = endIndex;
 		const value = this.getSlice(start, endIndex - offset);
 		if (!this.htmlMode || this.options.recognizeCDATA) {
-			this.cbs.oncdatastart?.();
-			this.cbs.ontext?.(value);
-			this.cbs.oncdataend?.();
-		} else if (this.isInForeignContext()) this.cbs.ontext?.(value);
-		else {
-			this.cbs.oncomment?.(`[CDATA[${value}]]`);
-			this.cbs.oncommentend?.();
+			var _this$cbs$oncdatastar, _this$cbs13, _this$cbs$ontext3, _this$cbs14, _this$cbs$oncdataend, _this$cbs15;
+			(_this$cbs$oncdatastar = (_this$cbs13 = this.cbs).oncdatastart) === null || _this$cbs$oncdatastar === void 0 || _this$cbs$oncdatastar.call(_this$cbs13);
+			(_this$cbs$ontext3 = (_this$cbs14 = this.cbs).ontext) === null || _this$cbs$ontext3 === void 0 || _this$cbs$ontext3.call(_this$cbs14, value);
+			(_this$cbs$oncdataend = (_this$cbs15 = this.cbs).oncdataend) === null || _this$cbs$oncdataend === void 0 || _this$cbs$oncdataend.call(_this$cbs15);
+		} else if (this.isInForeignContext()) {
+			var _this$cbs$ontext4, _this$cbs16;
+			(_this$cbs$ontext4 = (_this$cbs16 = this.cbs).ontext) === null || _this$cbs$ontext4 === void 0 || _this$cbs$ontext4.call(_this$cbs16, value);
+		} else {
+			var _this$cbs$oncomment2, _this$cbs17, _this$cbs$oncommenten2, _this$cbs18;
+			(_this$cbs$oncomment2 = (_this$cbs17 = this.cbs).oncomment) === null || _this$cbs$oncomment2 === void 0 || _this$cbs$oncomment2.call(_this$cbs17, `[CDATA[${value}]]`);
+			(_this$cbs$oncommenten2 = (_this$cbs18 = this.cbs).oncommentend) === null || _this$cbs$oncommenten2 === void 0 || _this$cbs$oncommenten2.call(_this$cbs18);
 		}
 		this.startIndex = endIndex + 1;
 	}
 	/** @internal */
 	onend() {
+		var _this$cbs$onend, _this$cbs19;
 		if (this.cbs.onclosetag) {
 			this.endIndex = this.startIndex;
 			for (let index = 0; index < this.stack.length; index++) this.cbs.onclosetag(this.stack[index], true);
 		}
-		this.cbs.onend?.();
+		(_this$cbs$onend = (_this$cbs19 = this.cbs).onend) === null || _this$cbs$onend === void 0 || _this$cbs$onend.call(_this$cbs19);
 	}
 	/**
 	* Resets the parser to a blank state, ready to parse a new HTML document
 	*/
 	reset() {
-		this.cbs.onreset?.();
+		var _this$cbs$onreset, _this$cbs20, _this$cbs$onparserini2, _this$cbs21;
+		(_this$cbs$onreset = (_this$cbs20 = this.cbs).onreset) === null || _this$cbs$onreset === void 0 || _this$cbs$onreset.call(_this$cbs20);
 		this.tokenizer.reset();
 		this.tagname = "";
 		this.attribname = "";
@@ -11388,7 +11628,7 @@ var Parser = class {
 		this.stack.length = 0;
 		this.startIndex = 0;
 		this.endIndex = 0;
-		this.cbs.onparserinit?.(this);
+		(_this$cbs$onparserini2 = (_this$cbs21 = this.cbs).onparserinit) === null || _this$cbs$onparserini2 === void 0 || _this$cbs$onparserini2.call(_this$cbs21, this);
 		this.buffers.length = 0;
 		this.foreignContext.length = 0;
 		this.foreignContext.unshift(ForeignContext.None);
@@ -11426,7 +11666,8 @@ var Parser = class {
 	*/
 	write(chunk) {
 		if (this.ended) {
-			this.cbs.onerror?.(/* @__PURE__ */ new Error(".write() after done!"));
+			var _this$cbs$onerror, _this$cbs22;
+			(_this$cbs$onerror = (_this$cbs22 = this.cbs).onerror) === null || _this$cbs$onerror === void 0 || _this$cbs$onerror.call(_this$cbs22, /* @__PURE__ */ new Error(".write() after done!"));
 			return;
 		}
 		this.buffers.push(chunk);
@@ -11441,7 +11682,8 @@ var Parser = class {
 	*/
 	end(chunk) {
 		if (this.ended) {
-			this.cbs.onerror?.(/* @__PURE__ */ new Error(".end() after done!"));
+			var _this$cbs$onerror2, _this$cbs23;
+			(_this$cbs$onerror2 = (_this$cbs23 = this.cbs).onerror) === null || _this$cbs$onerror2 === void 0 || _this$cbs$onerror2.call(_this$cbs23, /* @__PURE__ */ new Error(".end() after done!"));
 			return;
 		}
 		if (chunk) this.write(chunk);
@@ -11476,8 +11718,36 @@ function parseDocument(data, options) {
 	return handler.root;
 }
 //#endregion
-//#region node_modules/beasties/dist/index.mjs
+//#region \0@oxc-project+runtime@0.149.0/helpers/esm/checkPrivateRedeclaration.js
 var import_picocolors = /* @__PURE__ */ __toESM(require_picocolors(), 1);
+function _checkPrivateRedeclaration(e, t) {
+	if (t.has(e)) throw new TypeError("Cannot initialize the same private elements twice on an object");
+}
+//#endregion
+//#region \0@oxc-project+runtime@0.149.0/helpers/esm/classPrivateFieldInitSpec.js
+function _classPrivateFieldInitSpec(e, t, a) {
+	_checkPrivateRedeclaration(e, t), t.set(e, a);
+}
+//#endregion
+//#region \0@oxc-project+runtime@0.149.0/helpers/esm/assertClassBrand.js
+function _assertClassBrand(e, t, n) {
+	if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n;
+	throw new TypeError("Private element is not present on this object");
+}
+//#endregion
+//#region \0@oxc-project+runtime@0.149.0/helpers/esm/classPrivateFieldGet2.js
+function _classPrivateFieldGet2(s, a) {
+	return s.get(_assertClassBrand(s, a));
+}
+//#endregion
+//#region node_modules/beasties/dist/index.mjs
+init_objectSpread2();
+init_defineProperty();
+init_asyncToGenerator();
+var _selectorCache;
+var _preloadedFonts;
+var _documentChars;
+var _nonces;
 /**
 * Parse a textual CSS Stylesheet into a Stylesheet instance.
 * Stylesheet is a mutable postcss AST with format similar to CSSOM.
@@ -11485,7 +11755,7 @@ var import_picocolors = /* @__PURE__ */ __toESM(require_picocolors(), 1);
 * @private
 */
 function parseStylesheet(stylesheet, options) {
-	if (options?.safeParser) return (0, import_safe_parse.default)(stylesheet);
+	if (options === null || options === void 0 ? void 0 : options.safeParser) return (0, import_safe_parse.default)(stylesheet);
 	return parse$2(stylesheet);
 }
 /**
@@ -11496,28 +11766,31 @@ function parseStylesheet(stylesheet, options) {
 function serializeStylesheet(ast, options) {
 	const cssParts = [];
 	stringify(ast, (result, node, type) => {
-		if (node?.type === "decl" && node.value.includes("</style>")) return;
+		var _node$raws;
+		if ((node === null || node === void 0 ? void 0 : node.type) === "decl" && node.value.includes("</style>")) return;
 		if (!options.compress) {
 			cssParts.push(result);
 			return;
 		}
-		if (node?.type === "comment") return;
-		if (node?.type === "decl") {
+		if ((node === null || node === void 0 ? void 0 : node.type) === "comment") return;
+		if ((node === null || node === void 0 ? void 0 : node.type) === "decl") {
 			const prefix = node.prop + node.raws.between;
 			cssParts.push(result.replace(prefix, prefix.trim()));
 			return;
 		}
 		if (type === "start") {
-			if (node?.type === "rule" && node.selectors) {
-				if (node.selectors.length === 1) cssParts.push(node.selectors[0] ?? "", "{");
+			if ((node === null || node === void 0 ? void 0 : node.type) === "rule" && node.selectors) {
+				var _node$selectors$;
+				if (node.selectors.length === 1) cssParts.push((_node$selectors$ = node.selectors[0]) !== null && _node$selectors$ !== void 0 ? _node$selectors$ : "", "{");
 				else cssParts.push(node.selectors.join(","), "{");
 			} else cssParts.push(result.trim());
 			return;
 		}
-		if (type === "end" && result === "}" && node?.raws?.semicolon && (node.type === "rule" || node.type === "atrule")) {
-			const lastChild = node.nodes?.[node.nodes.length - 1];
+		if (type === "end" && result === "}" && (node === null || node === void 0 || (_node$raws = node.raws) === null || _node$raws === void 0 ? void 0 : _node$raws.semicolon) && (node.type === "rule" || node.type === "atrule")) {
+			var _node$nodes;
+			const lastChild = (_node$nodes = node.nodes) === null || _node$nodes === void 0 ? void 0 : _node$nodes[node.nodes.length - 1];
 			const lastItemIdx = cssParts.length - 2;
-			if (lastChild?.type === "decl" && lastItemIdx >= 0 && cssParts[lastItemIdx]) cssParts[lastItemIdx] = cssParts[lastItemIdx].slice(0, -1);
+			if ((lastChild === null || lastChild === void 0 ? void 0 : lastChild.type) === "decl" && lastItemIdx >= 0 && cssParts[lastItemIdx]) cssParts[lastItemIdx] = cssParts[lastItemIdx].slice(0, -1);
 		}
 		cssParts.push(result.trim());
 	});
@@ -11556,8 +11829,9 @@ function applyMarkedSelectors(rule) {
 * @param iterator   Invoked on each node in the tree. Return `false` to remove that node.
 */
 function walkStyleRules(node, iterator) {
+	var _node$nodes2;
 	if (!("nodes" in node)) return;
-	node.nodes = node.nodes?.filter((rule) => {
+	node.nodes = (_node$nodes2 = node.nodes) === null || _node$nodes2 === void 0 ? void 0 : _node$nodes2.filter((rule) => {
 		if (hasNestedRules(rule)) walkStyleRules(rule, iterator);
 		rule._other = void 0;
 		rule.filterSelectors = filterSelectors;
@@ -11574,22 +11848,25 @@ function walkStyleRules(node, iterator) {
 function walkStyleRulesWithReverseMirror(node, node2, iterator) {
 	if (!node2) return walkStyleRules(node, iterator);
 	[node.nodes, node2.nodes] = splitFilter(node.nodes, node2.nodes, (rule, index, _rules, rules2) => {
-		const rule2 = rules2?.[index];
+		const rule2 = rules2 === null || rules2 === void 0 ? void 0 : rules2[index];
 		if (hasNestedRules(rule)) {
+			var _rule$nodes;
 			walkStyleRulesWithReverseMirror(rule, rule2, iterator);
-			if ("nodes" in rule && rule.nodes?.length === 0 && isRemovableIfEmpty(rule)) return false;
+			if ("nodes" in rule && ((_rule$nodes = rule.nodes) === null || _rule$nodes === void 0 ? void 0 : _rule$nodes.length) === 0 && isRemovableIfEmpty(rule)) return false;
 		}
 		rule._other = rule2;
 		rule.filterSelectors = filterSelectors;
 		return iterator(rule) !== false;
 	});
 	if (node2.nodes) node2.nodes = node2.nodes.filter((rule) => {
-		if ("nodes" in rule && rule.nodes?.length === 0 && isRemovableIfEmpty(rule)) return false;
+		var _rule$nodes2;
+		if ("nodes" in rule && ((_rule$nodes2 = rule.nodes) === null || _rule$nodes2 === void 0 ? void 0 : _rule$nodes2.length) === 0 && isRemovableIfEmpty(rule)) return false;
 		return true;
 	});
 }
 function hasNestedRules(rule) {
-	return "nodes" in rule && !!rule.nodes?.length && (!("name" in rule) || rule.name !== "keyframes" && rule.name !== "-webkit-keyframes") && rule.nodes.some((n) => n.type === "rule" || n.type === "atrule");
+	var _rule$nodes3;
+	return "nodes" in rule && !!((_rule$nodes3 = rule.nodes) === null || _rule$nodes3 === void 0 ? void 0 : _rule$nodes3.length) && (!("name" in rule) || rule.name !== "keyframes" && rule.name !== "-webkit-keyframes") && rule.nodes.some((n) => n.type === "rule" || n.type === "atrule");
 }
 function isRemovableIfEmpty(rule) {
 	if (!("name" in rule) || rule.type !== "atrule") return false;
@@ -11599,9 +11876,10 @@ function splitFilter(a, b, predicate) {
 	const aOut = [];
 	const bOut = [];
 	for (let index = 0; index < a.length; index++) {
+		var _b$index;
 		const item = a[index];
 		if (predicate(item, index, a, b)) aOut.push(item);
-		else bOut.push(b?.[index] ?? item);
+		else bOut.push((_b$index = b === null || b === void 0 ? void 0 : b[index]) !== null && _b$index !== void 0 ? _b$index : item);
 	}
 	return [aOut, bOut];
 }
@@ -11713,11 +11991,12 @@ function buildCache(container) {
 	container._idCache = /* @__PURE__ */ new Set();
 	const queue = [container];
 	while (queue.length) {
+		var _node$hasAttribute, _node$hasAttribute2;
 		const node = queue.shift();
-		if (node.hasAttribute?.("class")) node.getAttribute("class").trim().split(" ").forEach((cls) => {
+		if ((_node$hasAttribute = node.hasAttribute) === null || _node$hasAttribute === void 0 ? void 0 : _node$hasAttribute.call(node, "class")) node.getAttribute("class").trim().split(" ").forEach((cls) => {
 			container._classCache.add(cls);
 		});
-		if (node.hasAttribute?.("id")) {
+		if ((_node$hasAttribute2 = node.hasAttribute) === null || _node$hasAttribute2 === void 0 ? void 0 : _node$hasAttribute2.call(node, "id")) {
 			const id = node.getAttribute("id").trim();
 			container._idCache.add(id);
 		}
@@ -11730,14 +12009,16 @@ function buildCache(container) {
 * @param html   HTML to parse into a Document instance
 */
 function createDocument(html, logger) {
+	var _document$children$fi;
 	const document = parseDocument(html, { decodeEntities: false });
 	extendDocument(document);
-	const parsedPrototype = Object.getPrototypeOf(document.children.find((child) => child.type === "tag") ?? Element.prototype);
+	const parsedPrototype = Object.getPrototypeOf((_document$children$fi = document.children.find((child) => child.type === "tag")) !== null && _document$children$fi !== void 0 ? _document$children$fi : Element.prototype);
 	extendElement(parsedPrototype, logger);
 	if (parsedPrototype !== Element.prototype) extendElement(Element.prototype, logger);
 	let beastiesContainers = document.querySelectorAll("[data-beasties-container]");
 	if (!beastiesContainers.length) {
-		document.documentElement?.setAttribute("data-beasties-container", "");
+		var _document$documentEle;
+		(_document$documentEle = document.documentElement) === null || _document$documentEle === void 0 || _document$documentEle.setAttribute("data-beasties-container", "");
 		beastiesContainers = [document.documentElement || document];
 	}
 	document.beastiesContainers = beastiesContainers;
@@ -11756,9 +12037,11 @@ function serializeDocument(document) {
 */
 var extendedMarker = Symbol.for("beasties.element-extended");
 function extendElement(element, logger) {
-	const appliedVersion = element[extendedMarker] ?? (Object.hasOwn(element, "nodeName") ? "an older version" : void 0);
+	var _element$extendedMark;
+	const appliedVersion = (_element$extendedMark = element[extendedMarker]) !== null && _element$extendedMark !== void 0 ? _element$extendedMark : Object.hasOwn(element, "nodeName") ? "an older version" : void 0;
 	if (typeof appliedVersion === "string") {
-		if (appliedVersion !== version) logger?.warn?.(`Multiple versions of beasties are patching the same \`domhandler\` instance (${appliedVersion} applied it, ${version} loaded after). Deduplicate beasties to a single version if you see unexpected DOM errors.`);
+		var _logger$warn;
+		if (appliedVersion !== version) logger === null || logger === void 0 || (_logger$warn = logger.warn) === null || _logger$warn === void 0 || _logger$warn.call(logger, `Multiple versions of beasties are patching the same \`domhandler\` instance (${appliedVersion} applied it, ${version} loaded after). Deduplicate beasties to a single version if you see unexpected DOM errors.`);
 		return;
 	}
 	Object.defineProperties(element, {
@@ -11806,8 +12089,9 @@ function extendElement(element, logger) {
 			}
 		},
 		setAttribute: { value(name, value) {
-			this.attribs ??= {};
-			value ??= "";
+			var _this$attribs, _value;
+			(_this$attribs = this.attribs) !== null && _this$attribs !== void 0 || (this.attribs = {});
+			(_value = value) !== null && _value !== void 0 || (value = "");
 			this.attribs[name] = value;
 		} },
 		removeAttribute: { value(name) {
@@ -11878,7 +12162,8 @@ function extendDocument(document) {
 			return selectAll(sel, this);
 		} },
 		beastiesContainer: { get() {
-			return this.beastiesContainers?.[0];
+			var _this$beastiesContain;
+			return (_this$beastiesContain = this.beastiesContainers) === null || _this$beastiesContain === void 0 ? void 0 : _this$beastiesContain[0];
 		} }
 	});
 }
@@ -11903,9 +12188,9 @@ function parseRelevantSelectors(sel) {
 	const relevantTokens = [];
 	for (let i = 0; i < tokens.length; i++) {
 		const tokenGroup = tokens[i];
-		if (tokenGroup?.length !== 1) return null;
+		if ((tokenGroup === null || tokenGroup === void 0 ? void 0 : tokenGroup.length) !== 1) return null;
 		const token = tokenGroup[0];
-		if (token?.type === "attribute" && (token.name === "class" || token.name === "id")) relevantTokens.push(token);
+		if ((token === null || token === void 0 ? void 0 : token.type) === "attribute" && (token.name === "class" || token.name === "id")) relevantTokens.push(token);
 	}
 	return relevantTokens.length > 0 ? relevantTokens : null;
 }
@@ -12115,7 +12400,7 @@ var SAFE_MEDIA_RE = /^[\w\s\-(),:.]+$/;
 function isSafeMediaValue(media) {
 	return SAFE_MEDIA_RE.test(media);
 }
-var removePseudoClassesAndElementsPattern = /(?<!\\)::?[a-z-]+(?:\(.+\))?/gi;
+var removePseudoClassesAndElementsPattern = new RegExp("(?<!\\\\)::?[a-z-]+(?:\\(.+\\))?", "gi");
 var implicitUniversalPattern = /([>+~])\s*(?!\1)([>+~])/g;
 var emptyCombinatorPattern = /([>+~])\s*(?=\1|$)/g;
 var removeTrailingCommasPattern = /\(\s*,|,\s*\)/g;
@@ -12155,7 +12440,7 @@ function resolveCssUrl(url, baseHref) {
 	if (REMOTE_URL_RE.test(base) || base.startsWith("//")) try {
 		const resolved = new URL(url, base.startsWith("//") ? `https:${base}` : base);
 		return base.startsWith("//") ? resolved.href.replace(REMOTE_URL_RE, "//") : resolved.href;
-	} catch {
+	} catch (_unused) {
 		return url;
 	}
 	const dir = path.posix.dirname(base);
@@ -12164,8 +12449,9 @@ function resolveCssUrl(url, baseHref) {
 }
 function rewriteCssUrls(css, baseHref) {
 	return css.replace(URL_RE_G, (match, singleQuoted, doubleQuoted, bare) => {
+		var _ref, _ref2;
 		const quote = singleQuoted !== void 0 ? "'" : doubleQuoted !== void 0 ? "\"" : "";
-		const url = singleQuoted ?? doubleQuoted ?? bare?.trim() ?? "";
+		const url = (_ref = (_ref2 = singleQuoted !== null && singleQuoted !== void 0 ? singleQuoted : doubleQuoted) !== null && _ref2 !== void 0 ? _ref2 : bare === null || bare === void 0 ? void 0 : bare.trim()) !== null && _ref !== void 0 ? _ref : "";
 		const resolved = resolveCssUrl(url, baseHref);
 		return resolved === url ? match : `url(${quote}${resolved}${quote})`;
 	});
@@ -12224,7 +12510,7 @@ function createDeduplicatingLogger(logger, scope) {
 		seen.set(key, now);
 		return true;
 	};
-	const deduped = { ...logger };
+	const deduped = _objectSpread2({}, logger);
 	for (const level of ["warn", "error"]) {
 		const original = logger[level];
 		if (!original) continue;
@@ -12260,14 +12546,15 @@ var WHITESPACE_RE = /\s+/;
 var URL_RE = /url\s*\(\s*(['"]?)(.+?)\1\s*\)/;
 var DEFERRED_MEDIA_ATTR = "data-beasties-media";
 var DEFERRED_MEDIA_SCRIPT = `document.querySelectorAll('link[${DEFERRED_MEDIA_ATTR}]').forEach(function(l){l.media=l.getAttribute('${DEFERRED_MEDIA_ATTR}');l.removeAttribute('${DEFERRED_MEDIA_ATTR}')})`;
-var Beasties = class Beasties {
-	#selectorCache = /* @__PURE__ */ new Map();
-	#preloadedFonts = /* @__PURE__ */ new WeakMap();
-	#documentChars = /* @__PURE__ */ new WeakMap();
-	options;
-	logger;
-	fs;
+var Beasties = (_selectorCache = /* @__PURE__ */ new WeakMap(), _preloadedFonts = /* @__PURE__ */ new WeakMap(), _documentChars = /* @__PURE__ */ new WeakMap(), _nonces = /* @__PURE__ */ new WeakMap(), class Beasties {
 	constructor(options = {}) {
+		_classPrivateFieldInitSpec(this, _selectorCache, /* @__PURE__ */ new Map());
+		_classPrivateFieldInitSpec(this, _preloadedFonts, /* @__PURE__ */ new WeakMap());
+		_classPrivateFieldInitSpec(this, _documentChars, /* @__PURE__ */ new WeakMap());
+		_defineProperty(this, "options", void 0);
+		_defineProperty(this, "logger", void 0);
+		_defineProperty(this, "fs", void 0);
+		_classPrivateFieldInitSpec(this, _nonces, /* @__PURE__ */ new WeakMap());
 		this.options = Object.assign({
 			logLevel: "info",
 			path: "",
@@ -12311,26 +12598,30 @@ var Beasties = class Beasties {
 	/**
 	* Apply critical CSS processing to the html
 	*/
-	async process(html) {
-		const start = Date.now();
-		const document = createDocument(html, this.logger);
-		if (this.options.additionalStylesheets.length > 0) await this.embedAdditionalStylesheet(document);
-		if (this.options.external !== false) {
-			const externalSheets = [...document.querySelectorAll("link[rel=\"stylesheet\"]")];
-			if (this.embedLinkedStylesheet !== Beasties.prototype.embedLinkedStylesheet) for (const link of externalSheets) await this.embedLinkedStylesheet(link, document);
-			else {
-				const sheets = await Promise.all(externalSheets.map((link) => this.fetchStylesheet(link, document)));
-				for (const sheet of sheets) if (sheet) this.embedFetchedStylesheet(sheet, document);
+	process(html) {
+		var _this = this;
+		return _asyncToGenerator(function* () {
+			var _this$logger$info, _this$logger;
+			const start = Date.now();
+			const document = createDocument(html, _this.logger);
+			if (_this.options.additionalStylesheets.length > 0) yield _this.embedAdditionalStylesheet(document);
+			if (_this.options.external !== false) {
+				const externalSheets = [...document.querySelectorAll("link[rel=\"stylesheet\"]")];
+				if (_this.embedLinkedStylesheet !== Beasties.prototype.embedLinkedStylesheet) for (const link of externalSheets) yield _this.embedLinkedStylesheet(link, document);
+				else {
+					const sheets = yield Promise.all(externalSheets.map((link) => _this.fetchStylesheet(link, document)));
+					for (const sheet of sheets) if (sheet) _this.embedFetchedStylesheet(sheet, document);
+				}
 			}
-		}
-		if (this.options.preload === "media-script") this.injectDeferredMediaScript(document);
-		const styles = this.getAffectedStyleTags(document);
-		for (const style of styles) this.processStyle(style, document);
-		if (this.options.mergeStylesheets !== false && styles.length !== 0) this.mergeStylesheets(document);
-		const output = serializeDocument(document);
-		const end = Date.now();
-		this.logger.info?.(`Time ${end - start}ms`);
-		return output;
+			if (_this.options.preload === "media-script") _this.injectDeferredMediaScript(document);
+			const styles = _this.getAffectedStyleTags(document);
+			for (const style of styles) _this.processStyle(style, document);
+			if (_this.options.mergeStylesheets !== false && styles.length !== 0) _this.mergeStylesheets(document);
+			const output = serializeDocument(document);
+			const end = Date.now();
+			(_this$logger$info = (_this$logger = _this.logger).info) === null || _this$logger$info === void 0 || _this$logger$info.call(_this$logger, `Time ${end - start}ms`);
+			return output;
+		})();
 	}
 	/**
 	* Get the style tags that need processing
@@ -12352,16 +12643,16 @@ var Beasties = class Beasties {
 		script.textContent = DEFERRED_MEDIA_SCRIPT;
 		document.body.appendChild(script);
 	}
-	#nonces = /* @__PURE__ */ new WeakMap();
 	applyNonce(document, element) {
-		if (!this.#nonces.has(document)) this.#nonces.set(document, typeof this.options.nonce === "function" ? this.options.nonce(document) : this.options.nonce);
-		const nonce = this.#nonces.get(document);
+		if (!_classPrivateFieldGet2(_nonces, this).has(document)) _classPrivateFieldGet2(_nonces, this).set(document, typeof this.options.nonce === "function" ? this.options.nonce(document) : this.options.nonce);
+		const nonce = _classPrivateFieldGet2(_nonces, this).get(document);
 		if (nonce) element.setAttribute("nonce", nonce);
 	}
 	mergeStylesheets(document) {
 		const styles = this.getAffectedStyleTags(document);
 		if (styles.length === 0) {
-			this.logger.warn?.("Merging inline stylesheets into a single <style> tag skipped, no inline stylesheets to merge");
+			var _this$logger$warn, _this$logger2;
+			(_this$logger$warn = (_this$logger2 = this.logger).warn) === null || _this$logger$warn === void 0 || _this$logger$warn.call(_this$logger2, "Merging inline stylesheets into a single <style> tag skipped, no inline stylesheets to merge");
 			return;
 		}
 		const first = styles[0];
@@ -12376,42 +12667,49 @@ var Beasties = class Beasties {
 	/**
 	* Given href, find the corresponding CSS asset
 	*/
-	async getCssAsset(href, _style) {
-		const outputPath = this.options.path;
-		const publicPath = this.options.publicPath;
-		let normalizedPath = href.replace(LEADING_SLASH_OR_QUERY_RE, "");
-		const pathPrefix = `${(publicPath || "").replace(PUBLIC_PATH_RE, "")}/`;
-		if (normalizedPath.startsWith(pathPrefix) && !(pathPrefix === "/" && normalizedPath.startsWith("//"))) normalizedPath = normalizedPath.substring(pathPrefix.length).replace(LEADING_SLASH_RE, "");
-		if (REMOTE_URL_RE.test(normalizedPath) || normalizedPath.startsWith("//")) {
-			if (this.options.remote === true) try {
-				const absoluteUrl = href.startsWith("//") ? `https:${href}` : href;
-				const response = await fetch(absoluteUrl);
-				if (!response.ok) {
-					this.logger.warn?.(`Failed to fetch ${absoluteUrl} (${response.status})`);
+	getCssAsset(href, _style) {
+		var _this2 = this;
+		return _asyncToGenerator(function* () {
+			const outputPath = _this2.options.path;
+			const publicPath = _this2.options.publicPath;
+			let normalizedPath = href.replace(LEADING_SLASH_OR_QUERY_RE, "");
+			const pathPrefix = `${(publicPath || "").replace(PUBLIC_PATH_RE, "")}/`;
+			if (normalizedPath.startsWith(pathPrefix) && !(pathPrefix === "/" && normalizedPath.startsWith("//"))) normalizedPath = normalizedPath.substring(pathPrefix.length).replace(LEADING_SLASH_RE, "");
+			if (REMOTE_URL_RE.test(normalizedPath) || normalizedPath.startsWith("//")) {
+				if (_this2.options.remote === true) try {
+					const absoluteUrl = href.startsWith("//") ? `https:${href}` : href;
+					const response = yield fetch(absoluteUrl);
+					if (!response.ok) {
+						var _this$logger$warn2, _this$logger3;
+						(_this$logger$warn2 = (_this$logger3 = _this2.logger).warn) === null || _this$logger$warn2 === void 0 || _this$logger$warn2.call(_this$logger3, `Failed to fetch ${absoluteUrl} (${response.status})`);
+						return;
+					}
+					return yield response.text();
+				} catch (error) {
+					var _this$logger$warn3, _this$logger4;
+					(_this$logger$warn3 = (_this$logger4 = _this2.logger).warn) === null || _this$logger$warn3 === void 0 || _this$logger$warn3.call(_this$logger4, `Error fetching ${href}: ${error.message}`);
 					return;
 				}
-				return await response.text();
-			} catch (error) {
-				this.logger.warn?.(`Error fetching ${href}: ${error.message}`);
 				return;
 			}
-			return;
-		}
-		const filename = path.resolve(outputPath, normalizedPath);
-		if (!isSubpath(outputPath, filename)) return;
-		let sheet;
-		try {
-			sheet = await this.readFile(filename);
-		} catch {
-			this.logger.warn?.(`Unable to locate stylesheet ${href} (resolved to ${filename}, using path: ${JSON.stringify(outputPath)}, publicPath: ${JSON.stringify(publicPath)}). If this file is not part of your build output, add data-beasties-skip to its <link> to skip it.`);
-		}
-		return sheet;
+			const filename = path.resolve(outputPath, normalizedPath);
+			if (!isSubpath(outputPath, filename)) return;
+			let sheet;
+			try {
+				sheet = yield _this2.readFile(filename);
+			} catch (_unused2) {
+				var _this$logger$warn4, _this$logger5;
+				(_this$logger$warn4 = (_this$logger5 = _this2.logger).warn) === null || _this$logger$warn4 === void 0 || _this$logger$warn4.call(_this$logger5, `Unable to locate stylesheet ${href} (resolved to ${filename}, using path: ${JSON.stringify(outputPath)}, publicPath: ${JSON.stringify(publicPath)}). If this file is not part of your build output, add data-beasties-skip to its <link> to skip it.`);
+			}
+			return sheet;
+		})();
 	}
 	checkInlineThreshold(link, style, sheet) {
 		if (this.options.inlineThreshold && sheet.length < this.options.inlineThreshold) {
+			var _this$logger$info2, _this$logger6;
 			const href = style.$$name;
 			style.$$reduce = false;
-			this.logger.info?.(`\u001B[32mInlined all of ${href} (${sheet.length} was below the threshold of ${this.options.inlineThreshold})\u001B[39m`);
+			(_this$logger$info2 = (_this$logger6 = this.logger).info) === null || _this$logger$info2 === void 0 || _this$logger$info2.call(_this$logger6, `\u001B[32mInlined all of ${href} (${sheet.length} was below the threshold of ${this.options.inlineThreshold})\u001B[39m`);
 			link.remove();
 			return true;
 		}
@@ -12420,50 +12718,58 @@ var Beasties = class Beasties {
 	/**
 	* Inline the stylesheets from options.additionalStylesheets (assuming it passes `options.filter`)
 	*/
-	async embedAdditionalStylesheet(document) {
-		const styleSheetsIncluded = [];
-		const sources = await Promise.all(this.options.additionalStylesheets.map((cssFile) => {
-			if (styleSheetsIncluded.includes(cssFile)) return [];
-			styleSheetsIncluded.push(cssFile);
-			const style = document.createElement("style");
-			this.applyNonce(document, style);
-			style.$$external = true;
-			style.$$name = cssFile;
-			return this.getCssAsset(cssFile, style).then((sheet) => [sheet, style]);
-		}));
-		for (const [sheet, style] of sources) if (sheet) {
-			style.textContent = sheet;
-			document.head.appendChild(style);
-		}
+	embedAdditionalStylesheet(document) {
+		var _this3 = this;
+		return _asyncToGenerator(function* () {
+			const styleSheetsIncluded = [];
+			const sources = yield Promise.all(_this3.options.additionalStylesheets.map((cssFile) => {
+				if (styleSheetsIncluded.includes(cssFile)) return [];
+				styleSheetsIncluded.push(cssFile);
+				const style = document.createElement("style");
+				_this3.applyNonce(document, style);
+				style.$$external = true;
+				style.$$name = cssFile;
+				return _this3.getCssAsset(cssFile, style).then((sheet) => [sheet, style]);
+			}));
+			for (const [sheet, style] of sources) if (sheet) {
+				style.textContent = sheet;
+				document.head.appendChild(style);
+			}
+		})();
 	}
 	/**
 	* Fetch CSS content for a linked stylesheet
 	*/
-	async fetchStylesheet(link, document) {
-		if (link.hasAttribute("data-beasties-skip")) return;
-		const href = link.getAttribute("href");
-		if (!(href?.split("?")[0]?.split("#")[0])?.endsWith(".css")) return;
-		const style = document.createElement("style");
-		this.applyNonce(document, style);
-		style.$$external = true;
-		const sheet = await this.getCssAsset(href, style);
-		if (!sheet) return;
-		return {
-			link,
-			href,
-			sheet,
-			style
-		};
+	fetchStylesheet(link, document) {
+		var _this4 = this;
+		return _asyncToGenerator(function* () {
+			var _href$split$;
+			if (link.hasAttribute("data-beasties-skip")) return;
+			const href = link.getAttribute("href");
+			if (!(href === null || href === void 0 || (_href$split$ = href.split("?")[0]) === null || _href$split$ === void 0 || (_href$split$ = _href$split$.split("#")[0]) === null || _href$split$ === void 0 ? void 0 : _href$split$.endsWith(".css"))) return;
+			const style = document.createElement("style");
+			_this4.applyNonce(document, style);
+			style.$$external = true;
+			const sheet = yield _this4.getCssAsset(href, style);
+			if (!sheet) return;
+			return {
+				link,
+				href,
+				sheet,
+				style
+			};
+		})();
 	}
 	/**
 	* Embed a fetched stylesheet into the document
 	*/
 	embedFetchedStylesheet(data, document) {
+		var _link$parentNode;
 		const { link, href, sheet, style } = data;
 		style.textContent = sheet;
 		style.$$name = href;
 		style.$$links = [link];
-		link.parentNode?.insertBefore(style, link);
+		(_link$parentNode = link.parentNode) === null || _link$parentNode === void 0 || _link$parentNode.insertBefore(style, link);
 		if (this.checkInlineThreshold(link, style, sheet)) return;
 		let media = link.getAttribute("media");
 		if (media && (!validateMediaQuery(media) || !isSafeMediaValue(media))) media = void 0;
@@ -12531,21 +12837,26 @@ var Beasties = class Beasties {
 	/**
 	* Inline the target stylesheet referred to by a <link rel="stylesheet"> (assuming it passes `options.filter`)
 	*/
-	async embedLinkedStylesheet(link, document) {
-		const sheet = await this.fetchStylesheet(link, document);
-		if (sheet) this.embedFetchedStylesheet(sheet, document);
+	embedLinkedStylesheet(link, document) {
+		var _this5 = this;
+		return _asyncToGenerator(function* () {
+			const sheet = yield _this5.fetchStylesheet(link, document);
+			if (sheet) _this5.embedFetchedStylesheet(sheet, document);
+		})();
 	}
 	/**
 	* Prune the source CSS files
 	*/
 	pruneSource(style, before, sheetInverse) {
+		var _this$logger$info3, _this$logger7;
 		const minSize = this.options.minimumExternalSize;
 		const name = style.$$name;
 		const shouldInline = minSize && sheetInverse.length < minSize;
-		if (shouldInline) this.logger.info?.(`\u001B[32mInlined all of ${name} (non-critical external stylesheet would have been ${sheetInverse.length}b, which was below the threshold of ${minSize})\u001B[39m`);
+		if (shouldInline) (_this$logger$info3 = (_this$logger7 = this.logger).info) === null || _this$logger$info3 === void 0 || _this$logger$info3.call(_this$logger7, `\u001B[32mInlined all of ${name} (non-critical external stylesheet would have been ${sheetInverse.length}b, which was below the threshold of ${minSize})\u001B[39m`);
 		if (shouldInline || !sheetInverse) {
+			var _link$parentNode2;
 			style.textContent = before;
-			if (style.$$links) for (const link of style.$$links) link.parentNode?.removeChild(link);
+			if (style.$$links) for (const link of style.$$links) (_link$parentNode2 = link.parentNode) === null || _link$parentNode2 === void 0 || _link$parentNode2.removeChild(link);
 		}
 		return !!shouldInline;
 	}
@@ -12553,6 +12864,7 @@ var Beasties = class Beasties {
 	* Parse the stylesheet within a <style> element, then reduce it to contain only rules used by the document.
 	*/
 	processStyle(style, document) {
+		var _options$keyframes, _this$logger$info5, _this$logger14;
 		if (style.$$reduce === false) {
 			if (style.$$name && style.textContent) style.textContent = rewriteCssUrls(style.textContent, style.$$name);
 			return;
@@ -12560,7 +12872,7 @@ var Beasties = class Beasties {
 		const name = style.$$name ? style.$$name.replace(LEADING_SLASH_RE, "") : "inline CSS";
 		const options = this.options;
 		const beastiesContainers = document.beastiesContainers;
-		let keyframesMode = options.keyframes ?? "critical";
+		let keyframesMode = (_options$keyframes = options.keyframes) !== null && _options$keyframes !== void 0 ? _options$keyframes : "critical";
 		if (keyframesMode === true) keyframesMode = "all";
 		if (keyframesMode === false) keyframesMode = "none";
 		let sheet = style.textContent;
@@ -12579,12 +12891,15 @@ var Beasties = class Beasties {
 		const shouldPreloadFonts = options.fonts === true || options.preloadFonts === true;
 		const shouldInlineFonts = options.fonts !== false && options.inlineFonts === true;
 		walkStyleRules(ast, markOnly((rule) => {
+			var _ref3, _rule$nodes4;
 			if (rule.type === "comment") {
+				var _this$logger$warn5, _this$logger8;
 				const { command, deprecated, warning } = parseDirective(rule.text);
-				if (warning) this.logger.warn?.(warning);
+				if (warning) (_this$logger$warn5 = (_this$logger8 = this.logger).warn) === null || _this$logger$warn5 === void 0 || _this$logger$warn5.call(_this$logger8, warning);
 				if (deprecated && !warnedCritters) {
+					var _this$logger$warn6, _this$logger9;
 					warnedCritters = true;
-					this.logger.warn?.(CRITTERS_DEPRECATION_WARNING);
+					(_this$logger$warn6 = (_this$logger9 = this.logger).warn) === null || _this$logger$warn6 === void 0 || _this$logger$warn6.call(_this$logger9, CRITTERS_DEPRECATION_WARNING);
 				}
 				if (command) switch (command) {
 					case "include":
@@ -12606,6 +12921,7 @@ var Beasties = class Beasties {
 				}
 			}
 			if (rule.type === "rule") {
+				var _rule$filterSelectors;
 				if (includeNext) {
 					includeNext = false;
 					return true;
@@ -12616,7 +12932,7 @@ var Beasties = class Beasties {
 				}
 				if (includeAll) return true;
 				if (excludeAll) return false;
-				rule.filterSelectors?.((sel) => {
+				(_rule$filterSelectors = rule.filterSelectors) === null || _rule$filterSelectors === void 0 || _rule$filterSelectors.call(rule, (sel) => {
 					if (options.allowRules.some((exp) => {
 						if (exp instanceof RegExp) return exp.test(sel);
 						return exp === sel;
@@ -12627,8 +12943,9 @@ var Beasties = class Beasties {
 					try {
 						return beastiesContainers.some((container) => container.exists(sel));
 					} catch (e) {
+						var _this$logger$debug, _this$logger10;
 						const message = e.message || String(e);
-						if (isUnevaluableSelectorError(message)) this.logger.debug?.(`Cannot statically evaluate selector, excluding it from critical CSS: ${sel} (${message})`);
+						if (isUnevaluableSelectorError(message)) (_this$logger$debug = (_this$logger10 = this.logger).debug) === null || _this$logger$debug === void 0 || _this$logger$debug.call(_this$logger10, `Cannot statically evaluate selector, excluding it from critical CSS: ${sel} (${message})`);
 						else unparseableSelectors.push(`${sel} (${message})`);
 						return false;
 					}
@@ -12644,11 +12961,12 @@ var Beasties = class Beasties {
 				}
 			}
 			if (rule.type === "atrule" && (rule.name === "font-face" || rule.name === "layer")) return;
-			return ("nodes" in rule && rule.nodes?.some((rule) => !rule.$$remove)) ?? true;
+			return (_ref3 = "nodes" in rule && ((_rule$nodes4 = rule.nodes) === null || _rule$nodes4 === void 0 ? void 0 : _rule$nodes4.some((rule) => !rule.$$remove))) !== null && _ref3 !== void 0 ? _ref3 : true;
 		}));
 		if (unparseableSelectors.length !== 0) {
+			var _this$logger$warn7, _this$logger11;
 			const single = unparseableSelectors.length === 1;
-			this.logger.warn?.(`Could not parse ${single ? "1 selector" : `${unparseableSelectors.length} selectors`} in ${style.$$name || "inline styles"}; ${single ? "its rule was" : "their rules were"} left out of the critical CSS but still ${single ? "applies" : "apply"} once the full stylesheet loads:\n  ${unparseableSelectors.join("\n  ")}`);
+			(_this$logger$warn7 = (_this$logger11 = this.logger).warn) === null || _this$logger$warn7 === void 0 || _this$logger$warn7.call(_this$logger11, `Could not parse ${single ? "1 selector" : `${unparseableSelectors.length} selectors`} in ${style.$$name || "inline styles"}; ${single ? "its rule was" : "their rules were"} left out of the critical CSS but still ${single ? "applies" : "apply"} once the full stylesheet loads:\n  ${unparseableSelectors.join("\n  ")}`);
 		}
 		const preloadedFonts = this.getPreloadedFonts(document);
 		walkStyleRulesWithReverseMirror(ast, astInverse, (rule) => {
@@ -12699,18 +13017,24 @@ var Beasties = class Beasties {
 			styleInlinedCompletely = this.pruneSource(style, style.$$name ? rewriteCssUrls(before, style.$$name) : before, sheetInverse);
 			if (styleInlinedCompletely) afterText = `, reducing non-inlined size ${sheetInverse.length / before.length * 100 | 0}% to ${formatSize(sheetInverse.length)}`;
 			const cssFilePath = path.resolve(this.options.path, name);
-			this.writeFile(cssFilePath, sheetInverse).then(() => this.logger.info?.(`${name} was successfully updated`)).catch((err) => this.logger.error?.(err));
+			this.writeFile(cssFilePath, sheetInverse).then(() => {
+				var _this$logger$info4, _this$logger12;
+				return (_this$logger$info4 = (_this$logger12 = this.logger).info) === null || _this$logger$info4 === void 0 ? void 0 : _this$logger$info4.call(_this$logger12, `${name} was successfully updated`);
+			}).catch((err) => {
+				var _this$logger$error, _this$logger13;
+				return (_this$logger$error = (_this$logger13 = this.logger).error) === null || _this$logger$error === void 0 ? void 0 : _this$logger$error.call(_this$logger13, err);
+			});
 		}
 		if (!styleInlinedCompletely) style.textContent = sheet;
 		const percent = sheet.length / before.length * 100 | 0;
-		this.logger.info?.(`\u001B[32mInlined ${formatSize(sheet.length)} (${percent}% of original ${formatSize(before.length)}) of ${name}${afterText}.\u001B[39m`);
+		(_this$logger$info5 = (_this$logger14 = this.logger).info) === null || _this$logger$info5 === void 0 || _this$logger$info5.call(_this$logger14, `\u001B[32mInlined ${formatSize(sheet.length)} (${percent}% of original ${formatSize(before.length)}) of ${name}${afterText}.\u001B[39m`);
 	}
 	/**
 	* Codepoints of a document's rendered text, or `undefined` when its text
 	* could not be read exactly, which disables `unicode-range` filtering.
 	*/
 	getDocumentChars(document) {
-		if (this.#documentChars.has(document)) return this.#documentChars.get(document);
+		if (_classPrivateFieldGet2(_documentChars, this).has(document)) return _classPrivateFieldGet2(_documentChars, this).get(document);
 		const text = createTextCodepoints();
 		const queue = [document];
 		while (queue.length > 0) {
@@ -12729,7 +13053,7 @@ var Beasties = class Beasties {
 			if ("children" in node) queue.push(...node.children);
 		}
 		const chars = toCodepointSet(text);
-		this.#documentChars.set(document, chars);
+		_classPrivateFieldGet2(_documentChars, this).set(document, chars);
 		return chars;
 	}
 	/**
@@ -12737,25 +13061,25 @@ var Beasties = class Beasties {
 	* processing an earlier stylesheet or by the document itself.
 	*/
 	getPreloadedFonts(document) {
-		let preloaded = this.#preloadedFonts.get(document);
+		let preloaded = _classPrivateFieldGet2(_preloadedFonts, this).get(document);
 		if (!preloaded) {
 			preloaded = /* @__PURE__ */ new Set();
 			for (const link of document.querySelectorAll("link[rel=\"preload\"][as=\"font\"]")) {
 				const href = link.getAttribute("href");
 				if (href) preloaded.add(href);
 			}
-			this.#preloadedFonts.set(document, preloaded);
+			_classPrivateFieldGet2(_preloadedFonts, this).set(document, preloaded);
 		}
 		return preloaded;
 	}
 	normalizeCssSelector(sel) {
-		let normalizedSelector = this.#selectorCache.get(sel);
+		let normalizedSelector = _classPrivateFieldGet2(_selectorCache, this).get(sel);
 		if (normalizedSelector !== void 0) return normalizedSelector;
 		normalizedSelector = normalizeCssSelector(sel);
-		this.#selectorCache.set(sel, normalizedSelector);
+		_classPrivateFieldGet2(_selectorCache, this).set(sel, normalizedSelector);
 		return normalizedSelector;
 	}
-};
+});
 function formatSize(size) {
 	if (size <= 0) return "0 bytes";
 	const abbreviations = [
@@ -12771,6 +13095,9 @@ function formatSize(size) {
 }
 //#endregion
 //#region node_modules/@angular/ssr/fesm2022/node.mjs
+init_defineProperty();
+init_asyncToGenerator();
+init_objectSpread2();
 function getAllowedHostsFromEnv() {
 	return getArrayFromEnv("NG_ALLOWED_HOSTS");
 }
@@ -12795,38 +13122,48 @@ function attachNodeGlobalErrorHandlers() {
 	process.on("unhandledRejection", (error) => console.error("unhandledRejection", error)).on("uncaughtException", (error) => console.error("uncaughtException", error));
 }
 var CommonEngineInlineCriticalCssProcessor = class {
-	resourceCache = /* @__PURE__ */ new Map();
-	async process(html, outputPath) {
-		const processor = new Beasties({
-			logger: {
-				warn: (s) => console.warn(s),
-				error: (s) => console.error(s),
-				info: () => {}
-			},
-			logLevel: "warn",
-			path: outputPath,
-			publicPath: void 0,
-			compress: false,
-			pruneSource: false,
-			reduceInlineStyles: false,
-			mergeStylesheets: false,
-			preload: "media-script",
-			nonce: (document) => {
-				const nonceElement = document.querySelector("[ngCspNonce], [ngcspnonce]");
-				return nonceElement?.getAttribute("ngCspNonce") || nonceElement?.getAttribute("ngcspnonce");
-			},
-			noscriptFallback: true,
-			inlineFonts: true
-		});
-		processor.readFile = async (path) => {
-			let resourceContent = this.resourceCache.get(path);
-			if (resourceContent === void 0) {
-				resourceContent = await readFile$1(path, "utf-8");
-				this.resourceCache.set(path, resourceContent);
-			}
-			return resourceContent;
-		};
-		return processor.process(html);
+	constructor() {
+		_defineProperty(this, "resourceCache", /* @__PURE__ */ new Map());
+	}
+	process(html, outputPath) {
+		var _this = this;
+		return _asyncToGenerator(function* () {
+			const processor = new Beasties({
+				logger: {
+					warn: (s) => console.warn(s),
+					error: (s) => console.error(s),
+					info: () => {}
+				},
+				logLevel: "warn",
+				path: outputPath,
+				publicPath: void 0,
+				compress: false,
+				pruneSource: false,
+				reduceInlineStyles: false,
+				mergeStylesheets: false,
+				preload: "media-script",
+				nonce: (document) => {
+					const nonceElement = document.querySelector("[ngCspNonce], [ngcspnonce]");
+					return (nonceElement === null || nonceElement === void 0 ? void 0 : nonceElement.getAttribute("ngCspNonce")) || (nonceElement === null || nonceElement === void 0 ? void 0 : nonceElement.getAttribute("ngcspnonce"));
+				},
+				noscriptFallback: true,
+				inlineFonts: true
+			});
+			processor.readFile = function() {
+				var _ref = _asyncToGenerator(function* (path) {
+					let resourceContent = _this.resourceCache.get(path);
+					if (resourceContent === void 0) {
+						resourceContent = yield readFile$1(path, "utf-8");
+						_this.resourceCache.set(path, resourceContent);
+					}
+					return resourceContent;
+				});
+				return function(_x) {
+					return _ref.apply(this, arguments);
+				};
+			}();
+			return processor.process(html);
+		})();
 	}
 };
 var PERFORMANCE_MARK_PREFIX = "🅰️";
@@ -12847,117 +13184,139 @@ function printPerformanceLogs() {
 	}
 	console.log("*****************************************");
 }
-async function runMethodAndMeasurePerf(label, asyncMethod) {
-	const labelName = `${PERFORMANCE_MARK_PREFIX}:${label}`;
-	const startLabel = `start:${labelName}`;
-	const endLabel = `end:${labelName}`;
-	try {
-		performance.mark(startLabel);
-		return await asyncMethod();
-	} finally {
-		performance.mark(endLabel);
-		performance.measure(labelName, startLabel, endLabel);
-		performance.clearMarks(startLabel);
-		performance.clearMarks(endLabel);
-	}
+function runMethodAndMeasurePerf(_x2, _x3) {
+	return _runMethodAndMeasurePerf.apply(this, arguments);
+}
+function _runMethodAndMeasurePerf() {
+	_runMethodAndMeasurePerf = _asyncToGenerator(function* (label, asyncMethod) {
+		const labelName = `${PERFORMANCE_MARK_PREFIX}:${label}`;
+		const startLabel = `start:${labelName}`;
+		const endLabel = `end:${labelName}`;
+		try {
+			performance.mark(startLabel);
+			return yield asyncMethod();
+		} finally {
+			performance.mark(endLabel);
+			performance.measure(labelName, startLabel, endLabel);
+			performance.clearMarks(startLabel);
+			performance.clearMarks(endLabel);
+		}
+	});
+	return _runMethodAndMeasurePerf.apply(this, arguments);
 }
 function noopRunMethodAndMeasurePerf(label, asyncMethod) {
 	return asyncMethod();
 }
 var SSG_MARKER_REGEXP = /ng-server-context=["']\w*\|?ssg\|?\w*["']/;
 var CommonEngine = class {
-	options;
-	templateCache = /* @__PURE__ */ new Map();
-	inlineCriticalCssProcessor = new CommonEngineInlineCriticalCssProcessor();
-	pageIsSSG = /* @__PURE__ */ new Map();
-	allowedHosts;
 	constructor(options) {
+		var _ref2, _getAllowedHostsFromE, _this$options;
+		_defineProperty(this, "options", void 0);
+		_defineProperty(this, "templateCache", /* @__PURE__ */ new Map());
+		_defineProperty(this, "inlineCriticalCssProcessor", new CommonEngineInlineCriticalCssProcessor());
+		_defineProperty(this, "pageIsSSG", /* @__PURE__ */ new Map());
+		_defineProperty(this, "allowedHosts", void 0);
 		this.options = options;
-		this.allowedHosts = new Set(getAllowedHostsFromEnv() ?? this.options?.allowedHosts ?? []);
+		this.allowedHosts = new Set((_ref2 = (_getAllowedHostsFromE = getAllowedHostsFromEnv()) !== null && _getAllowedHostsFromE !== void 0 ? _getAllowedHostsFromE : (_this$options = this.options) === null || _this$options === void 0 ? void 0 : _this$options.allowedHosts) !== null && _ref2 !== void 0 ? _ref2 : []);
 		attachNodeGlobalErrorHandlers();
 	}
-	async render(opts) {
-		const { url } = opts;
-		if (url && URL$1.canParse(url)) {
-			const urlObj = new URL$1(url);
-			try {
-				validateUrl(urlObj, this.allowedHosts);
-			} catch (error) {
-				console.error(`ERROR: ${error.message}Please provide a list of allowed hosts in the "allowedHosts" option in the "CommonEngine" constructor.`);
-				throw error;
+	render(opts) {
+		var _this2 = this;
+		return _asyncToGenerator(function* () {
+			var _this$options2;
+			const { url } = opts;
+			if (url && URL$1.canParse(url)) {
+				const urlObj = new URL$1(url);
+				try {
+					validateUrl(urlObj, _this2.allowedHosts);
+				} catch (error) {
+					console.error(`ERROR: ${error.message}Please provide a list of allowed hosts in the "allowedHosts" option in the "CommonEngine" constructor.`);
+					throw error;
+				}
 			}
-		}
-		const enablePerformanceProfiler = this.options?.enablePerformanceProfiler;
-		const runMethod = enablePerformanceProfiler ? runMethodAndMeasurePerf : noopRunMethodAndMeasurePerf;
-		let html = await runMethod("Retrieve SSG Page", () => this.retrieveSSGPage(opts));
-		if (html === void 0) {
-			html = await runMethod("Render Page", () => this.renderApplication(opts));
-			if (opts.inlineCriticalCss !== false) html = await runMethod("Inline Critical CSS", () => this.inlineCriticalCss(html, opts));
-		}
-		if (enablePerformanceProfiler) printPerformanceLogs();
-		return html;
+			const enablePerformanceProfiler = (_this$options2 = _this2.options) === null || _this$options2 === void 0 ? void 0 : _this$options2.enablePerformanceProfiler;
+			const runMethod = enablePerformanceProfiler ? runMethodAndMeasurePerf : noopRunMethodAndMeasurePerf;
+			let html = yield runMethod("Retrieve SSG Page", () => _this2.retrieveSSGPage(opts));
+			if (html === void 0) {
+				html = yield runMethod("Render Page", () => _this2.renderApplication(opts));
+				if (opts.inlineCriticalCss !== false) html = yield runMethod("Inline Critical CSS", () => _this2.inlineCriticalCss(html, opts));
+			}
+			if (enablePerformanceProfiler) printPerformanceLogs();
+			return html;
+		})();
 	}
 	inlineCriticalCss(html, opts) {
-		const outputPath = opts.publicPath ?? (opts.documentFilePath ? dirname(opts.documentFilePath) : "");
+		var _opts$publicPath;
+		const outputPath = (_opts$publicPath = opts.publicPath) !== null && _opts$publicPath !== void 0 ? _opts$publicPath : opts.documentFilePath ? dirname(opts.documentFilePath) : "";
 		return this.inlineCriticalCssProcessor.process(html, outputPath);
 	}
-	async retrieveSSGPage(opts) {
-		const { publicPath, documentFilePath, url } = opts;
-		if (!publicPath || !documentFilePath || url === void 0) return;
-		const { pathname } = new URL$1(url, "resolve://");
-		const pagePath = join(publicPath, pathname, "index.html");
-		const relativePath = relative(publicPath, pagePath);
-		if (relativePath === ".." || relativePath.startsWith("../") || relativePath.startsWith("..\\") || isAbsolute(relativePath)) return;
-		if (this.pageIsSSG.get(pagePath)) return fs.promises.readFile(pagePath, "utf-8");
-		if (pagePath === resolve(documentFilePath) || !await exists(pagePath)) return;
-		const content = await fs.promises.readFile(pagePath, "utf-8");
-		if (SSG_MARKER_REGEXP.test(content)) {
-			this.pageIsSSG.set(pagePath, true);
-			return content;
-		}
+	retrieveSSGPage(opts) {
+		var _this3 = this;
+		return _asyncToGenerator(function* () {
+			const { publicPath, documentFilePath, url } = opts;
+			if (!publicPath || !documentFilePath || url === void 0) return;
+			const { pathname } = new URL$1(url, "resolve://");
+			const pagePath = join(publicPath, pathname, "index.html");
+			const relativePath = relative(publicPath, pagePath);
+			if (relativePath === ".." || relativePath.startsWith("../") || relativePath.startsWith("..\\") || isAbsolute(relativePath)) return;
+			if (_this3.pageIsSSG.get(pagePath)) return fs.promises.readFile(pagePath, "utf-8");
+			if (pagePath === resolve(documentFilePath) || !(yield exists(pagePath))) return;
+			const content = yield fs.promises.readFile(pagePath, "utf-8");
+			if (SSG_MARKER_REGEXP.test(content)) {
+				_this3.pageIsSSG.set(pagePath, true);
+				return content;
+			}
+		})();
 	}
-	async renderApplication(opts) {
-		const moduleOrFactory = this.options?.bootstrap ?? opts.bootstrap;
-		if (!moduleOrFactory) throw new Error("A module or bootstrap option must be provided.");
-		const extraProviders = [
-			{
-				provide: SERVER_CONTEXT,
-				useValue: "ssr"
-			},
-			...opts.providers ?? [],
-			...this.options?.providers ?? []
-		];
-		let document = opts.document;
-		if (!document && opts.documentFilePath) document = await this.getDocument(opts.documentFilePath);
-		const commonRenderingOptions = {
-			url: opts.url,
-			document,
-			allowedHosts: ["*"]
-		};
-		return isBootstrapFn(moduleOrFactory) ? renderApplication(moduleOrFactory, {
-			platformProviders: extraProviders,
-			...commonRenderingOptions
-		}) : renderModule(moduleOrFactory, {
-			extraProviders,
-			...commonRenderingOptions
-		});
+	renderApplication(opts) {
+		var _this4 = this;
+		return _asyncToGenerator(function* () {
+			var _this$options$bootstr, _this$options3, _opts$providers, _this$options$provide, _this$options4;
+			const moduleOrFactory = (_this$options$bootstr = (_this$options3 = _this4.options) === null || _this$options3 === void 0 ? void 0 : _this$options3.bootstrap) !== null && _this$options$bootstr !== void 0 ? _this$options$bootstr : opts.bootstrap;
+			if (!moduleOrFactory) throw new Error("A module or bootstrap option must be provided.");
+			const extraProviders = [
+				{
+					provide: SERVER_CONTEXT,
+					useValue: "ssr"
+				},
+				...(_opts$providers = opts.providers) !== null && _opts$providers !== void 0 ? _opts$providers : [],
+				...(_this$options$provide = (_this$options4 = _this4.options) === null || _this$options4 === void 0 ? void 0 : _this$options4.providers) !== null && _this$options$provide !== void 0 ? _this$options$provide : []
+			];
+			let document = opts.document;
+			if (!document && opts.documentFilePath) document = yield _this4.getDocument(opts.documentFilePath);
+			const commonRenderingOptions = {
+				url: opts.url,
+				document,
+				allowedHosts: ["*"]
+			};
+			return isBootstrapFn(moduleOrFactory) ? renderApplication(moduleOrFactory, _objectSpread2({ platformProviders: extraProviders }, commonRenderingOptions)) : renderModule(moduleOrFactory, _objectSpread2({ extraProviders }, commonRenderingOptions));
+		})();
 	}
-	async getDocument(filePath) {
-		let doc = this.templateCache.get(filePath);
-		if (!doc) {
-			doc = await fs.promises.readFile(filePath, "utf-8");
-			this.templateCache.set(filePath, doc);
-		}
-		return doc;
+	getDocument(filePath) {
+		var _this5 = this;
+		return _asyncToGenerator(function* () {
+			let doc = _this5.templateCache.get(filePath);
+			if (!doc) {
+				doc = yield fs.promises.readFile(filePath, "utf-8");
+				_this5.templateCache.set(filePath, doc);
+			}
+			return doc;
+		})();
 	}
 };
-async function exists(path) {
-	try {
-		await fs.promises.access(path, fs.constants.F_OK);
-		return true;
-	} catch {
-		return false;
-	}
+function exists(_x4) {
+	return _exists.apply(this, arguments);
+}
+function _exists() {
+	_exists = _asyncToGenerator(function* (path) {
+		try {
+			yield fs.promises.access(path, fs.constants.F_OK);
+			return true;
+		} catch (_unused) {
+			return false;
+		}
+	});
+	return _exists.apply(this, arguments);
 }
 function isBootstrapFn(value) {
 	return typeof value === "function" && !("ɵmod" in value);
@@ -13000,38 +13359,42 @@ function createRequestHeaders(nodeHeaders) {
 	return headers;
 }
 function createRequestUrl(nodeRequest, trustProxyHeaders) {
+	var _ref3, _forwardedParams$prot, _ref4, _ref5, _forwardedParams$host;
 	const { headers, socket, url = "", originalUrl } = nodeRequest;
 	const forwardedHeaderValue = getAllowedProxyHeaderValue(headers, "forwarded", trustProxyHeaders);
 	const forwardedParams = parseForwardedHeader(forwardedHeaderValue);
-	const protocol = forwardedParams.proto ?? getAllowedProxyHeaderValue(headers, "x-forwarded-proto", trustProxyHeaders) ?? ("encrypted" in socket && socket.encrypted ? "https" : "http");
-	const hostname = forwardedParams.host ?? getAllowedProxyHeaderValue(headers, "x-forwarded-host", trustProxyHeaders) ?? headers.host ?? headers[":authority"];
+	const protocol = (_ref3 = (_forwardedParams$prot = forwardedParams.proto) !== null && _forwardedParams$prot !== void 0 ? _forwardedParams$prot : getAllowedProxyHeaderValue(headers, "x-forwarded-proto", trustProxyHeaders)) !== null && _ref3 !== void 0 ? _ref3 : "encrypted" in socket && socket.encrypted ? "https" : "http";
+	const hostname = (_ref4 = (_ref5 = (_forwardedParams$host = forwardedParams.host) !== null && _forwardedParams$host !== void 0 ? _forwardedParams$host : getAllowedProxyHeaderValue(headers, "x-forwarded-host", trustProxyHeaders)) !== null && _ref5 !== void 0 ? _ref5 : headers.host) !== null && _ref4 !== void 0 ? _ref4 : headers[":authority"];
 	if (Array.isArray(hostname)) throw new Error("host value cannot be an array.");
 	let hostnameWithPort = hostname;
-	if (!hostname?.includes(":")) {
+	if (!(hostname === null || hostname === void 0 ? void 0 : hostname.includes(":"))) {
 		const port = getAllowedProxyHeaderValue(headers, "x-forwarded-port", trustProxyHeaders);
 		if (port) hostnameWithPort += `:${port}`;
 	}
-	return new URL(`${protocol}://${hostnameWithPort}${originalUrl ?? url}`);
+	return new URL(`${protocol}://${hostnameWithPort}${originalUrl !== null && originalUrl !== void 0 ? originalUrl : url}`);
 }
 function getAllowedProxyHeaderValue(headers, headerName, trustProxyHeaders) {
 	return isProxyHeaderAllowed(headerName, trustProxyHeaders) ? getFirstHeaderValue(headers[headerName]) : void 0;
 }
 var AngularNodeAppEngine = class {
-	angularAppEngine;
-	trustProxyHeaders;
 	constructor(options) {
-		const appEngineOptions = {
-			...options,
-			allowedHosts: options?.allowedHosts ?? getAllowedHostsFromEnv(),
-			trustProxyHeaders: options?.trustProxyHeaders ?? getTrustProxyHeadersFromEnv()
-		};
+		var _options$allowedHosts, _options$trustProxyHe;
+		_defineProperty(this, "angularAppEngine", void 0);
+		_defineProperty(this, "trustProxyHeaders", void 0);
+		const appEngineOptions = _objectSpread2(_objectSpread2({}, options), {}, {
+			allowedHosts: (_options$allowedHosts = options === null || options === void 0 ? void 0 : options.allowedHosts) !== null && _options$allowedHosts !== void 0 ? _options$allowedHosts : getAllowedHostsFromEnv(),
+			trustProxyHeaders: (_options$trustProxyHe = options === null || options === void 0 ? void 0 : options.trustProxyHeaders) !== null && _options$trustProxyHe !== void 0 ? _options$trustProxyHe : getTrustProxyHeadersFromEnv()
+		});
 		this.angularAppEngine = new AngularAppEngine(appEngineOptions);
 		this.trustProxyHeaders = appEngineOptions.trustProxyHeaders;
 		attachNodeGlobalErrorHandlers();
 	}
-	async handle(request, requestContext) {
-		const webRequest = request instanceof Request ? request : createWebRequestFromNodeRequest(request, this.trustProxyHeaders);
-		return this.angularAppEngine.handle(webRequest, requestContext);
+	handle(request, requestContext) {
+		var _this6 = this;
+		return _asyncToGenerator(function* () {
+			const webRequest = request instanceof Request ? request : createWebRequestFromNodeRequest(request, _this6.trustProxyHeaders);
+			return _this6.angularAppEngine.handle(webRequest, requestContext);
+		})();
 	}
 };
 function createNodeRequestHandler(handler) {
@@ -13041,80 +13404,86 @@ function createNodeRequestHandler(handler) {
 function isResponseDestroyedOrClosed(destination) {
 	return destination.destroyed || destination.closed || destination.writableEnded || "stream" in destination && (!destination.stream || destination.stream.destroyed || destination.stream.closed);
 }
-async function writeResponseToNodeResponse(source, destination) {
-	if (isResponseDestroyedOrClosed(destination)) return;
-	const { status, headers, body } = source;
-	destination.statusCode = status;
-	let cookieHeaderSet = false;
-	for (const [name, value] of headers.entries()) if (name === "set-cookie") {
-		if (cookieHeaderSet) continue;
-		destination.setHeader(name, headers.getSetCookie());
-		cookieHeaderSet = true;
-	} else destination.setHeader(name, value);
-	if ("flushHeaders" in destination) destination.flushHeaders();
-	if (!body) {
-		if (!isResponseDestroyedOrClosed(destination)) destination.end();
-		return;
-	}
-	let isClosed = isResponseDestroyedOrClosed(destination);
-	const isDestroyedOrClosed = () => isClosed || isResponseDestroyedOrClosed(destination);
-	let readerCancelled = false;
-	const reader = body.getReader();
-	const cancelReader = (error) => {
-		if (readerCancelled) return;
-		readerCancelled = true;
-		isClosed = true;
-		destination.off("close", cancelReader);
-		destination.off("error", cancelReader);
-		reader.cancel(error).catch((err) => {
-			console.error(`An error occurred while writing the response body for: ${destination.req.url}.`, err);
-		});
-	};
-	destination.once("close", cancelReader);
-	destination.once("error", cancelReader);
-	try {
-		while (true) {
-			if (isDestroyedOrClosed()) {
-				cancelReader();
-				break;
-			}
-			const { done, value } = await reader.read();
-			if (isDestroyedOrClosed()) {
-				cancelReader();
-				break;
-			}
-			if (done) {
-				destination.end();
-				break;
-			}
-			if (destination.write(value) === false) await new Promise((resolve) => {
-				if (isDestroyedOrClosed()) {
-					resolve();
-					return;
-				}
-				const onDrain = () => {
-					destination.off("close", onClose);
-					destination.off("error", onClose);
-					resolve();
-				};
-				const onClose = () => {
-					destination.off("drain", onDrain);
-					destination.off("close", onClose);
-					destination.off("error", onClose);
-					cancelReader();
-					resolve();
-				};
-				destination.once("drain", onDrain);
-				destination.once("close", onClose);
-				destination.once("error", onClose);
-			});
+function writeResponseToNodeResponse(_x5, _x6) {
+	return _writeResponseToNodeResponse.apply(this, arguments);
+}
+function _writeResponseToNodeResponse() {
+	_writeResponseToNodeResponse = _asyncToGenerator(function* (source, destination) {
+		if (isResponseDestroyedOrClosed(destination)) return;
+		const { status, headers, body } = source;
+		destination.statusCode = status;
+		let cookieHeaderSet = false;
+		for (const [name, value] of headers.entries()) if (name === "set-cookie") {
+			if (cookieHeaderSet) continue;
+			destination.setHeader(name, headers.getSetCookie());
+			cookieHeaderSet = true;
+		} else destination.setHeader(name, value);
+		if ("flushHeaders" in destination) destination.flushHeaders();
+		if (!body) {
+			if (!isResponseDestroyedOrClosed(destination)) destination.end();
+			return;
 		}
-	} catch {
-		if (!isDestroyedOrClosed()) destination.end("Internal server error.");
-	} finally {
-		destination.off("close", cancelReader);
-		destination.off("error", cancelReader);
-	}
+		let isClosed = isResponseDestroyedOrClosed(destination);
+		const isDestroyedOrClosed = () => isClosed || isResponseDestroyedOrClosed(destination);
+		let readerCancelled = false;
+		const reader = body.getReader();
+		const cancelReader = (error) => {
+			if (readerCancelled) return;
+			readerCancelled = true;
+			isClosed = true;
+			destination.off("close", cancelReader);
+			destination.off("error", cancelReader);
+			reader.cancel(error).catch((err) => {
+				console.error(`An error occurred while writing the response body for: ${destination.req.url}.`, err);
+			});
+		};
+		destination.once("close", cancelReader);
+		destination.once("error", cancelReader);
+		try {
+			while (true) {
+				if (isDestroyedOrClosed()) {
+					cancelReader();
+					break;
+				}
+				const { done, value } = yield reader.read();
+				if (isDestroyedOrClosed()) {
+					cancelReader();
+					break;
+				}
+				if (done) {
+					destination.end();
+					break;
+				}
+				if (destination.write(value) === false) yield new Promise((resolve) => {
+					if (isDestroyedOrClosed()) {
+						resolve();
+						return;
+					}
+					const onDrain = () => {
+						destination.off("close", onClose);
+						destination.off("error", onClose);
+						resolve();
+					};
+					const onClose = () => {
+						destination.off("drain", onDrain);
+						destination.off("close", onClose);
+						destination.off("error", onClose);
+						cancelReader();
+						resolve();
+					};
+					destination.once("drain", onDrain);
+					destination.once("close", onClose);
+					destination.once("error", onClose);
+				});
+			}
+		} catch (_unused2) {
+			if (!isDestroyedOrClosed()) destination.end("Internal server error.");
+		} finally {
+			destination.off("close", cancelReader);
+			destination.off("error", cancelReader);
+		}
+	});
+	return _writeResponseToNodeResponse.apply(this, arguments);
 }
 function isMainModule(url) {
 	return url.startsWith("file:") && argv[1] === fileURLToPath(url);

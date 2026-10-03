@@ -1,4 +1,5 @@
-import { r as __require, t as __commonJSMin } from "./rolldown-runtime-B4iAMlE-.js";
+import { i as __require, t as __commonJSMin } from "./rolldown-runtime-CbG-q-O0.js";
+import { n as init_objectSpread2, t as _objectSpread2 } from "./objectSpread2-BY0ivYo0.js";
 //#region node_modules/ms/index.js
 var require_ms = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	/**
@@ -528,6 +529,7 @@ var require_has_flag = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 //#endregion
 //#region node_modules/supports-color/index.js
 var require_supports_color = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+	init_objectSpread2();
 	var os = __require("os");
 	var tty$1 = __require("tty");
 	var hasFlag = require_has_flag();
@@ -595,10 +597,7 @@ var require_supports_color = /* @__PURE__ */ __commonJSMin(((exports, module) =>
 		return min;
 	}
 	function getSupportLevel(stream, options = {}) {
-		return translateLevel(supportsColor(stream, {
-			streamIsTTY: stream && stream.isTTY,
-			...options
-		}));
+		return translateLevel(supportsColor(stream, _objectSpread2({ streamIsTTY: stream && stream.isTTY }, options)));
 	}
 	module.exports = {
 		supportsColor: getSupportLevel,
@@ -10943,14 +10942,15 @@ var require_dist$3 = /* @__PURE__ */ __commonJSMin(((exports) => {
 	* Parse a `Content-Type` header.
 	*/
 	function parse(header, options) {
-		const stopChar = options?.comma === true ? COMMA : 65536;
+		var _options$start;
+		const stopChar = (options === null || options === void 0 ? void 0 : options.comma) === true ? COMMA : 65536;
 		const len = header.length;
-		let index = skipOWS(header, options?.start ?? 0, len);
+		let index = skipOWS(header, (_options$start = options === null || options === void 0 ? void 0 : options.start) !== null && _options$start !== void 0 ? _options$start : 0, len);
 		const valueStart = index;
 		index = skipValue(header, index, len, stopChar);
 		const valueEnd = trailingOWS(header, valueStart, index);
 		const type = header.slice(valueStart, valueEnd).toLowerCase();
-		if (options?.parameters === false) return {
+		if ((options === null || options === void 0 ? void 0 : options.parameters) === false) return {
 			type,
 			index,
 			parameters: new NullObject()
@@ -18851,6 +18851,7 @@ var require_mime_types = /* @__PURE__ */ __commonJSMin(((exports) => {
 		return (type0 ? mimeScore(type0, db[type0].source) : 0) > (type1 ? mimeScore(type1, db[type1].source) : 0) ? type0 : type1;
 	}
 	function _preferredTypeLegacy(ext, type0, type1) {
+		var _exports$types$extens;
 		var SOURCE_RANK = [
 			"nginx",
 			"apache",
@@ -18859,7 +18860,7 @@ var require_mime_types = /* @__PURE__ */ __commonJSMin(((exports) => {
 		];
 		var score0 = type0 ? SOURCE_RANK.indexOf(db[type0].source) : 0;
 		var score1 = type1 ? SOURCE_RANK.indexOf(db[type1].source) : 0;
-		if (exports.types[extension] !== "application/octet-stream" && (score0 > score1 || score0 === score1 && exports.types[extension]?.slice(0, 12) === "application/")) return type0;
+		if (exports.types[extension] !== "application/octet-stream" && (score0 > score1 || score0 === score1 && ((_exports$types$extens = exports.types[extension]) === null || _exports$types$extens === void 0 ? void 0 : _exports$types$extens.slice(0, 12)) === "application/")) return type0;
 		return score0 > score1 ? type0 : type1;
 	}
 }));
@@ -19165,14 +19166,15 @@ var require_dist$2 = /* @__PURE__ */ __commonJSMin(((exports) => {
 	* Parse a `Content-Type` header.
 	*/
 	function parse(header, options) {
-		const stopChar = options?.comma === true ? COMMA : 65536;
+		var _options$start;
+		const stopChar = (options === null || options === void 0 ? void 0 : options.comma) === true ? COMMA : 65536;
 		const len = header.length;
-		let index = skipOWS(header, options?.start ?? 0, len);
+		let index = skipOWS(header, (_options$start = options === null || options === void 0 ? void 0 : options.start) !== null && _options$start !== void 0 ? _options$start : 0, len);
 		const valueStart = index;
 		index = skipValue(header, index, len, stopChar);
 		const valueEnd = trailingOWS(header, valueStart, index);
 		const type = header.slice(valueStart, valueEnd).toLowerCase();
-		if (options?.parameters === false) return {
+		if ((options === null || options === void 0 ? void 0 : options.parameters) === false) return {
 			type,
 			index,
 			parameters: new NullObject()
@@ -19309,9 +19311,10 @@ var require_utils$2 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	* @private
 	*/
 	function getCharset(req) {
+		var _contentType$parse$pa;
 		const header = req.headers["content-type"];
 		if (!header) return void 0;
-		return contentType.parse(header).parameters.charset?.toLowerCase();
+		return (_contentType$parse$pa = contentType.parse(header).parameters.charset) === null || _contentType$parse$pa === void 0 ? void 0 : _contentType$parse$pa.toLowerCase();
 	}
 	/**
 	* Get the simple type checker.
@@ -19335,11 +19338,11 @@ var require_utils$2 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	*/
 	function normalizeOptions(options, defaultType) {
 		if (!defaultType) throw new TypeError("defaultType must be provided");
-		const inflate = options?.inflate !== false;
-		const limit = typeof options?.limit === "undefined" || options?.limit === null ? 102400 : bytes.parse(options.limit);
-		const type = options?.type || defaultType;
-		const verify = options?.verify || false;
-		const defaultCharset = options?.defaultCharset || "utf-8";
+		const inflate = (options === null || options === void 0 ? void 0 : options.inflate) !== false;
+		const limit = typeof (options === null || options === void 0 ? void 0 : options.limit) === "undefined" || (options === null || options === void 0 ? void 0 : options.limit) === null ? 102400 : bytes.parse(options.limit);
+		const type = (options === null || options === void 0 ? void 0 : options.type) || defaultType;
+		const verify = (options === null || options === void 0 ? void 0 : options.verify) || false;
+		const defaultCharset = (options === null || options === void 0 ? void 0 : options.defaultCharset) || "utf-8";
 		if (limit === null) throw new TypeError(`option limit "${String(options.limit)}" is invalid`);
 		if (verify !== false && typeof verify !== "function") throw new TypeError("option verify must be function");
 		return {
@@ -19415,9 +19418,9 @@ var require_read = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 			return;
 		}
 		let encoding = null;
-		if (options?.skipCharset !== true) {
+		if ((options === null || options === void 0 ? void 0 : options.skipCharset) !== true) {
 			encoding = getCharset(req) || options.defaultCharset;
-			if (!!options?.isValidCharset && !options.isValidCharset(encoding)) {
+			if (!!(options === null || options === void 0 ? void 0 : options.isValidCharset) && !options.isValidCharset(encoding)) {
 				debug("invalid charset");
 				next(createError(415, "unsupported charset \"" + encoding.toUpperCase() + "\"", {
 					charset: encoding,
@@ -19559,6 +19562,7 @@ var require_read = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 * MIT Licensed
 */
 var require_json = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+	init_objectSpread2();
 	/**
 	* Module dependencies.
 	* @private
@@ -19594,10 +19598,7 @@ var require_json = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	function json(options) {
 		const normalizedOptions = normalizeOptions(options, "application/json");
 		const parse = createJsonParser(options);
-		const readOptions = {
-			...normalizedOptions,
-			isValidCharset: (charset) => charset.slice(0, 4) === "utf-"
-		};
+		const readOptions = _objectSpread2(_objectSpread2({}, normalizedOptions), {}, { isValidCharset: (charset) => charset.slice(0, 4) === "utf-" });
 		return function jsonParser(req, res, next) {
 			read(req, res, next, parse, debug, readOptions);
 		};
@@ -19610,8 +19611,8 @@ var require_json = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	* @private
 	*/
 	function createJsonParser(options) {
-		const reviver = options?.reviver;
-		if (options?.strict !== false) return function parse(body) {
+		const reviver = options === null || options === void 0 ? void 0 : options.reviver;
+		if ((options === null || options === void 0 ? void 0 : options.strict) !== false) return function parse(body) {
 			if (body.length === 0) return {};
 			const first = firstchar(body);
 			if (first !== "{" && first !== "[") {
@@ -19703,6 +19704,7 @@ var require_json = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 * MIT Licensed
 */
 var require_raw = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+	init_objectSpread2();
 	/**
 	* Module dependencies.
 	*/
@@ -19721,10 +19723,8 @@ var require_raw = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	* @public
 	*/
 	function raw(options) {
-		const readOptions = {
-			...normalizeOptions(options, "application/octet-stream"),
-			skipCharset: true
-		};
+		const normalizedOptions = normalizeOptions(options, "application/octet-stream");
+		const readOptions = _objectSpread2(_objectSpread2({}, normalizedOptions), {}, { skipCharset: true });
 		return function rawParser(req, res, next) {
 			read(req, res, next, passthrough, debug, readOptions);
 		};
@@ -21760,6 +21760,7 @@ var require_lib = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 * MIT Licensed
 */
 var require_urlencoded = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+	init_objectSpread2();
 	/**
 	* Module dependencies.
 	* @private
@@ -21784,10 +21785,7 @@ var require_urlencoded = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 		const normalizedOptions = normalizeOptions(options, "application/x-www-form-urlencoded");
 		if (normalizedOptions.defaultCharset !== "utf-8" && normalizedOptions.defaultCharset !== "iso-8859-1") throw new TypeError("option defaultCharset must be either utf-8 or iso-8859-1");
 		const parse = createQueryParser(options);
-		const readOptions = {
-			...normalizedOptions,
-			isValidCharset: (charset) => charset === "utf-8" || charset === "iso-8859-1"
-		};
+		const readOptions = _objectSpread2(_objectSpread2({}, normalizedOptions), {}, { isValidCharset: (charset) => charset === "utf-8" || charset === "iso-8859-1" });
 		return function urlencodedParser(req, res, next) {
 			read(req, res, next, parse, debug, readOptions);
 		};
@@ -21800,11 +21798,11 @@ var require_urlencoded = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	* @private
 	*/
 	function createQueryParser(options) {
-		const extended = Boolean(options?.extended);
-		let parameterLimit = options?.parameterLimit !== void 0 ? options?.parameterLimit : 1e3;
-		const charsetSentinel = options?.charsetSentinel;
-		const interpretNumericEntities = options?.interpretNumericEntities;
-		const depth = extended ? options?.depth !== void 0 ? options?.depth : 32 : 0;
+		const extended = Boolean(options === null || options === void 0 ? void 0 : options.extended);
+		let parameterLimit = (options === null || options === void 0 ? void 0 : options.parameterLimit) !== void 0 ? options === null || options === void 0 ? void 0 : options.parameterLimit : 1e3;
+		const charsetSentinel = options === null || options === void 0 ? void 0 : options.charsetSentinel;
+		const interpretNumericEntities = options === null || options === void 0 ? void 0 : options.interpretNumericEntities;
+		const depth = extended ? (options === null || options === void 0 ? void 0 : options.depth) !== void 0 ? options === null || options === void 0 ? void 0 : options.depth : 32 : 0;
 		if (isNaN(parameterLimit) || parameterLimit < 1) throw new TypeError("option parameterLimit must be a positive number");
 		if (isNaN(depth) || depth < 0) throw new TypeError("option depth must be a zero or a positive number");
 		if (isFinite(parameterLimit)) parameterLimit = parameterLimit | 0;
@@ -22142,6 +22140,7 @@ var require_parseurl = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 * MIT Licensed
 */
 var require_finalhandler = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+	init_objectSpread2();
 	/**
 	* Module dependencies.
 	* @private
@@ -22220,7 +22219,7 @@ var require_finalhandler = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	*/
 	function getErrorHeaders(err) {
 		if (!err.headers || typeof err.headers !== "object") return;
-		return { ...err.headers };
+		return _objectSpread2({}, err.headers);
 	}
 	/**
 	* Get message from Error object, fallback to status message.
@@ -22297,7 +22296,7 @@ var require_finalhandler = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 			res.removeHeader("Content-Encoding");
 			res.removeHeader("Content-Language");
 			res.removeHeader("Content-Range");
-			for (const [key, value] of Object.entries(headers ?? {})) res.setHeader(key, value);
+			for (const [key, value] of Object.entries(headers !== null && headers !== void 0 ? headers : {})) res.setHeader(key, value);
 			res.setHeader("Content-Security-Policy", "default-src 'none'");
 			res.setHeader("X-Content-Type-Options", "nosniff");
 			res.setHeader("Content-Type", "text/html; charset=utf-8");
@@ -23904,9 +23903,9 @@ var require_dist$1 = /* @__PURE__ */ __commonJSMin(((exports) => {
 	exports.stringify = stringify;
 	var DEFAULT_DELIMITER = "/";
 	var NOOP_VALUE = (value) => value;
-	var ID_START = /^[$_\p{ID_Start}]$/u;
-	var ID_CONTINUE = /^[$\u200c\u200d\p{ID_Continue}]$/u;
-	var ID = /^[$_\p{ID_Start}][$\u200c\u200d\p{ID_Continue}]*$/u;
+	var ID_START = new RegExp("^[$_\\p{ID_Start}]$", "u");
+	var ID_CONTINUE = new RegExp("^[$\\u200c\\u200d\\p{ID_Continue}]$", "u");
+	var ID = new RegExp("^[$_\\p{ID_Start}][$\\u200c\\u200d\\p{ID_Continue}]*$", "u");
 	/**
 	* Escape text for stringify to path.
 	*/
@@ -25062,6 +25061,7 @@ var require_router = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 * MIT Licensed
 */
 var require_application = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+	init_objectSpread2();
 	/**
 	* Module dependencies.
 	* @private
@@ -25441,11 +25441,7 @@ var require_application = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 			done = options;
 			opts = {};
 		}
-		var renderOptions = {
-			...this.locals,
-			...opts._locals,
-			...opts
-		};
+		var renderOptions = _objectSpread2(_objectSpread2(_objectSpread2({}, this.locals), opts._locals), opts);
 		if (renderOptions.cache == null) renderOptions.cache = this.enabled("view cache");
 		if (renderOptions.cache) view = cache[name];
 		if (!view) {
@@ -25565,14 +25561,15 @@ var require_dist = /* @__PURE__ */ __commonJSMin(((exports) => {
 	* Parse a `Content-Type` header.
 	*/
 	function parse(header, options) {
-		const stopChar = options?.comma === true ? COMMA : 65536;
+		var _options$start;
+		const stopChar = (options === null || options === void 0 ? void 0 : options.comma) === true ? COMMA : 65536;
 		const len = header.length;
-		let index = skipOWS(header, options?.start ?? 0, len);
+		let index = skipOWS(header, (_options$start = options === null || options === void 0 ? void 0 : options.start) !== null && _options$start !== void 0 ? _options$start : 0, len);
 		const valueStart = index;
 		index = skipValue(header, index, len, stopChar);
 		const valueEnd = trailingOWS(header, valueStart, index);
 		const type = header.slice(valueStart, valueEnd).toLowerCase();
-		if (options?.parameters === false) return {
+		if ((options === null || options === void 0 ? void 0 : options.parameters) === false) return {
 			type,
 			index,
 			parameters: new NullObject()
@@ -27233,7 +27230,7 @@ var require_content_disposition = /* @__PURE__ */ __commonJSMin(((exports, modul
 			case "utf-8":
 			case "utf8": try {
 				return decodeURIComponent(encoded);
-			} catch {
+			} catch (_unused) {
 				const binary = decodeHexEscapes(encoded);
 				const bytes = new Uint8Array(binary.length);
 				for (let idx = 0; idx < binary.length; idx++) bytes[idx] = binary.charCodeAt(idx);
@@ -28440,6 +28437,7 @@ var require_vary = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 * MIT Licensed
 */
 var require_response = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+	init_objectSpread2();
 	/**
 	* Module dependencies.
 	* @private
@@ -28941,11 +28939,7 @@ var require_response = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	* @public
 	*/
 	res.clearCookie = function clearCookie(name, options) {
-		const opts = {
-			path: "/",
-			...options,
-			expires: /* @__PURE__ */ new Date(1)
-		};
+		const opts = _objectSpread2(_objectSpread2({ path: "/" }, options), {}, { expires: /* @__PURE__ */ new Date(1) });
 		delete opts.maxAge;
 		return this.cookie(name, "", opts);
 	};
@@ -28973,7 +28967,7 @@ var require_response = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	* @public
 	*/
 	res.cookie = function(name, value, options) {
-		var opts = { ...options };
+		var opts = _objectSpread2({}, options);
 		var secret = this.req.secret;
 		var signed = opts.signed;
 		if (signed && !secret) throw new Error("cookieParser(\"secret\") required for signed cookies");

@@ -1,5 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
 .body-app-unique-container{
     box-sizing: border-box;
     padding: var(--text-xl) 10px; 
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 85px;
+}
+body {
+  background-color: var(--color-bg-main, #030712);
+  color: var(--color-text-primary, #f8fafc);
+  overflow-x: hidden;
+}
+.section-scroll-target {
+  position: relative;
+  width: 100%;
 }
