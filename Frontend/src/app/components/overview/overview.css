@@ -1,0 +1,147 @@
+.overview-section {
+  min-height: calc(100vh - var(--header-height, 80px));
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+.container-fluid{
+    padding-top: 1rem;
+}
+.max-container {
+  max-width: var(--container-max-width, 1280px);
+}
+
+.max-w-xl {
+  max-width: 580px;
+}
+
+.max-w-sm {
+  max-width: 320px;
+}
+
+
+.status-pill-badge {
+  background: var(--color-bg-card);
+  border: 1px solid var(--border-subtle);
+}
+
+
+.btn-view-projects {
+  background: var(--gradient-brand-button);
+  color: var(--color-text-inverse);
+  padding: 12px 28px;
+  border-radius: var(--radius-full);
+  border: none;
+  transition: var(--transition-normal);
+  box-shadow: var(--glow-cyan-sm);
+  text-decoration: none;
+}
+
+.btn-view-projects:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--glow-cyan-lg);
+  color: var(--color-text-inverse);
+}
+
+
+.btn-lets-talk-secondary {
+  background: transparent;
+  color: var(--color-text-primary);
+  padding: 12px 28px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-medium);
+  transition: var(--transition-normal);
+  text-decoration: none;
+}
+
+.btn-lets-talk-secondary:hover {
+  border-color: var(--color-cyan);
+  color: var(--color-cyan);
+  background: rgba(0, 229, 255, 0.05);
+}
+
+
+.code-snippet-box {
+  background: var(--code-bg);
+  border: 1px solid var(--border-subtle);
+  color: var(--color-text-secondary);
+}
+
+.code-keyword { color: var(--code-keyword); }
+.code-property { color: var(--code-property); }
+.code-function { color: var(--color-purple); }
+.code-boolean { color: var(--code-boolean); }
+
+
+.status-card-window {
+  border-color: var(--border-cyan-glow) !important;
+  background: var(--glass-bg) !important;
+}
+
+.border-subtle {
+  border-color: var(--border-subtle) !important;
+}
+
+.widget-solution-box {
+  background: var(--glass-bg);
+  border: 1px solid var(--border-purple-glow);
+  backdrop-filter: var(--glass-blur);
+  border-radius: var(--radius-md);
+}
+
+.icon-orb-box {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: rgba(0, 229, 255, 0.08);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* src/app/components/overview/overview.css */
+.slogan-hover-trigger {
+  cursor: pointer;
+}
+
+.unselectable {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Floating Custom Cursor Badge */
+.hire-me-cursor-badge {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%) scale(0);
+  background: var(--gradient-brand-button);
+  color: #000;
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: var(--text-xs);
+  padding: 10px 20px;
+  border-radius: var(--radius-full);
+  box-shadow: var(--glow-cyan-lg), var(--glow-purple-lg);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s ease;
+  opacity: 0;
+  white-space: nowrap;
+}
+
+.hire-me-cursor-badge.active {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.hire-me-cursor-badge i {
+  font-size: 1rem;
+}
+.system-card{
+  margin: 0 !important;
+}
+

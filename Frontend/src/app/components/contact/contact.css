@@ -1,0 +1,66 @@
+/* ARCHIVO: src/app/components/contact/contact.css */
+
+.contact-section {
+  min-height: 85vh;
+  position: relative;
+  z-index: 2;
+}
+
+.max-container {
+  max-width: var(--container-max-width, 1280px);
+}
+
+.max-w-xl { max-width: 600px; }
+.z-max { z-index: 99999; }
+.cursor-pointer { cursor: pointer; }
+
+.status-pill-badge {
+  background: var(--color-bg-card);
+  border: 1px solid var(--border-subtle);
+}
+
+.contact-channel-card {
+  background: rgba(3, 7, 18, 0.6);
+  transition: all 0.25s ease;
+}
+
+.contact-channel-card:hover {
+  border-color: var(--color-cyan) !important;
+  background: rgba(0, 229, 255, 0.04);
+}
+
+.channel-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-cyber-social {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-cyber-social:hover {
+  border-color: var(--color-cyan);
+  color: var(--color-text-primary);
+  background: rgba(0, 229, 255, 0.05);
+}
+
+.cyber-input {
+  background-color: #030712 !important;
+  border: 1px solid var(--border-subtle) !important;
+  color: var(--color-text-primary) !important;
+}
+
+.cyber-input:focus {
+  border-color: var(--color-cyan) !important;
+  box-shadow: var(--glow-cyan-sm) !important;
+}

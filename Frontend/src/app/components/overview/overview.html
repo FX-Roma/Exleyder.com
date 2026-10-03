@@ -1,0 +1,114 @@
+<!-- src/app/components/overview/overview.html -->
+<section class="overview-section py-5 font-body">
+  <div class="container-fluid max-container px-4">
+    <div class="row  g-5">
+      
+      <!-- Left Column: Content & Pitch -->
+      <div class="col-lg-7">
+        
+        <!-- Status Tag -->
+        <div class="d-inline-flex align-items-center gap-2 mb-4 px-3 py-1 rounded-pill status-pill-badge">
+          <span class="status-pulse-dot"></span>
+          <span class="font-mono text-xs fw-semibold tracking-wide text-secondary">{{ developerRoleTag }}</span>
+        </div>
+
+        <!-- Interactive Slogan with Custom Cursor Trigger -->
+        <div class="slogan-hover-trigger position-relative d-inline-block mb-4"
+             (mousemove)="onSloganMouseMove($event)"
+             (mouseenter)="onSloganMouseEnter()"
+             (mouseleave)="onSloganMouseLeave()"
+             routerLink="/contact">
+          
+          <h1 class="display-3 font-display fw-bold text-light m-0 leading-tight unselectable">
+            BUILDING DIGITAL<br>
+            EXPERIENCES THAT<br>
+            <span class="text-gradient">MATTER.</span>
+          </h1>
+        </div>
+
+        <!-- Custom Floating Cursor Badge -->
+        <div class="hire-me-cursor-badge"
+             [class.active]="isSloganHovered"
+             [style.left.px]="cursorX"
+             [style.top.px]="cursorY">
+          <span>HIRE ME</span>
+          <i class="bi bi-arrow-up-right-circle-fill"></i>
+        </div>
+
+        <!-- Subtitle Slogan -->
+        <p class="font-mono text-cyan text-xs mb-4 tracking-wide">
+          WHERE HIGH-PERFORMANCE CODE MEETS REAL-WORLD BUSINESS IMPACT.
+        </p>
+
+        <!-- Biography -->
+        <p class="lead text-secondary mb-5 max-w-xl pe-lg-4 fs-6 leading-relaxed">
+          {{ developerBio }}
+        </p>
+
+        <!-- CTAs -->
+        <div class="d-flex flex-wrap align-items-center gap-3 mb-5">
+          <a routerLink="/projects" class="btn btn-view-projects d-inline-flex align-items-center gap-2 font-body text-sm fw-semibold">
+            <span>View Projects</span>
+            <i class="bi bi-arrow-right"></i>
+          </a>
+          <!-- Updated Direct WhatsApp Link -->
+          <a href="https://wa.me/573134500680?text=Hello%20Over,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20discuss%20an%20opportunity!" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="btn btn-lets-talk-secondary d-inline-flex align-items-center gap-2 font-body text-sm fw-semibold">
+            <span>Let's Talk</span>
+            <i class="bi bi-whatsapp text-success"></i>
+          </a>
+        </div>
+
+        <!-- Code Snippet -->
+
+
+      </div>
+
+      <!-- Right Column: Interactive System Status Card & Glass Graphic -->
+      <div class="col-lg-5 position-relative">
+        <div class="cyber-card p-4 font-mono mb-4 status-card-window">
+          <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom border-subtle">
+            <span class="text-light fw-bold text-sm">System Status</span>
+            <span class="status-pulse-dot"></span>
+          </div>
+
+          <div class="d-flex flex-column gap-2 text-xs mb-3">
+            <div *ngFor="let metric of systemMetrics" class="d-flex align-items-center justify-content-between">
+              <span class="d-flex align-items-center gap-2 text-secondary">
+                <i class="bi bi-check-circle-fill text-success"></i>
+                {{ metric.label }}
+              </span>
+              <span class="text-muted">{{ metric.tech }}</span>
+            </div>
+          </div>
+
+          <div class="pt-2 border-top border-subtle d-flex align-items-center gap-2">
+            <i class="bi bi-shield-check text-cyan"></i>
+            <span class="text-success text-xs fw-semibold">All systems operational</span>
+          </div>
+        </div>
+
+        <div class="cyber-card p-3 d-inline-flex align-items-center gap-3 widget-solution-box">
+          <div class="icon-orb-box">
+            <i class="bi bi-code-slash text-cyan fs-5"></i>
+          </div>
+          <div>
+            <span class="d-block text-light fw-bold text-xs">Modern Tech</span>
+            <span class="text-secondary text-xs">Better Solutions</span>
+          </div>
+          <div class="code-snippet-box p-3 rounded-3 font-mono text-xs shadow-lg max-w-sm">
+            <span class="code-keyword">const</span> <span class="code-property">future</span> = <span class="code-function">build</span>(&#123;<br>
+            &nbsp;&nbsp;<span class="code-property">code</span>: <span class="code-boolean">true</span>,<br>
+            &nbsp;&nbsp;<span class="code-property">people</span>: <span class="code-boolean">true</span>,<br>
+            &nbsp;&nbsp;<span class="code-property">impact</span>: <span class="code-boolean">true</span><br>
+            &#125;);
+          </div>
+        </div>
+      </div>
+      
+
+    </div>
+  </div>
+</section>

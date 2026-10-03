@@ -1,0 +1,50 @@
+<!-- src/app/components/preloader/preloader.html -->
+<div *ngIf="!isHidden" 
+     class="preloader-overlay d-flex flex-column align-items-center justify-content-center p-4 font-mono"
+     [class.fade-out]="isFadingOut">
+  
+  <div class="cyber-card preloader-card p-4 max-w-md w-100 position-relative overflow-hidden shadow-lg">
+    
+    <!-- Top Terminal Bar -->
+    <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom border-subtle">
+      <div class="d-flex align-items-center gap-2">
+        <i class="bi bi-terminal-fill text-cyan fs-5"></i>
+        <span class="text-light fw-bold text-xs tracking-wide">SYSTEM_BOOT_SEQUENCE</span>
+      </div>
+      <div class="terminal-dots d-flex gap-1">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+      </div>
+    </div>
+
+    <!-- Live Telemetry Logs -->
+    <div class="logs-window mb-4 p-3 rounded-2 bg-black border border-subtle text-xs">
+      <div *ngFor="let log of bootLogs; let i = index" 
+           class="log-line mb-1"
+           [class.active-log]="i === currentLogIndex"
+           [class.completed-log]="i < currentLogIndex">
+        <span class="me-2">{{ i <= currentLogIndex ? '✔' : '❯' }}</span>
+        <span>{{ log }}</span>
+      </div>
+    </div>
+
+    <!-- Glowing Progress Bar -->
+    <div class="progress-container mb-3">
+      <div class="d-flex justify-content-between text-xs mb-1">
+        <span class="text-secondary">LOADING_MODULES</span>
+        <span class="text-cyan fw-bold">{{ progress }}%</span>
+      </div>
+      <div class="progress-track rounded-pill bg-dark overflow-hidden">
+        <div class="progress-fill rounded-pill" [style.width.%]="progress"></div>
+      </div>
+    </div>
+
+    <!-- Subtitle Footer -->
+    <div class="text-center text-muted text-xs pt-2">
+      <span>OVER OREJUELA // FULL-STACK ENGINEER</span>
+    </div>
+
+  </div>
+
+</div>

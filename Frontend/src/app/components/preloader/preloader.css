@@ -1,0 +1,68 @@
+/* src/app/components/preloader/preloader.css */
+.preloader-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: var(--color-bg-base);
+  z-index: 99999;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.preloader-overlay.fade-out {
+  opacity: 0;
+  transform: scale(1.05);
+  pointer-events: none;
+}
+
+.max-w-md {
+  max-width: 480px;
+}
+
+.preloader-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--border-cyan-glow);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow), var(--glow-cyan-lg);
+  border-radius: var(--radius-xl);
+}
+
+.logs-window {
+  height: 120px;
+  overflow-y: auto;
+}
+
+.log-line {
+  color: var(--color-text-disabled);
+  transition: color 0.3s ease;
+}
+
+.log-line.completed-log {
+  color: var(--color-success);
+}
+
+.log-line.active-log {
+  color: var(--color-cyan);
+  font-weight: 700;
+}
+
+/* Progress Fill Gradient */
+.progress-track {
+  height: 6px;
+  border: 1px solid var(--border-subtle);
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--gradient-brand-button);
+  box-shadow: var(--glow-cyan-sm);
+  transition: width 0.1s linear;
+}
+
+.terminal-dots .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dot.red { background: #ef4444; }
+.dot.yellow { background: #f59e0b; }
+.dot.green { background: #10b981; }

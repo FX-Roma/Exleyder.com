@@ -1,0 +1,22 @@
+<!-- ARCHIVO: src/app/components/footer/footer.html -->
+
+<footer class="cyber-footer py-4 border-top border-subtle font-mono text-xs position-relative" style="z-index: 2;">
+  <div class="container-fluid max-container px-4">
+    <div class="row align-items-center g-3">
+      
+      <!-- Marca y Derechos -->
+      <div class="col-md-6 text-center text-md-start">
+        <span class="text-cyan fw-bold">&lt;/&gt; {{ developerName }}</span>
+        <span class="text-muted ms-2">&copy; {{ currentYear }} All Rights Reserved.</span>
+      </div>
+
+      <!-- Métricas del Sistema y Enlaces -->
+      <div class="col-md-6 text-center text-md-end text-muted">
+        <span class="me-3"><i class="bi bi-circle-fill text-success fs-6 me-1"></i>System Status: Operational</span>
+        <a routerLink="/contact" class="text-secondary text-decoration-none hover-cyan me-3">Contact Endpoint</a>
+        <a href="https://github.com/FX-Roma" target="_blank" class="text-secondary text-decoration-none hover-cyan">GitHub</a>
+      </div>
+
+    </div>
+  </div>
+</footer>

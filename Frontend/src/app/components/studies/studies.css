@@ -1,0 +1,57 @@
+/* ARCHIVO: src/app/components/studies/studies.css */
+
+.studies-section {
+  min-height: 85vh;
+  position: relative;
+  z-index: 2;
+}
+
+.max-container {
+  max-width: var(--container-max-width, 1280px);
+}
+
+.max-w-xl {
+  max-width: 600px;
+}
+
+.status-pill-badge {
+  background: var(--color-bg-card);
+  border: 1px solid var(--border-subtle);
+}
+
+.btn-cyber-active {
+  background: var(--gradient-brand-button);
+  color: #000 !important;
+  font-weight: 700;
+  box-shadow: var(--glow-cyan-sm);
+}
+
+.btn-cyber-idle {
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--border-subtle);
+}
+
+.btn-cyber-idle:hover {
+  border-color: var(--color-cyan);
+  color: var(--color-cyan);
+}
+
+.study-card-interactive {
+  background: var(--glass-bg);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.study-card-interactive:hover {
+  transform: translateY(-5px);
+  border-color: var(--border-cyan-glow);
+  box-shadow: var(--glass-shadow), var(--glow-cyan-sm);
+}
+
+.bg-cyan-soft { background: rgba(0, 229, 255, 0.1); border: 1px solid var(--border-cyan-glow); }
+.bg-purple-soft { background: rgba(139, 92, 246, 0.1); border: 1px solid var(--border-purple-glow); }
+.bg-success-soft { background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.4); }
+
+.credential-box {
+  border-color: var(--border-subtle) !important;
+}

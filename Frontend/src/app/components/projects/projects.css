@@ -1,0 +1,88 @@
+.projects-page-section {
+  position: relative;
+  z-index: 2;
+  min-height: 85vh;
+}
+
+.max-container {
+  max-width: var(--container-max-width, 1280px);
+}
+
+.max-w-2xl {
+  max-width: 680px;
+}
+
+.max-w-md {
+  max-width: 420px;
+}
+
+.text-micro {
+  font-size: 0.72rem;
+}
+
+.py-2\.5 {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+}
+
+.section-tag-badge {
+  background: rgba(0, 229, 255, 0.08);
+  border: 1px solid rgba(0, 229, 255, 0.2);
+}
+
+/* Card Contenedora de la Toolbar */
+.cyber-toolbar-card {
+  background: rgba(11, 19, 32, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Botones de Filtro */
+.btn-filter-pill {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  color: var(--color-text-secondary, #94a3b8);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-filter-pill:hover {
+  background: rgba(0, 229, 255, 0.08);
+  border-color: rgba(0, 229, 255, 0.3);
+  color: #fff;
+}
+
+.btn-filter-pill.active {
+  background: var(--gradient-brand-button, linear-gradient(135deg, #00e5ff 0%, #3b82f6 100%));
+  color: #000 !important;
+  font-weight: 700;
+  border-color: transparent;
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
+}
+
+/* Campo de Búsqueda */
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 0.9rem;
+}
+
+.cyber-search-input {
+  background: rgba(3, 7, 18, 0.85) !important;
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.1)) !important;
+  color: var(--color-text-primary, #f8fafc) !important;
+  border-radius: var(--radius-md, 12px);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cyber-search-input::placeholder {
+  color: #64748b !important;
+}
+
+.cyber-search-input:focus {
+  border-color: var(--color-cyan, #00e5ff) !important;
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.25) !important;
+}

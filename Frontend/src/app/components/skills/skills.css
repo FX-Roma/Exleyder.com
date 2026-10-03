@@ -1,0 +1,62 @@
+/* src/app/components/skills/skills.css */
+.skills-section {
+  min-height: 85vh;
+  position: relative;
+  z-index: 2;
+}
+
+.max-container {
+  max-width: var(--container-max-width, 1280px);
+}
+
+.max-w-xl {
+  max-width: 600px;
+}
+
+.status-pill-badge {
+  background: var(--color-bg-card);
+  border: 1px solid var(--border-subtle);
+}
+
+.skill-card-interactive {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+  background: var(--glass-bg);
+}
+
+.skill-card-interactive:hover,
+.skill-card-interactive.active-glow {
+  transform: translateY(-6px);
+  border-color: var(--border-cyan-glow);
+  box-shadow: var(--glass-shadow), var(--glow-cyan-sm);
+}
+
+.icon-orb-box {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: rgba(0, 229, 255, 0.06);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skill-badge-pill {
+  background: rgba(3, 7, 18, 0.8);
+  border: 1px solid var(--border-subtle);
+  color: var(--color-text-secondary);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  transition: all 0.2s ease;
+}
+
+.skill-card-interactive:hover .skill-badge-pill {
+  border-color: rgba(0, 229, 255, 0.3);
+  color: var(--color-text-primary);
+}
+
+.skill-badge-pill:hover {
+  border-color: var(--color-cyan) !important;
+  color: var(--color-cyan) !important;
+  background: rgba(0, 229, 255, 0.1) !important;
+}

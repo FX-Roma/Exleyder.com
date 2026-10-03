@@ -1,0 +1,41 @@
+<header class="cyber-header sticky-top" [ngClass]="{ 'navbar-scrolled': isScrolled }">
+  <div class="container-fluid max-container px-4">
+    <nav class="navbar navbar-expand-lg navbar-dark py-3">
+      
+      <!-- Left Logo: Code-Slash Icon + OVER OREJUELA -->
+      <a class="navbar-brand d-flex align-items-center gap-2 font-display fw-bold text-light m-0" routerLink="/overview">
+        <i class="bi bi-code-slash logo-icon text-cyan"></i>
+        <span class="logo-text text-uppercase">{{ developerName }}</span>
+      </a>
+
+      <!-- Mobile Toggle -->
+      <button class="navbar-toggler border-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#topNavMenu">
+        <i class="bi bi-list text-light fs-3"></i>
+      </button>
+
+      <!-- Center Links & Right CTA -->
+      <div class="collapse navbar-collapse " id="topNavMenu">
+        
+        <ul class="navbar-nav mx-auto mb-3 mb-lg-0 gap-lg-4 font-body text-sm">
+          <li class="nav-item" *ngFor="let link of navLinks">
+            <a class="nav-link nav-cyber-link px-2" [routerLink]="link.path" routerLinkActive="active">
+              {{ link.label }}
+            </a>
+          </li>
+        </ul>
+
+        <div class="d-flex align-items-center ms-auto ms-lg-0">
+          <a href="https://wa.me/573134500680?text=Hello%20Over,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20discuss%20an%20opportunity!" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="btn btn-lets-talk d-inline-flex align-items-center gap-2 font-body text-xs fw-semibold">
+            <span>Let's Talk</span>
+            <i class="bi bi-whatsapp fs-6 text-success"></i>
+          </a>
+        </div>
+
+      </div>
+
+    </nav>
+  </div>
+</header>

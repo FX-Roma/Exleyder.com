@@ -1,0 +1,154 @@
+<!-- ARCHIVO: src/app/components/contact/contact.html -->
+
+<section class="contact-section py-5 font-body">
+  <div class="container-fluid max-container px-4">
+    
+    <!-- Toast de Notificación Copiada -->
+    <div *ngIf="copiedToast" class="position-fixed bottom-0 end-0 m-4 p-3 rounded-3 bg-cyan text-black font-mono text-xs fw-bold shadow-lg animate-fadeIn z-max">
+      <i class="bi bi-check-circle-fill me-2"></i>{{ copiedToast }}
+    </div>
+
+    <!-- Header de Sección -->
+    <div class="text-center mb-5">
+      <div class="d-inline-flex align-items-center gap-2 mb-3 px-3 py-1 rounded-pill status-pill-badge">
+        <i class="bi bi-send-check-fill text-cyan fs-6"></i>
+        <span class="font-mono text-xs fw-semibold tracking-wide text-secondary">// DIRECT_COMMUNICATION_DISPATCH</span>
+      </div>
+      <h1 class="display-4 font-display fw-bold text-light mb-3">
+        LET'S BUILD SOMETHING <span class="text-gradient">EXTRAORDINARY.</span>
+      </h1>
+      <p class="text-secondary max-w-xl mx-auto fs-6">
+        Disponible para contratos de desarrollo web Full-Stack, liderazgo técnico en proyectos bilingües y roles remotos internacionales.
+      </p>
+    </div>
+
+    <div class="row g-4 align-items-stretch">
+      
+      <!-- Columna Izquierda: Información de Contacto Directo -->
+      <div class="col-lg-5">
+        <div class="cyber-card h-100 p-4 p-md-5 d-flex flex-column justify-content-between">
+          
+          <div>
+            <h3 class="h4 font-display fw-bold text-light mb-4">// DIRECT_CHANNELS</h3>
+
+            <!-- Email Directo -->
+            <div (click)="copyToClipboard(primaryEmail, 'Email')" class="contact-channel-card p-3 rounded-3 border border-subtle mb-3 cursor-pointer">
+              <div class="d-flex align-items-center gap-3">
+                <div class="channel-icon-box">
+                  <i class="bi bi-envelope-at-fill text-cyan fs-5"></i>
+                </div>
+                <div>
+                  <span class="d-block text-muted font-mono text-xs">Primary Email (Click to Copy)</span>
+                  <span class="text-light font-mono text-sm fw-bold">{{ primaryEmail }}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Teléfono Directo -->
+            <div (click)="copyToClipboard(phoneNumber, 'Teléfono')" class="contact-channel-card p-3 rounded-3 border border-subtle mb-3 cursor-pointer">
+              <div class="d-flex align-items-center gap-3">
+                <div class="channel-icon-box">
+                  <i class="bi bi-telephone-outbound-fill text-purple fs-5"></i>
+                </div>
+                <div>
+                  <span class="d-block text-muted font-mono text-xs">Direct Phone / WhatsApp</span>
+                  <span class="text-light font-mono text-sm fw-bold">{{ phoneNumber }}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Ubicación -->
+            <div class="contact-channel-card p-3 rounded-3 border border-subtle mb-4">
+              <div class="d-flex align-items-center gap-3">
+                <div class="channel-icon-box">
+                  <i class="bi bi-geo-alt-fill text-success fs-5"></i>
+                </div>
+                <div>
+                  <span class="d-block text-muted font-mono text-xs">Location & Work Mode</span>
+                  <span class="text-light font-mono text-sm fw-bold">{{ location }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Redes Sociales y Repositorios -->
+          <div class="pt-4 border-top border-subtle">
+            <span class="d-block text-muted font-mono text-xs mb-3">// PROFESSIONAL_NETWORKS</span>
+            <div class="d-flex gap-3">
+              <a [href]="linkedinUrl" target="_blank" class="btn btn-cyber-social flex-grow-1 font-mono text-xs py-2">
+                <i class="bi bi-linkedin me-2 text-cyan"></i>LinkedIn
+              </a>
+              <a [href]="githubUrl" target="_blank" class="btn btn-cyber-social flex-grow-1 font-mono text-xs py-2">
+                <i class="bi bi-github me-2 text-purple"></i>GitHub
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Columna Derecha: Formulario de Despacho tipo Payload -->
+      <div class="col-lg-7">
+        <div class="cyber-card p-4 p-md-5 h-100">
+          
+          <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom border-subtle">
+            <span class="font-mono text-xs text-cyan fw-bold"><i class="bi bi-lock-fill me-2"></i>SSL_ENCRYPTED_ENDPOINT</span>
+            <span class="badge bg-dark text-success border border-success font-mono text-xs">STATUS: 200 OK</span>
+          </div>
+
+          <form (ngSubmit)="sendDispatch()" #contactForm="ngForm">
+            <div class="row g-3">
+              
+              <div class="col-md-6">
+                <label class="form-label font-mono text-xs text-secondary">YOUR NAME *</label>
+                <input type="text" class="form-control cyber-input font-mono text-xs" 
+                       [(ngModel)]="formData.senderName" name="senderName" required placeholder="e.g. Alex Mercer">
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label font-mono text-xs text-secondary">YOUR EMAIL *</label>
+                <input type="email" class="form-control cyber-input font-mono text-xs" 
+                       [(ngModel)]="formData.senderEmail" name="senderEmail" required placeholder="alex@company.com">
+              </div>
+
+              <div class="col-12">
+                <label class="form-label font-mono text-xs text-secondary">SERVICE REQUIRED</label>
+                <select class="form-select cyber-input font-mono text-xs" [(ngModel)]="formData.serviceType" name="serviceType">
+                  <option value="Full-Stack Development">Full-Stack Development (MEAN/MERN)</option>
+                  <option value="Frontend Architecture">Frontend Architecture (Angular/React)</option>
+                  <option value="API Integration">REST API Development & Integration</option>
+                  <option value="Full-Time Hiring">Full-Time Remote Engineering Role</option>
+                </select>
+              </div>
+
+              <div class="col-12">
+                <label class="form-label font-mono text-xs text-secondary">MESSAGE / PROJECT DETAILS *</label>
+                <textarea class="form-control cyber-input font-mono text-xs" rows="5" 
+                          [(ngModel)]="formData.message" name="message" required 
+                          placeholder="Provide a brief description of your project or open position..."></textarea>
+              </div>
+
+              <div class="col-12 pt-3">
+                <button type="submit" [disabled]="!contactForm.form.valid || isSubmitting" 
+                        class="btn btn-view-projects w-100 py-3 font-mono text-xs fw-bold text-uppercase d-flex align-items-center justify-content-center gap-2">
+                  <span *ngIf="!isSubmitting">DISPATCH MESSAGE PAYLOAD</span>
+                  <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm me-2"></span>
+                  <i *ngIf="!isSubmitting" class="bi bi-arrow-right"></i>
+                </button>
+              </div>
+
+            </div>
+          </form>
+
+          <div *ngIf="submitSuccess" class="alert alert-success mt-4 font-mono text-xs bg-dark text-success border border-success">
+            <i class="bi bi-check-circle-fill me-2"></i>
+            Mensaje transmitido con éxito. ¡Gracias por contactarme! Responderé en menos de 24 horas.
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

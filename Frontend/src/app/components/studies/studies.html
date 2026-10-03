@@ -1,0 +1,66 @@
+<!-- ARCHIVO: src/app/components/studies/studies.html -->
+
+<section class="studies-section py-5 font-body">
+  <div class="container-fluid max-container px-4">
+    
+    <!-- Header de Sección -->
+    <div class="text-center mb-5">
+      <div class="d-inline-flex align-items-center gap-2 mb-3 px-3 py-1 rounded-pill status-pill-badge">
+        <i class="bi bi-mortarboard-fill text-cyan fs-6"></i>
+        <span class="font-mono text-xs fw-semibold tracking-wide text-secondary">// ACADEMIC_&_PROFESSIONAL_BACKGROUND</span>
+      </div>
+      <h2 class="display-5 font-display fw-bold text-light mb-3">Education & Credentials</h2>
+      <p class="text-secondary max-w-xl mx-auto fs-6">
+        Formación en ingeniería de software, bootcamp intensivo Full Stack, certificaciones bilingües C1 y credenciales técnicas orientadas a la industria tecnológica global.
+      </p>
+    </div>
+
+    <!-- Barra de Filtros -->
+    <div class="d-flex flex-wrap justify-content-center gap-2 mb-5">
+      <button 
+        *ngFor="let option of filterOptions"
+        (click)="setFilter(option.id)"
+        class="btn font-mono text-xs py-2 px-3 rounded-pill transition-all"
+        [ngClass]="activeFilter === option.id ? 'btn-cyber-active' : 'btn-cyber-idle'">
+        {{ option.label }}
+      </button>
+    </div>
+
+    <!-- Grid de Credenciales Académicas -->
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+      <div class="col" *ngFor="let item of filteredStudies">
+        <div class="cyber-card h-100 p-4 d-flex flex-column study-card-interactive">
+          
+          <div class="d-flex justify-content-between align-items-start mb-3">
+            <span class="badge font-mono text-xs px-3 py-1 rounded-pill"
+                  [ngClass]="item.type === 'academic' ? 'bg-cyan-soft text-cyan' : (item.type === 'specialization' ? 'bg-purple-soft text-purple' : 'bg-success-soft text-success')">
+              {{ item.type | uppercase }}
+            </span>
+            <span class="text-muted font-mono text-xs">{{ item.period }}</span>
+          </div>
+
+          <h3 class="h5 font-display fw-bold text-light mb-1">{{ item.title }}</h3>
+          <p class="text-cyan font-mono text-xs mb-3"><i class="bi bi-building me-1"></i>{{ item.institution }}</p>
+          
+          <p class="text-secondary text-sm flex-grow-1 mb-4 leading-relaxed">
+            {{ item.description }}
+          </p>
+
+          <div *ngIf="item.credentialId" class="credential-box p-2 rounded bg-black border border-subtle font-mono text-xs mb-3">
+            <span class="text-muted">ID Verificación:</span>
+            <span class="text-light ms-1 fw-bold">{{ item.credentialId }}</span>
+          </div>
+
+          <!-- Badges de Competencias -->
+          <div class="d-flex flex-wrap gap-1 mt-auto pt-3 border-top border-subtle">
+            <span *ngFor="let skill of item.skills" class="badge bg-dark border border-subtle text-secondary font-mono text-xs">
+              {{ skill }}
+            </span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

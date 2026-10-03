@@ -1,0 +1,151 @@
+<!-- Grid de Tarjetas de Proyectos Cyber-SaaS -->
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+  <div class="col" *ngFor="let project of projects">
+    
+    <div class="cyber-card-frame h-100 d-flex flex-column border border-subtle rounded-4 overflow-hidden">
+      
+      <!-- 1. HEADER DE VENTANA MOCKUP -->
+      <div class="window-titlebar d-flex align-items-center justify-content-between px-3 py-2 bg-dark-surface border-bottom border-subtle">
+        <div class="d-flex align-items-center gap-1.5">
+          <span class="window-dot dot-close"></span>
+          <span class="window-dot dot-minimize"></span>
+          <span class="window-dot dot-expand"></span>
+          
+          <span class="badge bg-cyan-subtle text-cyan border border-cyan-subtle font-mono text-micro px-2 py-1 rounded-pill">
+            {{ project.category }}
+          </span>
+        </div>
+      </div>
+
+      <!-- 2. CONTENEDOR DE IMAGEN A COMPLETO ANCHO -->
+      <div class="project-hero-image-wrapper position-relative w-100 overflow-hidden bg-black">
+        <img 
+          [src]="project.imageUrl" 
+          [alt]="project.title" 
+          loading="lazy"
+          class="img-fluid w-100 project-cover-img"
+          (error)="$any($event.target).src = 'https://placehold.co/800x480/060d16/00e5ff?text=' + project.title">
+        <div class="image-gradient-overlay"></div>
+      </div>
+
+      <!-- 3. BARRA DE ACCIONES PRINCIPALES (Live Demo & Inspect) -->
+      <div class="action-buttons-strip p-2.5 bg-black-subtle border-bottom border-subtle d-flex gap-2">
+        <a 
+          *ngIf="project.liveUrl" 
+          [href]="project.liveUrl" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="btn btn-sm btn-cyan-glow w-50 font-mono text-xs fw-bold d-flex align-items-center justify-content-center gap-1.5 py-2">
+          <i class="bi bi-box-arrow-up-right"></i>
+          <span>Live Demo</span>
+        </a>
+        <span *ngIf="!project.liveUrl" class="w-50 text-center text-muted font-mono text-micro align-self-center py-2">// IN_DEV</span>
+
+        <button 
+          (click)="openArchitectureModal(project)" 
+          class="btn btn-sm btn-purple-outline w-50 font-mono text-xs fw-bold d-flex align-items-center justify-content-center gap-1.5 py-2">
+          <i class="bi bi-cpu-fill"></i>
+          <span>Inspect</span>
+        </button>
+      </div>
+
+      <!-- 4. CUERPO DE LA TARJETA -->
+      <div class="card-content-body p-4 d-flex flex-column flex-grow-1">
+        
+        <!-- Título y Subtítulo -->
+        <div class="mb-3">
+          <h3 class="h5 font-display fw-bold text-light mb-1">{{ project.title }}</h3>
+        </div>
+
+        <!-- Descripción corta -->
+        <p class="project-description text-secondary text-xs mb-3 flex-grow-1 leading-relaxed">
+          {{ project.description }}
+        </p>
+
+        <!-- Rol del Desarrollador -->
+        <div class="role-badge-box mb-3 p-2 rounded-3 bg-dark-surface border border-subtle font-mono text-xs d-flex align-items-center gap-2">
+          <i class="bi bi-person-badge text-cyan fs-6"></i>
+          <span class="text-light fw-bold">{{ project.role }}</span>
+        </div>
+
+        <!-- CAJA DE TELEMETRÍA DE ALTO CONTRASTE (Corregido) -->
+        <div class="metrics-strip-box mb-3 p-2.5 rounded-3 bg-dark-surface border border-subtle font-mono text-micro d-flex justify-content-around">
+          <div *ngFor="let metric of project.metrics" class="d-flex align-items-center gap-1.5">
+            <i class="bi bi-graph-up-arrow text-cyan"></i>
+            <span class="text-secondary">{{ metric.label }}:</span>
+            <strong class="text-success-neon">{{ metric.value }}</strong>
+          </div>
+        </div>
+
+        <!-- Chips de Tecnologías -->
+        <div class="d-flex flex-wrap gap-1.5 mb-4">
+          <span *ngFor="let tech of project.technologies" class="tech-chip-badge font-mono text-micro px-2 py-1 rounded border border-subtle">
+            {{ tech }}
+          </span>
+        </div>
+
+        <!-- 5. FOOTER DE LA TARJETA -->
+        <div class="card-footer-actions d-flex align-items-center justify-content-between pt-3 border-top border-subtle mt-auto">
+          <a *ngIf="project.liveUrl" [href]="project.liveUrl" target="_blank" rel="noopener noreferrer" class="link-explore-project text-cyan font-mono text-xs fw-bold text-decoration-none d-flex align-items-center gap-1">
+            <span>View Project</span>
+            <i class="bi bi-arrow-right icon-arrow-slide"></i>
+          </a>
+          <span *ngIf="!project.liveUrl" class="text-muted font-mono text-xs">// PRIVATE_REPO</span>
+
+          <div class="d-flex  gap-2.5 social-media-links-project-cards">
+            <a *ngIf="project.liveUrl" [href]="project.liveUrl" target="_blank" rel="noopener noreferrer" class="social-icon-btn text-secondary hover-cyan" title="Direct Web Link">
+              <i class="bi bi-link-45deg fs-5"></i>
+            </a>
+            <a [href]="project.githubUrl" target="_blank" rel="noopener noreferrer" class="social-icon-btn text-secondary hover-cyan" title="GitHub Frontend Repo">
+              <i class="bi bi-github fs-6"></i>
+            </a>
+            <a *ngIf="project.fullstackRepoUrl && project.fullstackRepoUrl !== project.githubUrl" [href]="project.fullstackRepoUrl" target="_blank" rel="noopener noreferrer" class="social-icon-btn text-purple hover-purple" title="Fullstack Backend Repo">
+              <i class="bi bi-diagram-3-fill fs-6"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- Estado sin resultados -->
+<div *ngIf="projects.length === 0" class="text-center py-5 text-muted font-mono text-xs">
+  <i class="bi bi-slash-circle fs-3 d-block mb-2 text-cyan"></i>
+  <span>No projects found matching the active filter parameters.</span>
+</div>
+
+<!-- Modal Cyber-SaaS -->
+<div *ngIf="activeProjectModal" class="modal-backdrop-custom d-flex align-items-center justify-content-center p-3">
+  <div class="cyber-modal-card max-w-lg w-100 p-4 font-body animate-fadeIn rounded-4">
+    
+    <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom border-subtle">
+      <div>
+        <span class="text-cyan font-mono text-micro d-block mb-1">// SYSTEM_ARCHITECTURE_INSPECTOR</span>
+        <h4 class="font-display fw-bold text-light mb-0">{{ activeProjectModal.title }}</h4>
+      </div>
+      <button (click)="closeModal()" class="btn-close btn-close-white"></button>
+    </div>
+
+    <p class="text-secondary text-sm mb-3 leading-relaxed">{{ activeProjectModal.description }}</p>
+
+    <h5 class="font-mono text-xs text-cyan fw-bold mb-2">// TECHNICAL_HIGHLIGHTS</h5>
+    <ul class="list-unstyled font-mono text-xs text-secondary mb-4">
+      <li *ngFor="let highlight of activeProjectModal.architectureDetails" class="mb-2 d-flex align-items-start gap-2">
+        <i class="bi bi-caret-right-fill text-cyan"></i>
+        <span>{{ highlight }}</span>
+      </li>
+    </ul>
+
+    <div class="d-flex justify-content-end gap-2">
+      <a *ngIf="activeProjectModal.liveUrl" [href]="activeProjectModal.liveUrl" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-cyan-glow font-mono text-xs py-2 px-3">
+        Launch Live System <i class="bi bi-arrow-up-right ms-1"></i>
+      </a>
+      <button (click)="closeModal()" class="btn btn-sm btn-secondary-cyber font-mono text-xs py-2 px-3">Close</button>
+    </div>
+
+  </div>
+</div>

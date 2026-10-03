@@ -1,0 +1,216 @@
+/* ==========================================================================
+   CYBER-SAAS PREMIUM PROJECT CARDS STYLES
+   ========================================================================== */
+
+.text-micro {
+  font-size: 0.72rem;
+}
+
+.gap-1\.5 {
+  gap: 0.375rem;
+}
+
+.p-2\.5 {
+  padding: 0.625rem;
+}
+
+.bg-dark-surface {
+  background-color: rgba(3, 7, 18, 0.95);
+}
+
+.bg-black-subtle {
+  background-color: rgba(6, 13, 22, 0.9);
+}
+
+.bg-cyan-subtle {
+  background-color: rgba(0, 229, 255, 0.1);
+}
+
+.border-cyan-subtle {
+  border-color: rgba(0, 229, 255, 0.3) !important;
+}
+
+.text-success-neon {
+  color: #10b981 !important;
+  font-weight: 700;
+}
+
+/* Card Container */
+.cyber-card-frame {
+  background: var(--color-bg-card, rgba(11, 19, 32, 0.85));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease,
+              box-shadow 0.35s ease;
+}
+
+.cyber-card-frame:hover {
+  transform: translateY(-8px);
+  border-color: var(--color-cyan, #00e5ff) !important;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.8),
+              0 0 30px rgba(0, 229, 255, 0.22);
+}
+
+/* Dots de Ventana */
+.window-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-close { background-color: #ef4444; }
+.dot-minimize { background-color: #f59e0b; }
+.dot-expand { background-color: #10b981; }
+
+/* Contenedor Hero de Imagen */
+.project-hero-image-wrapper {
+  aspect-ratio: 16 / 9;
+  background-color: #030712;
+}
+
+.project-cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cyber-card-frame:hover .project-cover-img {
+  transform: scale(1.04);
+}
+
+.image-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 75%, rgba(3, 7, 18, 0.6) 100%);
+  pointer-events: none;
+}
+
+/* Botones de Acción */
+.btn-cyan-glow {
+  background: var(--gradient-brand-button, linear-gradient(135deg, #00e5ff 0%, #3b82f6 100%));
+  color: #000 !important;
+  border: none;
+  border-radius: var(--radius-sm, 8px);
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.25);
+  transition: all 0.2s ease;
+}
+
+.btn-cyan-glow:hover {
+  box-shadow: 0 0 25px rgba(0, 229, 255, 0.55);
+  transform: translateY(-2px);
+}
+
+.btn-purple-outline {
+  background: rgba(139, 92, 246, 0.1);
+  color: #a855f7 !important;
+  border: 1px solid rgba(139, 92, 246, 0.35);
+  border-radius: var(--radius-sm, 8px);
+  transition: all 0.2s ease;
+}
+
+.btn-purple-outline:hover {
+  background: rgba(139, 92, 246, 0.25);
+  border-color: #a855f7;
+  color: #fff !important;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Badges y Chips */
+.role-badge-box {
+  background: rgba(15, 23, 42, 0.7);
+}
+
+.tech-chip-badge {
+  background: rgba(15, 23, 42, 0.85);
+  color: var(--color-text-secondary, #94a3b8);
+  transition: all 0.2s ease;
+}
+
+.cyber-card-frame:hover .tech-chip-badge {
+  border-color: rgba(0, 229, 255, 0.3) !important;
+  color: #f8fafc;
+}
+
+/* Links Footer */
+.link-explore-project {
+  transition: transform 0.2s ease;
+}
+
+.link-explore-project:hover {
+  color: #00e5ff !important;
+}
+
+.link-explore-project:hover .icon-arrow-slide {
+  transform: translateX(4px);
+}
+
+.icon-arrow-slide {
+  transition: transform 0.2s ease;
+}
+
+.social-icon-btn {
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.social-icon-btn:hover {
+  transform: translateY(-2px);
+}
+
+.hover-cyan:hover {
+  color: var(--color-cyan, #00e5ff) !important;
+}
+
+.hover-purple:hover {
+  color: #a855f7 !important;
+}
+
+/* Modal Cyber-SaaS */
+.modal-backdrop-custom {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  z-index: 9999;
+}
+
+.cyber-modal-card {
+  background: #060d16;
+  border: 1px solid var(--color-cyan, #00e5ff);
+  box-shadow: 0 0 45px rgba(0, 229, 255, 0.25);
+}
+
+.btn-secondary-cyber {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.15));
+  color: #fff;
+}
+
+.btn-secondary-cyber:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+.window-titlebar{
+  padding: 15px !important;
+  gap: 8px !important;
+}
+
+.social-media-links-project-cards{
+  gap: 0.625rem !important;
+}
