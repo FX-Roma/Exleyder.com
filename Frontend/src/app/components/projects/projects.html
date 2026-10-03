@@ -1,47 +1,125 @@
 <section class="projects-page-section py-5 font-body">
   <div class="container-fluid max-container px-3 px-md-4">
     
-    <!-- Encabezado de Sección con Badges Tecnológicos -->
-    <div class="text-center text-md-start mb-5">
-      <div class="d-inline-flex align-items-center gap-2 mb-2 px-3 py-1 rounded-pill section-tag-badge">
-        <i class="bi bi-terminal-fill text-cyan fs-6"></i>
-        <span class="font-mono text-micro fw-bold text-cyan tracking-wider"> Code + love = my projects</span>
-      </div>
-      <h1 class="display-5 font-display fw-bold text-light mb-2">Projects That Solve Real Problems.</h1>
-      <p class="text-secondary fs-6 max-w-2xl mb-0">
-        Arquitecturas Full-Stack escalables, interfaces dinámicas de alto rendimiento e integraciones de API REST diseñadas bajo estándares globales.
-      </p>
-    </div>
-
-    <!-- Toolbar de Búsqueda y Filtros en Card Flotante -->
-    <div class="cyber-toolbar-card p-3 p-md-4 rounded-4 mb-5 border border-subtle d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center justify-content-between gap-3">
+    <!-- =================================================================== -->
+    <!-- VISTA 1: PRESENTACIÓN Y METODOLOGÍA FREELANCE (Estado Inicial)      -->
+    <!-- =================================================================== -->
+    <div *ngIf="!isExploreMode" class="freelance-overview-container animate-fade-in">
       
-      <!-- Buscador con icono animado -->
-      <div class="position-relative search-input-wrapper flex-grow-1 max-w-md">
-        <i class="bi bi-search search-icon text-cyan"></i>
-        <input 
-          type="text" 
-          class="form-control cyber-search-input font-mono text-xs ps-5 py-2.5" 
-          placeholder="Filter by technology (Angular, Node, Express, API)..." 
-          [(ngModel)]="searchQuery">
+      <!-- Encabezado de la Vista 1 -->
+      <div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center justify-content-between mb-5 gap-4">
+        <div class="max-w-2xl">
+          <div class="d-inline-flex align-items-center gap-2 mb-2 px-3 py-1 rounded-pill section-tag-badge">
+            <i class="bi bi-code-slash text-cyan fs-6"></i>
+            <span class="font-mono text-micro fw-bold text-cyan tracking-wider">Projects That Solve Real Problems.</span>
+          </div>
+          <h1 class="display-4 font-display fw-bold text-light mb-3">Explore my projects and share your feedback with me!</h1>
+          <p class="text-secondary fs-6 leading-relaxed mb-0">
+            If you're interested in my work, feel free to explore the projects below and provide any feedback you may have!
+          </p>
+        </div>
+
+        <!-- Botón Circular Estilo Apple para Explorar Proyectos -->
+        <div class="apple-trigger-wrapper text-center">
+          <button 
+            (click)="toggleExploreMode()" 
+            class="apple-circle-btn d-flex align-items-center justify-content-center"
+            title="Explore Interactive Project Catalog">
+            <i class="bi bi-chevron-right icon-apple-arrow"></i>
+          </button>
+          <span class="font-mono text-micro text-cyan d-block mt-2 tracking-wider fw-semibold">// EXPLORE_CATALOG</span>
+        </div>
       </div>
 
-      <!-- Filtros por Categoría -->
-      <div class="d-flex align-items-center flex-wrap gap-2">
-        <span class="text-muted text-micro font-mono me-1 d-none d-sm-inline">// FILTER_BY:</span>
-        <button 
-          *ngFor="let cat of categories"
-          (click)="filterCategory(cat.id)"
-          class="btn btn-filter-pill font-mono text-micro px-3 py-2 rounded-pill"
-          [class.active]="selectedCategory === cat.id">
-          {{ cat.label }}
-        </button>
+      <!-- Tarjetas de Experiencia Freelance y Estándares Técnicos -->
+      <div class="row row-cols-1 row-cols-md-3 g-4 mb-4">
+        
+        <div class="col">
+          <div class="freelance-feature-card p-4 rounded-4 h-100 border border-subtle">
+            <div class="feature-icon-wrapper mb-3">
+              <i class="bi bi-layers-half text-cyan fs-3"></i>
+            </div>
+            <h3 class="h5 font-display fw-bold text-light mb-2">Desarrollo End-to-End</h3>
+            <p class="text-secondary text-xs leading-relaxed mb-0">
+              Desde la concepción de la base de datos hasta la interfaz del cliente. Diseños desacoplados y mantenibles que garantizan estabilidad a largo plazo.
+            </p>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="freelance-feature-card p-4 rounded-4 h-100 border border-subtle">
+            <div class="feature-icon-wrapper mb-3">
+              <i class="bi bi-lightning-charge-fill text-cyan fs-3"></i>
+            </div>
+            <h3 class="h5 font-display fw-bold text-light mb-2">Rendimiento & Accesibilidad</h3>
+            <p class="text-secondary text-xs leading-relaxed mb-0">
+              Carga optimizada en sub-segundos, cumplimiento estricto de WCAG 2.1 AA y cero desplazamientos de diseño inesperados (0 CLS).
+            </p>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="freelance-feature-card p-4 rounded-4 h-100 border border-subtle">
+            <div class="feature-icon-wrapper mb-3">
+              <i class="bi bi-shield-check text-cyan fs-3"></i>
+            </div>
+            <h3 class="h5 font-display fw-bold text-light mb-2">Seguridad & Producción</h3>
+            <p class="text-secondary text-xs leading-relaxed mb-0">
+              Autenticación JWT/RBAC, protección contra inyecciones y sanetización de datos lista para despliegues empresariales.
+            </p>
+          </div>
+        </div>
+
       </div>
 
     </div>
 
-    <!-- Grid de Tarjetas Reutilizable -->
-    <app-project-cards [projects]="filteredProjects"></app-project-cards>
+    <!-- =================================================================== -->
+    <!-- VISTA 2: BUSCADOR Y CATÁLOGO DE PROYECTOS (Al hacer clic en Apple CTA) -->
+    <!-- =================================================================== -->
+    <div *ngIf="isExploreMode" class="explore-catalog-container animate-fade-in">
+      
+      <!-- Top Bar con Botón para Regresar -->
+      <div class="d-flex align-items-center justify-content-between mb-4 pb-3 border-bottom border-subtle">
+        <button 
+          (click)="toggleExploreMode()" 
+          class="btn btn-sm btn-dark-back font-mono text-xs d-inline-flex align-items-center gap-2 px-3 py-2">
+          <i class="bi bi-arrow-left text-cyan"></i>
+          <span>Return to Overview</span>
+        </button>
+
+      </div>
+
+      <!-- Toolbar de Búsqueda y Filtros -->
+      <div class="cyber-toolbar-card p-3 p-md-4 rounded-4 mb-5 border border-subtle d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center justify-content-between gap-3">
+        
+        <!-- Buscador con icono animado -->
+        <div class="position-relative search-input-wrapper flex-grow-1 max-w-md">
+          <i class="bi bi-search search-icon text-cyan"></i>
+          <input 
+            type="text" 
+            class="form-control cyber-search-input font-mono text-xs ps-5 py-2.5" 
+            placeholder="Filter by technology (Angular, Node, Express, API)..." 
+            [(ngModel)]="searchQuery">
+        </div>
+
+        <!-- Filtros por Categoría -->
+        <div class="d-flex align-items-center flex-wrap gap-2">
+          <button 
+            *ngFor="let cat of categories"
+            (click)="filterCategory(cat.id)"
+            class="btn btn-filter-pill font-mono text-micro px-3 py-2 rounded-pill"
+            [class.active]="selectedCategory === cat.id">
+            {{ cat.label }}
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Grid Reutilizable de Tarjetas de Proyectos -->
+      <app-project-cards [projects]="filteredProjects"></app-project-cards>
+
+    </div>
 
   </div>
 </section>

@@ -15,6 +15,7 @@ export class ProjectsComponent {
   public projects: Project[] = PROJECTS_DATA;
   public selectedCategory: string = 'all';
   public searchQuery: string = '';
+  public isExploreMode: boolean = false;
 
   public categories = [
     { id: 'all', label: 'All Projects' },
@@ -22,6 +23,10 @@ export class ProjectsComponent {
     { id: 'frontend', label: 'Frontend' },
     { id: 'api', label: 'REST APIs' }
   ];
+
+  public toggleExploreMode(): void {
+    this.isExploreMode = !this.isExploreMode;
+  }
 
   public filterCategory(catId: string): void {
     this.selectedCategory = catId;

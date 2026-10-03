@@ -1,3 +1,7 @@
+/* ==========================================================================
+   PROJECTS SECTION & APPLE-STYLE TRIGGER BUTTON STYLES
+   ========================================================================== */
+
 .projects-page-section {
   position: relative;
   z-index: 2;
@@ -30,7 +34,89 @@
   border: 1px solid rgba(0, 229, 255, 0.2);
 }
 
-/* Card Contenedora de la Toolbar */
+/* --------------------------------------------------------------------------
+   BOTÓN CIRCULAR ESTILO APPLE
+   -------------------------------------------------------------------------- */
+.apple-trigger-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.apple-circle-btn {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  color: var(--color-cyan, #00e5ff);
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 229, 255, 0.15);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.35s ease,
+              border-color 0.35s ease,
+              box-shadow 0.35s ease;
+}
+
+.icon-apple-arrow {
+  font-size: 1.75rem;
+  transition: transform 0.3s ease;
+}
+
+.apple-circle-btn:hover {
+  transform: scale(1.1);
+  background: rgba(0, 229, 255, 0.15);
+  border-color: var(--color-cyan, #00e5ff);
+  box-shadow: 0 0 35px rgba(0, 229, 255, 0.5);
+}
+
+.apple-circle-btn:hover .icon-apple-arrow {
+  transform: translateX(4px);
+}
+
+/* --------------------------------------------------------------------------
+   TARJETAS DE EXPERIENCIA FREELANCE
+   -------------------------------------------------------------------------- */
+.freelance-feature-card {
+  background: rgba(11, 19, 32, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.freelance-feature-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0, 229, 255, 0.3) !important;
+}
+
+.feature-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(0, 229, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --------------------------------------------------------------------------
+   NAVBAR DE REGRESO & TOOLBAR
+   -------------------------------------------------------------------------- */
+.btn-dark-back {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.12));
+  color: #fff;
+  border-radius: var(--radius-sm, 8px);
+  transition: all 0.2s ease;
+}
+
+.btn-dark-back:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(0, 229, 255, 0.4);
+}
+
 .cyber-toolbar-card {
   background: rgba(11, 19, 32, 0.65);
   backdrop-filter: blur(16px);
@@ -60,7 +146,7 @@
   box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
 }
 
-/* Campo de Búsqueda */
+/* Input de Búsqueda */
 .search-icon {
   position: absolute;
   top: 50%;
@@ -85,4 +171,14 @@
 .cyber-search-input:focus {
   border-color: var(--color-cyan, #00e5ff) !important;
   box-shadow: 0 0 20px rgba(0, 229, 255, 0.25) !important;
+}
+
+/* Transición Animada */
+.animate-fade-in {
+  animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
 }

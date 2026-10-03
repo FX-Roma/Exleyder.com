@@ -11,9 +11,7 @@
           <span class="window-dot dot-minimize"></span>
           <span class="window-dot dot-expand"></span>
           
-          <span class="badge bg-cyan-subtle text-cyan border border-cyan-subtle font-mono text-micro px-2 py-1 rounded-pill">
-            {{ project.category }}
-          </span>
+
         </div>
       </div>
 
@@ -55,6 +53,9 @@
         <!-- Título y Subtítulo -->
         <div class="mb-3">
           <h3 class="h5 font-display fw-bold text-light mb-1">{{ project.title }}</h3>
+            <span class="badge bg-cyan-subtle text-cyan border border-cyan-subtle font-mono text-micro px-2 py-1 rounded-pill">
+              {{ project.category }}
+            </span>
         </div>
 
         <!-- Descripción corta -->
@@ -63,7 +64,7 @@
         </p>
 
         <!-- Rol del Desarrollador -->
-        <div class="role-badge-box mb-3 p-2 rounded-3 bg-dark-surface border border-subtle font-mono text-xs d-flex align-items-center gap-2">
+        <div class="role-project d-flex align-items-center gap-2 mb-3 text-xs ">
           <i class="bi bi-person-badge text-cyan fs-6"></i>
           <span class="text-light fw-bold">{{ project.role }}</span>
         </div>

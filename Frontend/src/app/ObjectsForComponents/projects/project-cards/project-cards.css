@@ -214,3 +214,8 @@
 .social-media-links-project-cards{
   gap: 0.625rem !important;
 }
+.role-project{
+  border-radius: 9999px !important;
+  background: rgba(0, 229, 255, 0.1) !important;
+  padding: 0.25rem 0.75rem !important;
+}

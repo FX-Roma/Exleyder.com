@@ -11,7 +11,7 @@
      ------------------------------------------------------------------------ */
   --font-display: "Space Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+  --font-mono: 'Poppins', sans-serif;
   
 
   /* Font Weights */
@@ -61,6 +61,8 @@
   --color-text-muted: #64748b;
   --color-text-disabled: #334155;
   --color-text-inverse: #030712;
+  --color-accent-code: #7d54e0;
+  --color-const: #ed3d5b;
   
 
   /* Accents */
