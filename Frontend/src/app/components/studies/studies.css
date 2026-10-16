@@ -55,3 +55,6 @@
 .credential-box {
   border-color: var(--border-subtle) !important;
 }
+.item-period{
+  flex-start: right;
+}

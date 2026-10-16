@@ -15,16 +15,13 @@ export class NavbarComponent {
 
   public navLinks = [
   { label: 'Home', path: '/home' },
-  { label: 'Projects', path: '/projects' },
+  { label: 'Experience', path: '/projects' },
   { label: 'Studies', path: '/studies' },
   { label: 'Skills', path: '/skills' },
   { label: 'Contact', path: '/contact' }
 ];
 
-  /**
-   * Listens to the browser window scroll event.
-   * Activates the background state when scroll Y position exceeds 20px.
-   */
+
   @HostListener('window:scroll', [])
   onWindowScroll(): void {
     const scrollPosition = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;

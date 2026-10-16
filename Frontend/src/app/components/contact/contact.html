@@ -12,13 +12,13 @@
     <div class="text-center mb-5">
       <div class="d-inline-flex align-items-center gap-2 mb-3 px-3 py-1 rounded-pill status-pill-badge">
         <i class="bi bi-send-check-fill text-cyan fs-6"></i>
-        <span class="font-mono text-xs fw-semibold tracking-wide text-secondary">// DIRECT_COMMUNICATION_DISPATCH</span>
+        <span class="font-mono text-xs fw-semibold tracking-wide text-secondary">Contact me</span>
       </div>
       <h1 class="display-4 font-display fw-bold text-light mb-3">
         LET'S BUILD SOMETHING <span class="text-gradient">EXTRAORDINARY.</span>
       </h1>
       <p class="text-secondary max-w-xl mx-auto fs-6">
-        Disponible para contratos de desarrollo web Full-Stack, liderazgo técnico en proyectos bilingües y roles remotos internacionales.
+        Available for full-stack web development contracts, technical leadership on bilingual projects, and remote roles—both domestic and international.
       </p>
     </div>
 
@@ -26,10 +26,9 @@
       
       <!-- Columna Izquierda: Información de Contacto Directo -->
       <div class="col-lg-5">
-        <div class="cyber-card h-100 p-4 p-md-5 d-flex flex-column justify-content-between">
+        <div class="cyber-card h-100 p-4 p-md-5 d-flex flex-column justify-content-start gap-4">
           
           <div>
-            <h3 class="h4 font-display fw-bold text-light mb-4">// DIRECT_CHANNELS</h3>
 
             <!-- Email Directo -->
             <div (click)="copyToClipboard(primaryEmail, 'Email')" class="contact-channel-card p-3 rounded-3 border border-subtle mb-3 cursor-pointer">
@@ -38,7 +37,7 @@
                   <i class="bi bi-envelope-at-fill text-cyan fs-5"></i>
                 </div>
                 <div>
-                  <span class="d-block text-muted font-mono text-xs">Primary Email (Click to Copy)</span>
+                  <span class="d-block text-muted font-mono text-xs">Primary Email</span>
                   <span class="text-light font-mono text-sm fw-bold">{{ primaryEmail }}</span>
                 </div>
               </div>
@@ -72,8 +71,7 @@
           </div>
 
           <!-- Redes Sociales y Repositorios -->
-          <div class="pt-4 border-top border-subtle">
-            <span class="d-block text-muted font-mono text-xs mb-3">// PROFESSIONAL_NETWORKS</span>
+          <div class=" border-top border-subtle">
             <div class="d-flex gap-3">
               <a [href]="linkedinUrl" target="_blank" class="btn btn-cyber-social flex-grow-1 font-mono text-xs py-2">
                 <i class="bi bi-linkedin me-2 text-cyan"></i>LinkedIn
@@ -91,24 +89,19 @@
       <div class="col-lg-7">
         <div class="cyber-card p-4 p-md-5 h-100">
           
-          <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom border-subtle">
-            <span class="font-mono text-xs text-cyan fw-bold"><i class="bi bi-lock-fill me-2"></i>SSL_ENCRYPTED_ENDPOINT</span>
-            <span class="badge bg-dark text-success border border-success font-mono text-xs">STATUS: 200 OK</span>
-          </div>
+
 
           <form (ngSubmit)="sendDispatch()" #contactForm="ngForm">
             <div class="row g-3">
               
               <div class="col-md-6">
-                <label class="form-label font-mono text-xs text-secondary">YOUR NAME *</label>
-                <input type="text" class="form-control cyber-input font-mono text-xs" 
-                       [(ngModel)]="formData.senderName" name="senderName" required placeholder="e.g. Alex Mercer">
+                <label class="form-label font-mono text-xs text-secondary "> NAME</label>
+                <input type="text" class="form-control cyber-input font-mono text-xs" [(ngModel)]="formData.senderName" name="senderName" required placeholder="e.g. Alex Mercer">
               </div>
 
               <div class="col-md-6">
-                <label class="form-label font-mono text-xs text-secondary">YOUR EMAIL *</label>
-                <input type="email" class="form-control cyber-input font-mono text-xs" 
-                       [(ngModel)]="formData.senderEmail" name="senderEmail" required placeholder="alex@company.com">
+                <label class="form-label font-mono text-xs text-secondary"> EMAIL</label>
+                <input type="email" class="form-control cyber-input font-mono text-xs" [(ngModel)]="formData.senderEmail" name="senderEmail" required placeholder="alex@company.com">
               </div>
 
               <div class="col-12">
@@ -118,11 +111,12 @@
                   <option value="Frontend Architecture">Frontend Architecture (Angular/React)</option>
                   <option value="API Integration">REST API Development & Integration</option>
                   <option value="Full-Time Hiring">Full-Time Remote Engineering Role</option>
+                  <option value="Other">Other (please specify)</option>
                 </select>
               </div>
 
               <div class="col-12">
-                <label class="form-label font-mono text-xs text-secondary">MESSAGE / PROJECT DETAILS *</label>
+                <label class="form-label font-mono text-xs text-secondary">MESSAGE</label>
                 <textarea class="form-control cyber-input font-mono text-xs" rows="5" 
                           [(ngModel)]="formData.message" name="message" required 
                           placeholder="Provide a brief description of your project or open position..."></textarea>

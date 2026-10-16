@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './contact.css'
 })
 export class ContactComponent {
-  public primaryEmail: string = 'orejuelabreiman@gmail.com';
+  public primaryEmail: string = 'exjobs7@gmail.com';
   public phoneNumber: string = '+57 313 450 0680';
   public location: string = 'Bogotá, Colombia // Open for Remote & Relocation';
   public linkedinUrl: string = 'https://linkedin.com/in/exleyder-gallego-4207b3320';

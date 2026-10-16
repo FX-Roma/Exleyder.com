@@ -7,7 +7,7 @@
     <div class="text-center mb-5">
       <div class="d-inline-flex align-items-center gap-2 mb-3 px-3 py-1 rounded-pill status-pill-badge">
         <i class="bi bi-shield-check text-cyan fs-6"></i>
-        <span class="font-mono text-xs fw-semibold tracking-wide text-secondary">// DOMAIN_CAPABILITIES</span>
+        <span class="font-mono text-xs fw-semibold tracking-wide text-secondary">DOMAIN CAPABILITIES & SKILLS</span>
       </div>
       <h2 class="display-4 font-display fw-bold text-light mb-3">Technologies & Core Skills</h2>
       <p class="text-secondary max-w-xl mx-auto fs-6">
@@ -31,7 +31,7 @@
             </div>
             <div>
               <h3 class="h5 font-display fw-bold text-light mb-0">{{ category.title }}</h3>
-              <span class="text-muted font-mono text-xs">// {{ category.id | uppercase }}</span>
+              <span class="text-muted font-mono text-xs">{{ category.id | uppercase }}</span>
             </div>
           </div>
 
@@ -40,7 +40,7 @@
           </p>
 
           <!-- Skills Pills -->
-          <div class="d-flex flex-wrap gap-2 mt-auto pt-3 border-top border-subtle">
+          <div class="d-flex flex-wrap gap-2  pt-3  border-subtle">
             <span *ngFor="let skill of category.skills" class="skill-badge-pill font-mono text-xs">
               {{ skill }}
             </span>
