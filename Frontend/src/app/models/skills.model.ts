@@ -1,45 +1,94 @@
+export interface SkillItem {
+  name: string;
+  contextTag: string; // ej. "RxJS / Signals / SSR" (Sin porcentajes)
+  isHighlighted?: boolean;
+}
+
 export interface SkillCategory {
   id: string;
+  categoryLabel: string;
   title: string;
-  icon: string;
   description: string;
-  skills: string[];
+  iconType: 'frontend' | 'backend' | 'database' | 'ai';
+  skills: SkillItem[];
+  projectEvidence: {
+    label: string;
+    url: string;
+    isExternal?: boolean;
+  };
 }
 
 export const SKILLS_DATA: SkillCategory[] = [
   {
     id: 'frontend',
-    title: 'Frontend Engineering',
-    icon: 'bi-layout-text-window-reverse',
-    description: 'Building high-performance, accessible, and responsive user interfaces with zero CLS.',
-    skills: ['Angular 18+', 'TypeScript', 'React.js', 'JavaScript ES6+', 'HTML5 / CSS3', 'Bootstrap 5', 'Tailwind CSS']
+    categoryLabel: 'FRONTEND ARCHITECTURE',
+    title: 'Reactive UIs & Web Performance',
+    description: 'Engineering scalable, accessible, and high-performance user interfaces with zero layout shifts and sub-second load times.',
+    iconType: 'frontend',
+    skills: [
+      { name: 'Angular 18+', contextTag: 'Signals, Standalone, SSR', isHighlighted: true },
+      { name: 'TypeScript', contextTag: 'Strict Typing, Design Patterns', isHighlighted: true },
+      { name: 'RxJS & State Management', contextTag: 'Async Pipelines, Reactive Streams' },
+      { name: 'React & Next.js', contextTag: 'CSR/SSR, Component Architecture' },
+      { name: 'TailwindCSS & CSS3', contextTag: 'CSS Houdini, Responsive Grid, A11y' }
+    ],
+    projectEvidence: {
+      label: 'Applied in KEFEX Platform',
+      url: 'https://github.com/FX-Roma/KEFEX',
+      isExternal: true
+    }
   },
   {
     id: 'backend',
-    title: 'Backend & REST APIs',
-    icon: 'bi-server',
-    description: 'Architecting scalable server-side applications, secure endpoints, and business logic.',
-    skills: ['Node.js', 'Express.js', 'RESTful APIs', 'JWT Authentication', 'Middleware Pipelines', 'CORS & Security']
+    categoryLabel: 'BACKEND & CLOUD APIs',
+    title: 'RESTful Services & Microservices',
+    description: 'Designing secure, decoupled backend architectures, API gateways, and robust authentication pipelines.',
+    iconType: 'backend',
+    skills: [
+      { name: 'Node.js & Express', contextTag: 'REST APIs, SSR Integration', isHighlighted: true },
+      { name: 'NestJS', contextTag: 'Modular Architecture, Dependency Injection' },
+      { name: 'Security & Auth', contextTag: 'JWT, OAuth2, RBAC, Rate Limiting', isHighlighted: true },
+      { name: 'REST & GraphQL', contextTag: 'Endpoint Design, Payload Validation' }
+    ],
+    projectEvidence: {
+      label: 'Applied in School Core System',
+      url: 'https://github.com/CubbbMc/FullstackColegio',
+      isExternal: true
+    }
   },
   {
-    id: 'databases',
-    title: 'Databases & Storage',
-    icon: 'bi-database-fill-gear',
-    description: 'Designing relational and document-oriented database schemas for high data integrity.',
-    skills: ['MongoDB', 'PostgreSQL', 'SQL Server', 'MySQL', 'Mongoose ORM', 'Web Storage API']
+    id: 'database-devops',
+    categoryLabel: 'DATABASES & DEVOPS',
+    title: 'Data Modeling & CI/CD Pipelines',
+    description: 'Relational and NoSQL database optimization, containerized environments, and automated continuous deployment.',
+    iconType: 'database',
+    skills: [
+      { name: 'PostgreSQL & MySQL', contextTag: 'Relational Schemas, Indexing', isHighlighted: true },
+      { name: 'MongoDB & Redis', contextTag: 'NoSQL, Caching Layers' },
+      { name: 'Docker & Git', contextTag: 'Containerization, Version Control', isHighlighted: true },
+      { name: 'CI/CD & Linux', contextTag: 'Nginx, Cloud Hosting, Bash Scripting' }
+    ],
+    projectEvidence: {
+      label: 'Applied in Brasilia Bosa Portal',
+      url: 'https://github.com/FX-Roma/Brasilia-Bosa-IED',
+      isExternal: true
+    }
   },
   {
-    id: 'ai-tools',
-    title: 'AI & Digital Tooling',
-    icon: 'bi-cpu-fill',
-    description: 'Leveraging modern AI platforms and developer tooling to accelerate release cycles.',
-    skills: ['LangChain', 'GitHub Copilot', 'OpenAI APIs', 'Docker', 'Vercel', 'Git / GitHub']
-  },
-  {
-    id: 'soft-skills',
-    title: 'Communication & Customer Success',
-    icon: 'bi-chat-heart-fill',
-    description: 'Bridging complex technical solutions with clear bilingual stakeholder communication.',
-    skills: ['C1 Advanced English', 'Native Spanish', 'Customer Support Experience', 'Conflict Resolution', 'Team Collaboration']
+    id: 'ai-engineering',
+    categoryLabel: 'AI & AGENTIC TOOLS',
+    title: 'AI Workflows & Code Auditing',
+    description: 'Leveraging AI coding partners, LLM integrations, and automated testing standards to accelerate product delivery.',
+    iconType: 'ai',
+    skills: [
+      { name: 'Copilot & AI Collaborators', contextTag: 'Contextual Prompting, Fast Prototyping', isHighlighted: true },
+      { name: 'LLM Integration', contextTag: 'REST API Wrappers, Prompt Engineering' },
+      { name: 'Code Quality & Testing', contextTag: 'Jasmine, Jest, Static Code Analysis', isHighlighted: true }
+    ],
+    projectEvidence: {
+      label: 'Applied in Portfolio Architecture',
+      url: 'https://github.com/FX-Roma',
+      isExternal: true
+    }
   }
 ];

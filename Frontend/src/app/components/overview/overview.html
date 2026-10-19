@@ -1,16 +1,12 @@
 <!-- src/app/components/overview/overview.html -->
-<section class="overview-section py-5 font-body">
+<section class="overview-section font-body">
   <div class="container-fluid max-container px-4">
     <div class="row  g-5">
       
       <!-- Left Column: Content & Pitch -->
       <div class="col-lg-7">
         
-        <!-- Status Tag -->
-        <div class="d-inline-flex align-items-center gap-2 mb-4 px-3 py-1 rounded-pill status-pill-badge">
-          <span class="status-pulse-dot"></span>
-          <span class="font-mono text-xs fw-semibold tracking-wide text-secondary">{{ developerRoleTag }}</span>
-        </div>
+
 
         <!-- Interactive Slogan with Custom Cursor Trigger -->
         <div class="slogan-hover-trigger position-relative d-inline-block mb-4"
@@ -36,9 +32,11 @@
         </div>
 
         <!-- Subtitle Slogan -->
-        <p class="font-mono text-cyan text-xs mb-4 tracking-wide">
-          WHERE HIGH-PERFORMANCE CODE MEETS REAL-WORLD BUSINESS IMPACT.
-        </p>
+                 <!-- Status Tag -->
+        <div class="d-inline-flex align-items-center gap-1 mb-4 px-3 py-2 rounded-pill status-pill-badge">
+          <span class="status-pulse-dot"></span> 
+          <span class="font-mono text-xs fw-semibold tracking-wide text-secondary">{{ developerRoleTag }}</span>
+        </div>
 
         <!-- Biography -->
         <p class="lead text-secondary mb-5 max-w-xl pe-lg-4 fs-6 leading-relaxed">

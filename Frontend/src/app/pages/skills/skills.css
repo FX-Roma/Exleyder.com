@@ -1,196 +1,202 @@
+/* ==========================================================================
+   SKILLS SECTION - 3D PERSPECTIVE TILT & AMBIENT FIXES
+   ========================================================================== */
+
 .skills-section {
   position: relative;
   width: 100%;
-  padding: 6rem 1.5rem;
-  background-color: var(--bg-deep);
+  background-color: var(--bg-deep, #030712);
   color: #f8fafc;
-  overflow: hidden;
-  border-top: 1px solid var(--border-glass);
+  overflow: hidden; /* Contiene las esferas dentro de la sección */
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Aurora Backdrop ajustada para la sección Skills */
+.max-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   CORRECCIÓN DEFINITIVA DEL FONDO (AURORA BOREAL DE ESFERAS)
+   -------------------------------------------------------------------------- */
+.aurora-backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
 .glow-purple-skills {
-  top: 10%;
-  left: -5%;
-  width: 600px;
-  height: 450px;
-  background: radial-gradient(circle, var(--color-purple-glow) 0%, transparent 70%);
+  position: absolute;
+  top: 20%;
+  left: 15%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(112, 0, 255, 0.18) 0%, transparent 70%);
+  filter: blur(80px);
+  transform: translate(-50%, -50%);
 }
 
 .glow-emerald-skills {
-  bottom: -10%;
-  right: -5%;
-  width: 500px;
-  height: 400px;
-  background: radial-gradient(circle, var(--color-emerald-glow) 0%, transparent 70%);
-  animation-delay: -9s;
-}
-
-.skills-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
+  position: absolute;
+  bottom: 10%;
+  right: 15%;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
+  filter: blur(90px);
+  transform: translate(50%, 50%);
 }
 
 .gradient-text-skills {
-  background: linear-gradient(
-    var(--gradient-angle),
-    var(--color-purple-glow) 0%,
-    var(--color-cyan-glow) 50%,
-    var(--color-emerald-glow) 100%
-  );
+  background: linear-gradient(135deg, #00e5ff 0%, #7000ff 50%, #10b981 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: rotate-gradient 10s linear infinite;
 }
 
-/* ==========================================================================
-   SKILLS GRID & CARD HOVER DYNAMICS
-   ========================================================================== */
-.skills-grid {
+/* --------------------------------------------------------------------------
+   CUADRÍCULA Y TARJETAS CON PERSPECTIVA 3D
+   -------------------------------------------------------------------------- */
+.skills-3d-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  gap: 1.75rem;
+  perspective: 1000px; /* Habilita el entorno tridimensional */
 }
 
-.skill-card {
+.skill-3d-card {
+  --rx: 0deg;
+  --ry: 0deg;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+
   position: relative;
-  background: var(--bg-surface-glass);
+  background: rgba(15, 23, 42, 0.75);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--border-glass);
-  border-radius: 24px;
-  padding: 2.25rem;
-  box-shadow: var(--shadow-glass);
-  will-change: transform;
-  transition: transform 0.4s var(--ease-elastic), border-color 0.3s var(--ease-smooth), box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  transform-style: preserve-3d; /* Permite elevación Z de elementos internos */
+  transform: rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform 0.15s ease-out, border-color 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
 }
 
-/* Animación atada al Scroll (SDA) */
-@supports (animation-timeline: view()) {
-  .skill-card {
-    animation: sda-skill-card-reveal linear forwards;
-    animation-timeline: view();
-    animation-range: entry 10% entry 75%;
-  }
+/* Capa de Luz Especular Reactiva al Cursor */
+.specular-light-layer {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    600px circle at var(--mouse-x) var(--mouse-y),
+    rgba(0, 229, 255, 0.12),
+    transparent 40%
+  );
+  pointer-events: none;
+  z-index: 2;
+  transition: opacity 0.3s ease;
 }
 
-@keyframes sda-skill-card-reveal {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 50px, 0) scale(0.92);
-    filter: blur(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1);
-    filter: blur(0);
-  }
+.skill-3d-card:hover {
+  border-color: rgba(0, 229, 255, 0.4) !important;
+  box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.8),
+              0 0 30px rgba(0, 229, 255, 0.2);
 }
 
-.skill-card:hover {
-  transform: translate3d(0, -8px, 0) scale(1.02);
-  border-color: rgba(0, 242, 254, 0.3);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), var(--shadow-neon-cyan);
+/* Elevación Tridimensional de Contenido Interno */
+.position-3d {
+  transform: translateZ(25px);
+  transition: transform 0.2s ease;
 }
 
-.skill-icon-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1.5rem;
-}
-
+/* Cajas de Iconos */
 .icon-box {
-  width: 48px;
-  height: 48px;
-  border-radius: 14px;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--border-glass);
-  transition: transform 0.3s var(--ease-elastic);
+  background: rgba(0, 229, 255, 0.08);
+  color: #00e5ff;
+  border: 1px solid rgba(0, 229, 255, 0.2);
 }
 
-.skill-card:hover .icon-box {
-  transform: scale(1.1) rotate(-4deg);
+.icon-box.backend {
+  background: rgba(112, 0, 255, 0.08);
+  color: #a855f7;
+  border-color: rgba(112, 0, 255, 0.2);
 }
 
-.icon-box svg {
-  width: 24px;
-  height: 24px;
+.icon-box.database {
+  background: rgba(16, 185, 129, 0.08);
+  color: #10b981;
+  border-color: rgba(16, 185, 129, 0.2);
 }
 
-.icon-box.cyan {
-  background: rgba(0, 242, 254, 0.1);
-  color: var(--color-cyan-glow);
-  border-color: rgba(0, 242, 254, 0.25);
+.icon-box.ai {
+  background: rgba(236, 72, 153, 0.08);
+  color: #ec4899;
+  border-color: rgba(236, 72, 153, 0.2);
 }
 
-.icon-box.purple {
-  background: rgba(112, 0, 255, 0.1);
-  color: var(--color-purple-glow);
-  border-color: rgba(112, 0, 255, 0.25);
+/* Filas de Skills e Insignias */
+.skill-item-row {
+  background: rgba(3, 7, 18, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
-.icon-box.emerald {
-  background: rgba(16, 185, 129, 0.1);
-  color: var(--color-emerald-glow);
-  border-color: rgba(16, 185, 129, 0.25);
+.skill-item-row:hover {
+  border-color: rgba(0, 229, 255, 0.3);
+  background: rgba(0, 229, 255, 0.05);
 }
 
-.skill-category {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: #64748b;
-}
-
-.skill-card-title {
-  font-size: 1.35rem;
-  font-weight: 800;
-  margin-bottom: 0.75rem;
-  color: #f8fafc;
-}
-
-.skill-card-desc {
-  color: #94a3b8;
-  font-size: 0.925rem;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-}
-
-.skill-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
-}
-
-.skill-list li {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #cbd5e1;
-}
-
-.skill-list .dot {
+.skill-dot-pulse {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--color-cyan-glow);
-  box-shadow: 0 0 8px var(--color-cyan-glow);
+  background-color: #00e5ff;
+  box-shadow: 0 0 8px #00e5ff;
 }
 
-/* Responsivo */
-@media (max-width: 640px) {
-  .skills-grid {
+.bg-dark-subtle {
+  background-color: rgba(15, 23, 42, 0.9);
+}
+
+/* Enlaces a Evidencia Real */
+.btn-evidence-link {
+  color: #94a3b8;
+  transition: color 0.2s ease;
+}
+
+.btn-evidence-link:hover {
+  color: #00e5ff;
+}
+
+.btn-evidence-link:hover .icon-arrow {
+  transform: translate(2px, -2px);
+}
+
+.icon-arrow {
+  transition: transform 0.2s ease;
+}
+
+/* Responsive & Reduced Motion */
+@media (max-width: 768px) {
+  .skills-3d-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skill-3d-card {
+    transform: none !important;
+    transition: none !important;
   }
 }

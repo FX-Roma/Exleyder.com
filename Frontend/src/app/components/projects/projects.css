@@ -182,3 +182,65 @@
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* ==========================================================================
+   BOTÓN CIRCULAR CON ANIMACIÓN DE PULSO Y RESPLANDOR (BEACON GLOW)
+   ========================================================================== */
+
+.apple-circle-btn {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 242, 254, 0.4);
+  color: #00f2fe;
+  cursor: pointer;
+  
+  /* Animación de alumbrado continuo (alumbra y atenúa) */
+  animation: beaconPulse 2.4s ease-in-out infinite;
+  
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background-color 0.35s ease,
+              box-shadow 0.35s ease,
+              border-color 0.35s ease;
+}
+
+/* Estado Hover: Se congela el pulso y se ilumina al máximo */
+.apple-circle-btn:hover {
+  animation-play-state: paused;
+  transform: scale(1.12);
+  background: rgba(0, 242, 254, 0.22);
+  border-color: #00f2fe;
+  box-shadow: 0 0 40px rgba(0, 242, 254, 0.8), 
+              0 0 60px rgba(0, 242, 254, 0.35);
+}
+
+.apple-circle-btn:hover .icon-apple-arrow {
+  transform: translateX(4px);
+}
+
+/* Keyframes: Ciclo de iluminación y escala suave */
+@keyframes beaconPulse {
+  0%, 100% {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 
+                0 0 12px rgba(0, 242, 254, 0.2);
+    border-color: rgba(0, 242, 254, 0.35);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6), 
+                0 0 32px rgba(0, 242, 254, 0.85), 
+                0 0 50px rgba(0, 242, 254, 0.4);
+    border-color: rgba(0, 242, 254, 0.95);
+    transform: scale(1.06);
+  }
+}
+
+/* Desactivar animación en dispositivos con preferencia de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  .apple-circle-btn {
+    animation: none !important;
+  }
+}

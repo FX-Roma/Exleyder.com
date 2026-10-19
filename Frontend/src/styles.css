@@ -2,7 +2,6 @@
 
 .body-app-unique-container{
     box-sizing: border-box;
-    padding: var(--text-xl) 10px; 
 }
 
 html {

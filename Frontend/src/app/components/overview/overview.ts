@@ -11,7 +11,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './overview.css'
 })
 export class OverviewComponent {
-  public developerRoleTag: string = 'FULL-STACK / AI / DIGITAL / AVAILABLE FOR OPPORTUNITIES';
+  public developerRoleTag: string = 'FULL-STACK - AI DEVELOPER / AVAILABLE FOR OPPORTUNITIES';
   public developerBio: string = 'Full-Stack Developer with a passion for modern web technologies, AI and digital solutions. I turn ideas into functional products, combining technical skills, problem-solving and clear communication to create real value for users and clients.';
   
 
