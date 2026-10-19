@@ -1,3 +1,5 @@
+@import "./styles/design-tokens.css";
+
 .body-app-unique-container{
     box-sizing: border-box;
     padding: var(--text-xl) 10px; 
@@ -25,4 +27,55 @@ body {
 }
 .text-const{
     color: var(--color-const);
+}
+
+
+@property --gradient-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@property --glow-intensity {
+  syntax: '<number>';
+  initial-value: 0.2;
+  inherits: false;
+}
+
+:root {
+  --bg-deep: #030712;
+  --bg-surface-glass: rgba(15, 23, 42, 0.65);
+  --bg-surface-glass-hover: rgba(30, 41, 59, 0.8);
+  
+  --color-cyan-glow: #00f2fe;
+  --color-blue-glow: #4facfe;
+  --color-purple-glow: #7000ff;
+  --color-pink-glow: #f43f5e;
+  --color-emerald-glow: #10b981;
+
+  --border-glass: rgba(255, 255, 255, 0.08);
+  --border-glass-active: rgba(0, 242, 254, 0.35);
+
+  --ease-elastic: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --shadow-neon-cyan: 0 10px 30px -10px rgba(0, 242, 254, 0.3);
+  --shadow-neon-purple: 0 10px 30px -10px rgba(112, 0, 255, 0.3);
+  --shadow-glass: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

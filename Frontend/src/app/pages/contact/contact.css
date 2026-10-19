@@ -1,0 +1,264 @@
+/* ==========================================================================
+   CONTACT SECTION - PREMIUM CYBER-SAAS DESIGN TOKENS & STYLES
+   ========================================================================== */
+
+.contact-section {
+  position: relative;
+  z-index: 2;
+  min-height: 85vh;
+}
+
+.max-container {
+  max-width: var(--container-max-width, 1280px);
+}
+
+.max-w-2xl {
+  max-width: 680px;
+}
+
+.text-micro {
+  font-size: 0.72rem;
+}
+
+.gap-1\.5 {
+  gap: 0.375rem;
+}
+
+.gap-3\.5 {
+  gap: 0.875rem;
+}
+
+.py-2\.5 {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+}
+
+.py-3\.5 {
+  padding-top: 0.875rem;
+  padding-bottom: 0.875rem;
+}
+
+.section-tag-badge {
+  background: rgba(0, 229, 255, 0.08);
+  border: 1px solid rgba(0, 229, 255, 0.25);
+}
+
+.status-pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #10b981;
+  display: inline-block;
+}
+
+.text-cyan-gradient {
+  background: linear-gradient(135deg, #00e5ff 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* --------------------------------------------------------------------------
+   TARJETAS DE INFORMACIÓN DE CONTACTO (COLUMNA IZQUIERDA)
+   -------------------------------------------------------------------------- */
+.contact-info-card {
+  background: rgba(11, 19, 32, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+.contact-info-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-cyan, #00e5ff) !important;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7),
+              0 0 25px rgba(0, 229, 255, 0.2);
+}
+
+.contact-info-card:hover .icon-external-link {
+  opacity: 1 !important;
+  transform: translate(2px, -2px);
+}
+
+.icon-external-link {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.info-icon-box {
+  background: rgba(0, 229, 255, 0.08);
+  border: 1px solid rgba(0, 229, 255, 0.2);
+}
+
+.btn-social-pill {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  color: var(--color-text-secondary, #94a3b8);
+  border-radius: var(--radius-md, 12px);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-social-pill:hover {
+  background: rgba(0, 229, 255, 0.1);
+  border-color: rgba(0, 229, 255, 0.4);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
+}
+
+.btn-social-pill:focus-visible {
+  outline: 2px solid var(--color-cyan, #00e5ff);
+  outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   FORMULARIO MOCKUP TERMINAL (COLUMNA DERECHA)
+   -------------------------------------------------------------------------- */
+.contact-form-terminal-card {
+  background: rgba(11, 19, 32, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+.bg-dark-surface {
+  background-color: rgba(3, 7, 18, 0.95);
+}
+
+.window-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-close { background-color: #ef4444; }
+.dot-minimize { background-color: #f59e0b; }
+.dot-expand { background-color: #10b981; }
+
+.bg-cyan-subtle {
+  background-color: rgba(0, 229, 255, 0.1);
+}
+
+/* --------------------------------------------------------------------------
+   INPUTS & ELEMENTOS DE FORMULARIO CON ACCESIBILIDAD Y FOCO
+   -------------------------------------------------------------------------- */
+.cyber-input {
+  background: rgba(3, 7, 18, 0.88) !important;
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.12)) !important;
+  color: var(--color-text-primary, #f8fafc) !important;
+  border-radius: var(--radius-md, 10px);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cyber-input::placeholder {
+  color: #64748b !important;
+}
+
+.cyber-input:focus,
+.cyber-input:focus-visible {
+  border-color: var(--color-cyan, #00e5ff) !important;
+  box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.25) !important;
+  outline: none !important;
+}
+
+.cyber-input option {
+  background-color: #060d16;
+  color: #f8fafc;
+}
+
+/* Validaciones y Trampa Honeypot */
+.honeypot-field {
+  display: none !important;
+  visibility: hidden !important;
+  position: absolute !important;
+  left: -9999px !important;
+}
+
+.cyber-input.is-invalid {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25) !important;
+}
+
+.invalid-feedback-cyber {
+  color: #ef4444;
+  font-weight: 500;
+}
+
+/* Alertas de Respuesta */
+.alert-success-cyber {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #a7f3d0;
+  border-radius: var(--radius-md, 10px);
+}
+
+.alert-danger-cyber {
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+  border-radius: var(--radius-md, 10px);
+}
+
+/* Botón de Despacho Cyber-SaaS */
+.btn-cyan-dispatch {
+  background: var(--gradient-brand-button, linear-gradient(135deg, #00e5ff 0%, #3b82f6 100%));
+  color: #000 !important;
+  border-radius: var(--radius-md, 10px);
+  border: none;
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+}
+
+.btn-cyan-dispatch:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(0, 229, 255, 0.6);
+}
+
+.btn-cyan-dispatch:hover:not(:disabled) .icon-btn-arrow {
+  transform: translateX(4px);
+}
+
+.icon-btn-arrow {
+  transition: transform 0.2s ease;
+}
+
+.btn-cyan-dispatch:focus-visible {
+  outline: 2px solid var(--color-cyan, #00e5ff);
+  outline-offset: 3px;
+}
+
+.btn-cyan-dispatch:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.hover-cyan:hover {
+  color: var(--color-cyan, #00e5ff) !important;
+}
+
+/* Animación de entrada suave */
+.animate-slide-up {
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --------------------------------------------------------------------------
+   PREFERS-REDUCED-MOTION (ACCESIBILIDAD)
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .contact-info-card,
+  .btn-social-pill,
+  .btn-cyan-dispatch,
+  .animate-slide-up {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
+}

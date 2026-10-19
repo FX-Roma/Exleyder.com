@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StudyItem, STUDIES_DATA, StudyType } from '../../ObjectsForComponents/studies/studies.model';
+import { StudyItem, STUDIES_DATA, StudyType } from '../../models/studies.model';
 
 @Component({
   selector: 'app-studies',

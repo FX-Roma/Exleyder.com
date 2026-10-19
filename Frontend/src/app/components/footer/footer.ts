@@ -14,4 +14,12 @@ import { RouterLink } from '@angular/router';
 export class Footer {
   public developerName: string = 'OVER EXLEYDER OREJUELA GALLEGO';
   public currentYear: number = new Date().getFullYear();
+  
+  readonly email = 'orejuelabreiman@gmail.com';
+  readonly linkedinUrl = 'https://www.linkedin.com/in/exleyder-gallego-4207b3320';
+  readonly githubUrl = 'https://github.com/FX-Roma';
+
+  copiarEmail(): void {
+    navigator.clipboard.writeText(this.email);
+  }
 }

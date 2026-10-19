@@ -1,0 +1,196 @@
+.skills-section {
+  position: relative;
+  width: 100%;
+  padding: 6rem 1.5rem;
+  background-color: var(--bg-deep);
+  color: #f8fafc;
+  overflow: hidden;
+  border-top: 1px solid var(--border-glass);
+}
+
+/* Aurora Backdrop ajustada para la sección Skills */
+.glow-purple-skills {
+  top: 10%;
+  left: -5%;
+  width: 600px;
+  height: 450px;
+  background: radial-gradient(circle, var(--color-purple-glow) 0%, transparent 70%);
+}
+
+.glow-emerald-skills {
+  bottom: -10%;
+  right: -5%;
+  width: 500px;
+  height: 400px;
+  background: radial-gradient(circle, var(--color-emerald-glow) 0%, transparent 70%);
+  animation-delay: -9s;
+}
+
+.skills-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.gradient-text-skills {
+  background: linear-gradient(
+    var(--gradient-angle),
+    var(--color-purple-glow) 0%,
+    var(--color-cyan-glow) 50%,
+    var(--color-emerald-glow) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rotate-gradient 10s linear infinite;
+}
+
+/* ==========================================================================
+   SKILLS GRID & CARD HOVER DYNAMICS
+   ========================================================================== */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.skill-card {
+  position: relative;
+  background: var(--bg-surface-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-glass);
+  border-radius: 24px;
+  padding: 2.25rem;
+  box-shadow: var(--shadow-glass);
+  will-change: transform;
+  transition: transform 0.4s var(--ease-elastic), border-color 0.3s var(--ease-smooth), box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+/* Animación atada al Scroll (SDA) */
+@supports (animation-timeline: view()) {
+  .skill-card {
+    animation: sda-skill-card-reveal linear forwards;
+    animation-timeline: view();
+    animation-range: entry 10% entry 75%;
+  }
+}
+
+@keyframes sda-skill-card-reveal {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 50px, 0) scale(0.92);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.skill-card:hover {
+  transform: translate3d(0, -8px, 0) scale(1.02);
+  border-color: rgba(0, 242, 254, 0.3);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), var(--shadow-neon-cyan);
+}
+
+.skill-icon-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-glass);
+  transition: transform 0.3s var(--ease-elastic);
+}
+
+.skill-card:hover .icon-box {
+  transform: scale(1.1) rotate(-4deg);
+}
+
+.icon-box svg {
+  width: 24px;
+  height: 24px;
+}
+
+.icon-box.cyan {
+  background: rgba(0, 242, 254, 0.1);
+  color: var(--color-cyan-glow);
+  border-color: rgba(0, 242, 254, 0.25);
+}
+
+.icon-box.purple {
+  background: rgba(112, 0, 255, 0.1);
+  color: var(--color-purple-glow);
+  border-color: rgba(112, 0, 255, 0.25);
+}
+
+.icon-box.emerald {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--color-emerald-glow);
+  border-color: rgba(16, 185, 129, 0.25);
+}
+
+.skill-category {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #64748b;
+}
+
+.skill-card-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+  color: #f8fafc;
+}
+
+.skill-card-desc {
+  color: #94a3b8;
+  font-size: 0.925rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.skill-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.skill-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #cbd5e1;
+}
+
+.skill-list .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-cyan-glow);
+  box-shadow: 0 0 8px var(--color-cyan-glow);
+}
+
+/* Responsivo */
+@media (max-width: 640px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,255 @@
+<section class="contact-section py-5 font-body position-relative overflow-hidden">
+  <div class="container-fluid max-container px-3 px-md-4">
+    
+    <!-- Header Principal de Sección (Cyber-SaaS Banner) -->
+    <div class="text-center text-md-start mb-5">
+      <div class="d-inline-flex align-items-center gap-2 mb-3 px-3 py-1.5 rounded-pill section-tag-badge">
+        <span class="status-pulse-dot"></span>
+        <span class="font-mono text-micro fw-bold text-cyan tracking-wider">// INITIALIZE_COMMUNICATION</span>
+      </div>
+      <h2 class="display-5 font-display fw-bold text-light mb-2">
+        Let's Build Something <span class="text-cyan-gradient">Meaningful.</span>
+      </h2>
+      <p class="text-secondary fs-6 max-w-2xl mb-0 leading-relaxed">
+        Disponible para oportunidades a tiempo completo, proyectos freelance de alto impacto y consultoría de arquitectura de software. Envíame un mensaje o hablemos directamente.
+      </p>
+    </div>
+
+    <div class="row g-4 g-lg-5 align-items-stretch">
+      
+      <!-- Columna Izquierda: Tarjetas de Información Directa y Redes -->
+      <div class="col-lg-5 d-flex flex-column">
+        <div class="d-flex flex-column gap-3 h-100">
+          
+          <!-- Primary Email -->
+          <div class="contact-info-card p-3 p-md-4 rounded-4 border border-subtle d-flex align-items-center justify-content-between gap-3">
+            <div class="d-flex align-items-center gap-3">
+              <div class="info-icon-box text-cyan rounded-3 p-3">
+                <i class="bi bi-envelope-at-fill fs-4"></i>
+              </div>
+              <div>
+                <span class="text-muted font-mono text-micro d-block mb-1">// PRIMARY_EMAIL</span>
+                <a href="mailto:exjobs7@gmail.com" class="text-light fw-bold font-mono text-sm text-decoration-none hover-cyan text-break">exjobs7@gmail.com</a>
+              </div>
+            </div>
+            <i class="bi bi-arrow-up-right text-cyan opacity-50 icon-external-link"></i>
+          </div>
+
+          <!-- Phone / WhatsApp -->
+          <div class="contact-info-card p-3 p-md-4 rounded-4 border border-subtle d-flex align-items-center justify-content-between gap-3">
+            <div class="d-flex align-items-center gap-3">
+              <div class="info-icon-box text-cyan rounded-3 p-3">
+                <i class="bi bi-whatsapp fs-4"></i>
+              </div>
+              <div>
+                <span class="text-muted font-mono text-micro d-block mb-1">// DIRECT_WHATSAPP</span>
+                <a href="https://wa.me/573134500680" target="_blank" rel="noopener noreferrer" class="text-light fw-bold font-mono text-sm text-decoration-none hover-cyan">+57 313 450 0680</a>
+              </div>
+            </div>
+            <i class="bi bi-arrow-up-right text-cyan opacity-50 icon-external-link"></i>
+          </div>
+
+          <!-- Location & Work Mode -->
+          <div class="contact-info-card p-3 p-md-4 rounded-4 border border-subtle d-flex align-items-center gap-3">
+            <div class="info-icon-box text-cyan rounded-3 p-3">
+              <i class="bi bi-geo-alt-fill fs-4"></i>
+            </div>
+            <div>
+              <span class="text-muted font-mono text-micro d-block mb-1">// LOCATION_MODE</span>
+              <span class="text-light fw-bold font-mono text-sm d-block">Bogotá, Colombia // Remote & Relocation</span>
+            </div>
+          </div>
+
+          <!-- Redes Sociales Directas -->
+          <div class="d-flex gap-3 mt-auto pt-2">
+            <a 
+              href="https://www.linkedin.com/in/exleyder-gallego/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="btn btn-social-pill flex-grow-1 font-mono text-xs py-3 d-inline-flex align-items-center justify-content-center gap-2">
+              <i class="bi bi-linkedin fs-6 text-cyan"></i>
+              <span>LinkedIn</span>
+            </a>
+            <a 
+              href="https://github.com/FX-Roma" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="btn btn-social-pill flex-grow-1 font-mono text-xs py-3 d-inline-flex align-items-center justify-content-center gap-2">
+              <i class="bi bi-github fs-6 text-cyan"></i>
+              <span>GitHub</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Columna Derecha: Formulario de Despacho (Cyber Terminal Card) -->
+      <div class="col-lg-7">
+        <div class="contact-form-terminal-card rounded-4 border border-subtle overflow-hidden h-100 d-flex flex-column">
+          
+          <!-- Titlebar de la Ventana de Terminal -->
+          <div class="terminal-titlebar d-flex align-items-center justify-content-between px-3 py-2.5 bg-dark-surface border-bottom border-subtle">
+            <div class="d-flex align-items-center gap-1.5">
+              <span class="window-dot dot-close"></span>
+              <span class="window-dot dot-minimize"></span>
+              <span class="window-dot dot-expand"></span>
+            </div>
+            <span class="font-mono text-micro text-muted opacity-75">contact_payload_dispatcher.ts // v2.4</span>
+            <span class="badge bg-cyan-subtle text-cyan font-mono text-micro px-2 py-1 rounded-pill">
+              SECURE_HTTPS
+            </span>
+          </div>
+
+          <!-- Cuerpo del Formulario -->
+          <div class="p-4 p-md-5 flex-grow-1 d-flex flex-column justify-content-center">
+            
+            <form [formGroup]="contactForm" (ngSubmit)="sendDispatch()" novalidate aria-label="Contact Form Payload Dispatcher">
+              <div class="row g-3.5">
+                
+                <!-- Campo Trampa Honeypot (Antispam Oculto) -->
+                <div class="honeypot-field" aria-hidden="true">
+                  <label for="website">Leave this field empty</label>
+                  <input type="text" id="website" formControlName="website" tabindex="-1" autocomplete="off" />
+                </div>
+
+                <!-- Nombre Completo -->
+                <div class="col-md-6">
+                  <label for="clientName" class="form-label font-mono text-micro text-cyan fw-bold mb-1 d-flex align-items-center gap-1">
+                    <span>NAME</span>
+                    <span class="text-danger">*</span>
+                  </label>
+                  <input 
+                    type="text" 
+                    id="clientName"
+                    class="form-control cyber-input font-mono text-xs py-2.5" 
+                    [class.is-invalid]="isFieldInvalid('clientName')"
+                    [attr.aria-invalid]="isFieldInvalid('clientName')"
+                    aria-describedby="clientNameError"
+                    placeholder="e.g. Alex Mercer"
+                    formControlName="clientName">
+                  <div id="clientNameError" *ngIf="isFieldInvalid('clientName')" class="invalid-feedback-cyber font-mono text-micro mt-1 d-flex align-items-center gap-1">
+                    <i class="bi bi-exclamation-circle-fill fs-6"></i>
+                    <span *ngIf="f['clientName'].errors?.['required']">El nombre es requerido.</span>
+                    <span *ngIf="f['clientName'].errors?.['minlength']">Mínimo 2 caracteres.</span>
+                    <span *ngIf="f['clientName'].errors?.['maxlength']">Máximo 100 caracteres.</span>
+                  </div>
+                </div>
+
+                <!-- Correo Electrónico -->
+                <div class="col-md-6">
+                  <label for="clientEmail" class="form-label font-mono text-micro text-cyan fw-bold mb-1 d-flex align-items-center gap-1">
+                    <span>EMAIL</span>
+                    <span class="text-danger">*</span>
+                  </label>
+                  <input 
+                    type="email" 
+                    id="clientEmail"
+                    class="form-control cyber-input font-mono text-xs py-2.5" 
+                    [class.is-invalid]="isFieldInvalid('clientEmail')"
+                    [attr.aria-invalid]="isFieldInvalid('clientEmail')"
+                    aria-describedby="clientEmailError"
+                    placeholder="alex@company.com"
+                    formControlName="clientEmail">
+                  <div id="clientEmailError" *ngIf="isFieldInvalid('clientEmail')" class="invalid-feedback-cyber font-mono text-micro mt-1 d-flex align-items-center gap-1">
+                    <i class="bi bi-exclamation-circle-fill fs-6"></i>
+                    <span *ngIf="f['clientEmail'].errors?.['required']">El email es requerido.</span>
+                    <span *ngIf="f['clientEmail'].errors?.['email']">Ingresa un correo electrónico válido.</span>
+                  </div>
+                </div>
+
+                <!-- Tipo de Servicio -->
+                <div class="col-12">
+                  <label for="serviceType" class="form-label font-mono text-micro text-cyan fw-bold mb-1 d-flex align-items-center gap-1">
+                    <span>SERVICE REQUIRED</span>
+                    <span class="text-danger">*</span>
+                  </label>
+                  <select 
+                    id="serviceType"
+                    class="form-select cyber-input font-mono text-xs py-2.5"
+                    [class.is-invalid]="isFieldInvalid('serviceType')"
+                    [attr.aria-invalid]="isFieldInvalid('serviceType')"
+                    aria-describedby="serviceTypeError"
+                    formControlName="serviceType">
+                    <option *ngFor="let service of availableServices" [value]="service">
+                      {{ service }}
+                    </option>
+                  </select>
+                  <div id="serviceTypeError" *ngIf="isFieldInvalid('serviceType')" class="invalid-feedback-cyber font-mono text-micro mt-1 d-flex align-items-center gap-1">
+                    <i class="bi bi-exclamation-circle-fill fs-6"></i>
+                    <span>Selecciona una opción de servicio.</span>
+                  </div>
+                </div>
+
+                <!-- Mensaje del Proyecto -->
+                <div class="col-12">
+                  <label for="projectMessage" class="form-label font-mono text-micro text-cyan fw-bold mb-1 d-flex align-items-center gap-1">
+                    <span>MESSAGE PAYLOAD</span>
+                    <span class="text-danger">*</span>
+                  </label>
+                  <textarea 
+                    id="projectMessage"
+                    class="form-control cyber-input font-mono text-xs" 
+                    rows="4"
+                    [class.is-invalid]="isFieldInvalid('projectMessage')"
+                    [attr.aria-invalid]="isFieldInvalid('projectMessage')"
+                    aria-describedby="projectMessageError"
+                    placeholder="Describe los detalles de tu proyecto, requerimientos técnicos o propuesta..."
+                    formControlName="projectMessage"></textarea>
+                  <div id="projectMessageError" *ngIf="isFieldInvalid('projectMessage')" class="invalid-feedback-cyber font-mono text-micro mt-1 d-flex align-items-center gap-1">
+                    <i class="bi bi-exclamation-circle-fill fs-6"></i>
+                    <span *ngIf="f['projectMessage'].errors?.['required']">El mensaje es obligatorio.</span>
+                    <span *ngIf="f['projectMessage'].errors?.['minlength']">Escribe al menos 10 caracteres.</span>
+                    <span *ngIf="f['projectMessage'].errors?.['maxlength']">Máximo 2000 caracteres.</span>
+                  </div>
+                </div>
+
+                <!-- Alertas de Estado del Servidor HTTP (A11y Anunciadas) -->
+                <div *ngIf="dispatchSuccess" class="col-12" role="status" aria-live="polite">
+                  <div class="alert alert-success-cyber p-3 font-mono text-xs d-flex align-items-start gap-2.5 animate-slide-up">
+                    <i class="bi bi-check-circle-fill fs-5 text-success flex-shrink-0 mt-0.5"></i>
+                    <div>
+                      <strong class="d-block text-success mb-1">// DISPATCH_SUCCESSFUL</strong>
+                      <span>Tu mensaje fue despachado correctamente. Recibirás respuesta en menos de 24 horas.</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div *ngIf="dispatchError" class="col-12" role="alert" aria-live="assertive">
+                  <div class="alert alert-danger-cyber p-3 font-mono text-xs d-flex align-items-start gap-2.5 animate-slide-up">
+                    <i class="bi bi-exclamation-triangle-fill fs-5 text-danger flex-shrink-0 mt-0.5"></i>
+                    <div>
+                      <strong class="d-block text-danger mb-1">// DISPATCH_FAILED</strong>
+                      <span>{{ dispatchError }}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Botón Principal de Envío -->
+                <div class="col-12 mt-4">
+                  <button 
+                    type="submit" 
+                    class="btn btn-cyan-dispatch w-100 font-mono text-xs fw-bold py-3.5 d-flex align-items-center justify-content-center gap-2"
+                    [disabled]="isSubmitting || contactForm.invalid"
+                    [attr.aria-busy]="isSubmitting">
+                    <span *ngIf="!isSubmitting" class="d-inline-flex align-items-center gap-2">
+                      <span>DISPATCH MESSAGE PAYLOAD</span>
+                      <i class="bi bi-arrow-right icon-btn-arrow"></i>
+                    </span>
+                    <span *ngIf="isSubmitting" class="d-inline-flex align-items-center gap-2">
+                      <span class="spinner-border spinner-border-sm text-dark" role="status" aria-hidden="true"></span>
+                      <span>DISPATCHING PAYLOAD TO SERVER...</span>
+                    </span>
+                  </button>
+                </div>
+
+              </div>
+            </form>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

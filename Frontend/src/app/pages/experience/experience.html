@@ -1,0 +1,312 @@
+<section class="experience-unified-section py-5">
+  
+  <!-- Canvas de Fondo Aurora Boreal -->
+  <div class="aurora-backdrop" aria-hidden="true">
+    <div class="aurora-mesh glow-cyan"></div>
+    <div class="aurora-mesh glow-purple"></div>
+    <div class="stars-overlay"></div>
+  </div>
+
+  <div class="container-fluid max-container px-3 px-md-4 position-relative z-2">
+
+    <!-- =================================================================== -->
+    <!-- BARRA NAVEGADORA DE LAS 3 VISTAS (Pills de Navegación)             -->
+    <!-- =================================================================== -->
+    <nav class="step-navigation-bar d-flex align-items-center justify-content-center gap-2 mb-5">
+      <button 
+        class="step-pill-btn" 
+        [class.active]="currentStep() === 1" 
+        (click)="setStep(1)">
+        <span class="step-num">01</span>
+        <span class="step-text">Overview</span>
+      </button>
+
+      <div class="step-divider"></div>
+
+      <button 
+        class="step-pill-btn" 
+        [class.active]="currentStep() === 2" 
+        (click)="setStep(2)">
+        <span class="step-num">02</span>
+        <span class="step-text">Projects Catalog</span>
+      </button>
+
+      <div class="step-divider"></div>
+
+      <button 
+        class="step-pill-btn" 
+        [class.active]="currentStep() === 3" 
+        (click)="setStep(3)">
+        <span class="step-num">03</span>
+        <span class="step-text">Trajectory</span>
+      </button>
+    </nav>
+
+
+    <!-- =================================================================== -->
+    <!-- VISTA 1: OVERVIEW & METODOLOGÍA FREELANCE                           -->
+    <!-- =================================================================== -->
+    @if (currentStep() === 1) {
+      <div class="view-container animate-fade-in">
+        
+        <div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center justify-content-between mb-5 gap-4">
+          <div class="max-w-2xl">
+            <div class="d-inline-flex align-items-center gap-2 mb-2 px-3 py-1 rounded-pill section-tag-badge">
+              <i class="bi bi-code-slash text-cyan fs-6"></i>
+              <span class="font-mono text-micro fw-bold text-cyan tracking-wider">Projects & Engineering Standards</span>
+            </div>
+            <h1 class="display-4 font-display fw-bold text-light mb-3">Explore my projects and share your feedback!</h1>
+            <p class="text-secondary fs-6 leading-relaxed mb-0">
+              Bienvenido al centro de proyectos y trayectoria. Explora la arquitectura de software, metodologías de desarrollo y soluciones interactivas.
+            </p>
+          </div>
+
+          <!-- Botón Circular Estilo Apple para Avanzar a la Vista 2 (Catálogo) -->
+          <div class="apple-trigger-wrapper text-center">
+            <button 
+              (click)="setStep(2)" 
+              class="apple-circle-btn d-flex align-items-center justify-content-center"
+              title="Avanzar a Catálogo de Proyectos">
+              <i class="bi bi-chevron-right icon-apple-arrow"></i>
+            </button>
+            <span class="font-mono text-micro text-cyan d-block mt-2 tracking-wider fw-semibold">Explorar Proyectos</span>
+          </div>
+        </div>
+
+        <!-- Tarjetas de Características Freelance -->
+        <div class="row row-cols-1 row-cols-md-3 g-4 mb-4">
+          <div class="col">
+            <div class="freelance-feature-card p-4 rounded-4 h-100 border border-subtle">
+              <div class="feature-icon-wrapper mb-3">
+                <i class="bi bi-layers-half text-cyan fs-3"></i>
+              </div>
+              <h3 class="h5 font-display fw-bold text-light mb-2">Desarrollo End-to-End</h3>
+              <p class="text-secondary text-xs leading-relaxed mb-0">
+                Arquitecturas desacopladas, APIs RESTful estructuradas y patrones de diseño limpios listos para producción.
+              </p>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="freelance-feature-card p-4 rounded-4 h-100 border border-subtle">
+              <div class="feature-icon-wrapper mb-3">
+                <i class="bi bi-lightning-charge-fill text-cyan fs-3"></i>
+              </div>
+              <h3 class="h5 font-display fw-bold text-light mb-2">Rendimiento & Accesibilidad</h3>
+              <p class="text-secondary text-xs leading-relaxed mb-0">
+                Carga optimizada en sub-segundos, cumplimiento de WCAG 2.1 AA y cero desplazamientos de diseño (0 CLS).
+              </p>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="freelance-feature-card p-4 rounded-4 h-100 border border-subtle">
+              <div class="feature-icon-wrapper mb-3">
+                <i class="bi bi-shield-check text-cyan fs-3"></i>
+              </div>
+              <h3 class="h5 font-display fw-bold text-light mb-2">Seguridad & Producción</h3>
+              <p class="text-secondary text-xs leading-relaxed mb-0">
+                Autenticación JWT/RBAC, sanitización de datos y configuración avanzada para despliegues empresariales.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    }
+
+
+    <!-- =================================================================== -->
+    <!-- VISTA 2: CATÁLOGO DE PROYECTOS CON STEPPER INTERACTIVO APPLE        -->
+    <!-- =================================================================== -->
+    @if (currentStep() === 2) {
+      <div class="view-container animate-fade-in">
+        
+        <!-- Top Toolbar con Buscador y Filtros -->
+        <div class="cyber-toolbar-card p-3 p-md-4 rounded-4 mb-4 border border-subtle d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center justify-content-between gap-3">
+          
+          <!-- Buscador por Tecnologías -->
+          <div class="position-relative search-input-wrapper flex-grow-1 max-w-md">
+            <i class="bi bi-search search-icon text-cyan"></i>
+            <input 
+              type="text" 
+              class="form-control cyber-search-input font-mono text-xs ps-5 py-2.5" 
+              placeholder="Filter by technology (Angular, Node, Express, API)..." 
+              [ngModel]="searchQuery()"
+              (ngModelChange)="searchQuery.set($event)">
+          </div>
+
+          <!-- Categorías -->
+          <div class="d-flex align-items-center flex-wrap gap-2">
+            @for (cat of categories; track cat.id) {
+              <button 
+                (click)="filterCategory(cat.id)"
+                class="btn btn-filter-pill font-mono text-micro px-3 py-2 rounded-pill"
+                [class.active]="selectedCategory() === cat.id">
+                {{ cat.label }}
+              </button>
+            }
+          </div>
+
+        </div>
+
+        <!-- STEPPER DE NAVEGACIÓN ENTRE PROYECTOS -->
+        <div class="project-stepper-control-card p-4 rounded-4 mb-5 border border-subtle bg-glass-card">
+          <div class="d-flex align-items-center justify-content-between mb-3">
+            <div class="d-flex align-items-center gap-2">
+              <span class="badge bg-cyan-subtle text-cyan font-mono px-3 py-2 rounded-pill">
+                Proyecto {{ activeProjectIndex() + 1 }} de {{ filteredProjects().length }}
+              </span>
+              <span class="text-secondary text-xs d-none d-sm-inline">Usa las flechas estilo Apple para avanzar sin scroll</span>
+            </div>
+
+            <!-- Botones Estilo Apple -->
+            <div class="d-flex align-items-center gap-3">
+              <button 
+                (click)="prevProject()" 
+                class="apple-nav-btn btn-prev"
+                title="Proyecto Anterior">
+                <i class="bi bi-chevron-left"></i>
+              </button>
+
+              <button 
+                (click)="nextProject()" 
+                class="apple-circle-btn apple-circle-btn-sm"
+                title="Siguiente Proyecto">
+                <i class="bi bi-chevron-right icon-apple-arrow"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Render del Proyecto Enfocado -->
+          @if (currentProject(); as project) {
+            <div class="active-project-focus-wrapper animate-fade-in">
+              <app-project-cards [projects]="[project]"></app-project-cards>
+            </div>
+          } @else {
+            <div class="text-center py-5 text-muted font-mono">
+              No se encontraron proyectos con el filtro seleccionado.
+            </div>
+          }
+        </div>
+
+        <!-- Banner Inferior para Avanzar a la Vista 3 -->
+        <div class="d-flex align-items-center justify-content-between p-4 rounded-4 bg-glass-card border border-subtle mt-4">
+          <div>
+            <h4 class="h6 font-display fw-bold text-light mb-1">¿Deseas conocer la Experiencia Laboral?</h4>
+            <p class="text-secondary text-xs mb-0">Avanza a la tercera vista para ver la trayectoria profesional.</p>
+          </div>
+
+          <div class="apple-trigger-wrapper text-center">
+            <button 
+              (click)="setStep(3)" 
+              class="apple-circle-btn d-flex align-items-center justify-content-center"
+              title="Avanzar a Trayectoria">
+              <i class="bi bi-chevron-right icon-apple-arrow"></i>
+            </button>
+            <span class="font-mono text-micro text-cyan d-block mt-1 tracking-wider">Ver Trayectoria</span>
+          </div>
+        </div>
+
+      </div>
+    }
+
+
+    <!-- =================================================================== -->
+    <!-- VISTA 3: TRAYECTORIA PROFESIONAL                                    -->
+    <!-- =================================================================== -->
+    @if (currentStep() === 3) {
+      <div class="view-container animate-fade-in">
+        
+        <header class="section-header text-center max-w-2xl mx-auto mb-5">
+          <span class="section-tag font-mono">
+            <span class="slash">/</span> TRAJECTORY
+          </span>
+          <h2 class="display-5 font-display fw-bold text-light mb-2">
+            PROFESSIONAL <span class="gradient-text">EXPERIENCE.</span>
+          </h2>
+          <p class="text-secondary fs-6">
+            Diseño de arquitecturas escalables, gestión de desarrollo Full-Stack y liderazgo técnico.
+          </p>
+        </header>
+
+        <!-- Timeline -->
+        <div class="timeline-wrapper">
+          <div class="timeline-line" aria-hidden="true"></div>
+
+          <!-- KEFEX -->
+          <article class="timeline-card-wrapper">
+            <div class="timeline-node">
+              <div class="node-pulse"></div>
+            </div>
+
+            <div class="experience-card p-4 rounded-4 border border-subtle bg-glass-card">
+              <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
+                <div class="d-flex align-items-center gap-2">
+                  <span class="fw-bold text-light fs-5">KEFEX</span>
+                  <span class="role-pill">Scrum Master & Full-Stack</span>
+                </div>
+                <span class="font-mono text-muted text-xs">2023 — Presente</span>
+              </div>
+
+              <h3 class="h5 fw-bold text-cyan mb-2">Lead Full-Stack Engineer & Scrum Master</h3>
+
+              <p class="text-secondary text-sm leading-relaxed mb-3">
+                Liderazgo en la arquitectura del ecosistema KEFEX. Implementación de soluciones Frontend en Angular con optimización de renderizado, consumo de REST APIs y gestión de proyectos bajo metodologías ágiles.
+              </p>
+
+              <div class="d-flex flex-wrap gap-2">
+                <span class="tech-tag">Angular</span>
+                <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">REST API</span>
+                <span class="tech-tag">Scrum</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- BRASILIA BOSA -->
+          <article class="timeline-card-wrapper">
+            <div class="timeline-node">
+              <div class="node-pulse"></div>
+            </div>
+
+            <div class="experience-card p-4 rounded-4 border border-subtle bg-glass-card">
+              <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
+                <div class="d-flex align-items-center gap-2">
+                  <span class="fw-bold text-light fs-5">BRASILIA BOSA</span>
+                  <span class="role-pill">Web Manager & Frontend</span>
+                </div>
+                <span class="font-mono text-muted text-xs">2022 — 2023</span>
+              </div>
+
+              <h3 class="h5 fw-bold text-cyan mb-2">Web Manager & Frontend Developer</h3>
+
+              <p class="text-secondary text-sm leading-relaxed mb-3">
+                Dirección del portal web corporativo, optimización de velocidad de carga (Core Web Vitals), maquetación modular responsiva y desarrollo de componentes de interfaz interactivos.
+              </p>
+
+              <div class="d-flex flex-wrap gap-2">
+                <span class="tech-tag">HTML5 / CSS3</span>
+                <span class="tech-tag">JavaScript ES6+</span>
+                <span class="tech-tag">UI/UX</span>
+                <span class="tech-tag">SEO Performance</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="text-center mt-5">
+          <button 
+            (click)="setStep(1)" 
+            class="btn btn-dark-back font-mono text-xs px-4 py-2.5 rounded-pill">
+            <i class="bi bi-arrow-counterclockwise text-cyan me-2"></i>
+            <span>Volver al Inicio de Experiencia</span>
+          </button>
+        </div>
+
+      </div>
+    }
+
+  </div>
+</section>

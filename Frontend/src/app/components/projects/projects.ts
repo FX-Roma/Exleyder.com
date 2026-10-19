@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ProjectCardsComponent } from '../../ObjectsForComponents/projects/project-cards/project-cards';
-import { Project, PROJECTS_DATA } from '../../ObjectsForComponents/projects/project-cards/project-cards.model';
+import { Project ,PROJECTS_DATA } from '../../models/project-cards.model';
 
 @Component({
   selector: 'app-projects',
