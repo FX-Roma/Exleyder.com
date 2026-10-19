@@ -1,3 +1,19 @@
 .text-cyan{
     color: var(--color-cyan) !important;
 }
+
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--bg-deep, #030712);
+  color: #f8fafc;
+}
+
+.main-content {
+  flex: 1;
+  /* Altura exacta del Navbar + espacio de respiración de 20px */
+  padding-top: 90px; 
+  position: relative;
+  z-index: 1;
+}

@@ -13,7 +13,7 @@
     <header class="section-header text-center max-w-2xl mx-auto mb-5">
       <div class="d-inline-flex align-items-center gap-2 mb-2 px-3 py-1 rounded-pill section-tag-badge">
         <i class="bi bi-cpu text-cyan fs-6"></i>
-        <span class="font-mono text-micro fw-bold text-cyan tracking-wider">// STACK & CAPABILITIES</span>
+        <span class="font-mono text-micro fw-bold text-cyan tracking-wider"> STACK & CAPABILITIES</span>
       </div>
       <h2 class="display-5 font-display fw-bold text-light mb-2">
         TECHNICAL <span class="gradient-text-skills">ARCHITECTURE.</span>
@@ -29,7 +29,7 @@
       @for (cat of skillCategories(); track cat.id) {
         <article 
           #cardRef
-          class="skill-3d-card p-4 rounded-4"
+          class="skill-3d-card p-4 rounded-4 d-flex flex-column position-relative gap-1"
           (mousemove)="onCardMouseMove($event, cardRef)"
           (mouseleave)="onCardMouseLeave(cardRef)">
           
@@ -50,7 +50,7 @@
               }
             </div>
             <span class="font-mono text-micro text-cyan tracking-wider fw-bold position-3d">
-              // {{ cat.categoryLabel }}
+               {{ cat.categoryLabel }}
             </span>
           </div>
 
@@ -62,14 +62,14 @@
           </p>
 
           <!-- Lista Tecnológica con Insignias de Contexto (Sin Porcentajes) -->
-          <div class="d-flex flex-column gap-2.5 mb-4 position-3d">
+          <div class="d-flex flex-column gap-2 mb-4 position-3d">
             @for (skill of cat.skills; track skill.name) {
-              <div class="skill-item-row p-2.5 rounded-3 d-flex align-items-center justify-content-between gap-2">
+              <div class="  skill-item-row p-2 rounded-3 d-flex align-items-center flex-column gap-2">
                 <div class="d-flex align-items-center gap-2">
                   <span class="skill-dot-pulse"></span>
                   <span class="font-mono text-xs fw-bold text-light">{{ skill.name }}</span>
                 </div>
-                <span class="badge bg-dark-subtle text-cyan font-mono text-micro border border-subtle">
+                <span class="badge text-cyan font-mono text-micro border border-subtle s-t-l">
                   {{ skill.contextTag }}
                 </span>
               </div>

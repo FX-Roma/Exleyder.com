@@ -5,7 +5,7 @@
 .skills-section {
   position: relative;
   width: 100%;
-  background-color: var(--bg-deep, #030712);
+  height: 100%;
   color: #f8fafc;
   overflow: hidden; /* Contiene las esferas dentro de la sección */
   border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -200,3 +200,4 @@
     transition: none !important;
   }
 }
+

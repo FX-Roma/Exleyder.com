@@ -4,15 +4,8 @@
     box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 85px;
-}
-body {
-  background-color: var(--color-bg-main, #030712);
-  color: var(--color-text-primary, #f8fafc);
-  overflow-x: hidden;
-}
+
+
 .section-scroll-target {
   position: relative;
   width: 100%;
@@ -68,6 +61,8 @@ body {
   --shadow-neon-cyan: 0 10px 30px -10px rgba(0, 242, 254, 0.3);
   --shadow-neon-purple: 0 10px 30px -10px rgba(112, 0, 255, 0.3);
   --shadow-glass: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+  --section-spacing: 90px; /* Espaciado holgado e imponente */
+
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -78,3 +73,45 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-deep, #030712) !important;
+  color: var(--color-text-primary, #f8fafc) !important;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scroll-padding-top: 85px;
+
+}
+/* Compensación obligatoria por Navbar Fijo */
+.site-main {
+  padding-top: var(--nav-height);
+  min-height: calc(100vh - var(--nav-height));
+  display: flex;
+  flex-direction: column;
+}
+
+/* Espaciado sistemático y holgado para cada sección */
+section, 
+.section-wrapper {
+  position: relative;
+  padding-top: var(--section-spacing);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Rejilla y Contenedores */
+.max-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* Tipografías y Clases de Soporte */
+.font-display { font-family: 'Space Grotesk', sans-serif !important; }
+.font-mono { font-family: 'JetBrains Mono', monospace !important; }
+.text-cyan { color: #00e5ff !important; }
+.border-subtle { border-color: rgba(255, 255, 255, 0.08) !important; }

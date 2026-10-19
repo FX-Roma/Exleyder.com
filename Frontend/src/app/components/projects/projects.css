@@ -6,10 +6,12 @@
   position: relative;
   z-index: 2;
   min-height: 85vh;
+  padding-top: 5rem;    /* Espacio superior importante para evitar sobreposición */
 }
 
 .max-container {
   max-width: var(--container-max-width, 1280px);
+  margin: 0 auto;
 }
 
 .max-w-2xl {
