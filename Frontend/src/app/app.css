@@ -17,3 +17,6 @@
   position: relative;
   z-index: 1;
 }
+main{
+  padding:0 2rem !important;
+} 

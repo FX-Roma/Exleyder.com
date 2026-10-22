@@ -9,6 +9,8 @@
   color: #f8fafc;
   overflow: hidden; /* Contiene las esferas dentro de la sección */
   border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: var(--seccion-spacing) !important; 
+  
 }
 
 .max-container {

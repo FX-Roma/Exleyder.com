@@ -13,4 +13,6 @@ import { Preloader } from './components/preloader/preloader';
 })
 export class AppComponent {
   title = 'portfolio-engineer';
+
+  
 }

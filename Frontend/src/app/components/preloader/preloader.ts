@@ -18,10 +18,10 @@ export class Preloader implements OnInit {
   @Output() complete = new EventEmitter<void>();
 
   public bootLogs: string[] = [
-    '[01/04] INITIALIZING KEFEX SYSTEM CORE v2.4...',
-    '[02/04] LOADING MEAN/MERN ARCHITECTURE & REST APIs...',
-    '[03/04] VERIFYING C1 ADVANCED BILINGUAL TELEMETRY...',
-    '[04/04] OVER OREJUELA PORTFOLIO // READY'
+    '[01/04] INITIALIZING THE BEST PORTFOLIO ...',
+    '[02/04] GETTING YOU READY TO HIRE ME...',
+    '[03/04] ANALIZING YOUR NEEDS...',
+    '[04/04] EXLEYDER GALLEGO PORTFOLIO - READY'
   ];
 
   constructor(

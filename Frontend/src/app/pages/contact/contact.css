@@ -1,11 +1,12 @@
 /* ==========================================================================
-   CONTACT SECTION - PREMIUM CYBER-SAAS DESIGN TOKENS & STYLES
+  CONTACT SECTION - PREMIUM CYBER-SAAS DESIGN TOKENS & STYLES
    ========================================================================== */
 
 .contact-section {
   position: relative;
   z-index: 2;
-  min-height: 85vh;
+  height: 100%;
+  padding-bottom: 4rem;
 }
 
 .max-container {
@@ -59,7 +60,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   TARJETAS DE INFORMACIÓN DE CONTACTO (COLUMNA IZQUIERDA)
+  TARJETAS DE INFORMACIÓN DE CONTACTO (COLUMNA IZQUIERDA)
    -------------------------------------------------------------------------- */
 .contact-info-card {
   background: rgba(11, 19, 32, 0.75);
@@ -114,7 +115,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   FORMULARIO MOCKUP TERMINAL (COLUMNA DERECHA)
+  FORMULARIO MOCKUP TERMINAL (COLUMNA DERECHA)
    -------------------------------------------------------------------------- */
 .contact-form-terminal-card {
   background: rgba(11, 19, 32, 0.85);
@@ -143,7 +144,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   INPUTS & ELEMENTOS DE FORMULARIO CON ACCESIBILIDAD Y FOCO
+  INPUTS & ELEMENTOS DE FORMULARIO CON ACCESIBILIDAD Y FOCO
    -------------------------------------------------------------------------- */
 .cyber-input {
   background: rgba(3, 7, 18, 0.88) !important;
@@ -250,7 +251,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   PREFERS-REDUCED-MOTION (ACCESIBILIDAD)
+  PREFERS-REDUCED-MOTION (ACCESIBILIDAD)
    -------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   .contact-info-card,
