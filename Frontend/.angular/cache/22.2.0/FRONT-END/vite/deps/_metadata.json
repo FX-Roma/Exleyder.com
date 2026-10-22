@@ -1,0 +1,80 @@
+{
+  "hash": "2bc1cb40",
+  "configHash": "551ce48c",
+  "lockfileHash": "f18231dc",
+  "browserHash": "ce784839",
+  "optimized": {
+    "@angular/common": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
+      "file": "@angular_common.js",
+      "fileHash": "2823d16c",
+      "needsInterop": false
+    },
+    "@angular/common/http": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/http.mjs",
+      "file": "@angular_common_http.js",
+      "fileHash": "8e6c7de7",
+      "needsInterop": false
+    },
+    "@angular/core": {
+      "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "6a14888b",
+      "needsInterop": false
+    },
+    "@angular/forms": {
+      "src": "../../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
+      "file": "@angular_forms.js",
+      "fileHash": "048de4c4",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "5765a402",
+      "needsInterop": false
+    },
+    "@angular/router": {
+      "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
+      "file": "@angular_router.js",
+      "fileHash": "5c308ae7",
+      "needsInterop": false
+    },
+    "zone.js": {
+      "src": "../../../../../../node_modules/zone.js/fesm2015/zone.js",
+      "file": "zone__js.js",
+      "fileHash": "f16929d2",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "_xhr-chunk-C49xPxq_": {
+      "file": "_xhr-chunk-C49xPxq_.js",
+      "isDynamicEntry": false
+    },
+    "common-DbJ2jUgD": {
+      "file": "common-DbJ2jUgD.js",
+      "isDynamicEntry": false
+    },
+    "core-BeetguT7": {
+      "file": "core-BeetguT7.js",
+      "isDynamicEntry": false
+    },
+    "createObject-V3a5CZF8": {
+      "file": "createObject-V3a5CZF8.js",
+      "isDynamicEntry": false
+    },
+    "from-pByF9HG6": {
+      "file": "from-pByF9HG6.js",
+      "isDynamicEntry": false
+    },
+    "http-Cc-adEKl": {
+      "file": "http-Cc-adEKl.js",
+      "isDynamicEntry": false
+    },
+    "platform-browser-ewk42hf2": {
+      "file": "platform-browser-ewk42hf2.js",
+      "isDynamicEntry": false
+    }
+  }
+}
