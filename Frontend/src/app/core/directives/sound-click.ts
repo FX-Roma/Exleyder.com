@@ -1,4 +1,5 @@
 // src/app/core/directives/sound-click.ts
+
 import { Directive, HostListener, Input, inject } from '@angular/core';
 import { AudioService, SoundKey } from '../services/audio';
 
@@ -13,12 +14,10 @@ export class SoundClickDirective {
 
   @HostListener('click', ['$event'])
   onClick(event: MouseEvent): void {
-    const target = event.currentTarget as HTMLElement | null;
-    
     if (this.explicitSound) {
-      if (target) {
-        target.dataset['soundHandled'] = 'true';
-      }
+      // The service's document listener runs in the bubble phase, so stopping
+      // propagation here prevents the same click from playing a second sound.
+      event.stopPropagation();
       this.audioService.play(this.explicitSound);
     }
   }
