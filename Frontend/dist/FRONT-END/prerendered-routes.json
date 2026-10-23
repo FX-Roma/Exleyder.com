@@ -1,0 +1,9 @@
+{
+  "routes": {
+    "/contact": {},
+    "/home": {},
+    "/projects": {},
+    "/skills": {},
+    "/studies": {}
+  }
+}
