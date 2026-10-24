@@ -1,18 +1,18 @@
 <section class="studies-section font-body">
   <div class="container-fluid max-container px-4 py-4">
     
-    <!-- Header de Sección -->
+    <!-- Section header -->
     <div class="text-center mb-5">
       <div class="d-inline-flex align-items-center gap-2 mb-3 px-3 py-1 rounded-pill status-pill-badge">
         <i class="bi bi-mortarboard-fill text-cyan fs-6"></i>
         <span class="font-mono text-xs fw-semibold tracking-wide text-secondary">PROFESSIONAL BACKGROUND</span>
       </div>
       <p class="text-secondary max-w-xl mx-auto fs-6">
-        Formación en ingeniería de software, bootcamp intensivo Full Stack, certificaciones bilingües C1 y credenciales técnicas orientadas a la industria tecnológica global.
+        Software engineering education, an intensive full-stack bootcamp, C1-level English certification, and technical credentials geared toward the global tech industry.
       </p>
     </div>
 
-    <!-- Barra de Filtros -->
+    <!-- Filter bar -->
     <div class="d-flex flex-wrap justify-content-center gap-2 mb-5">
       <button 
         *ngFor="let option of filterOptions"
@@ -23,13 +23,13 @@
       </button>
     </div>
 
-    <!-- Grid de Credenciales Académicas -->
+    <!-- Academic credentials grid -->
     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
       <div class="col" *ngFor="let item of filteredStudies">
         <div class="cyber-card h-100 p-4 d-flex flex-column study-card-interactive">
           
           <div class="d-flex justify-content-between align-items-start mb-3">
-            <!-- Renderizado dinámico de Badges por cada tipo -->
+            <!-- Dynamic badges by item type -->
             <div class="d-flex flex-wrap gap-1">
               <span 
                 *ngFor="let t of getItemTypes(item.type)" 
@@ -54,7 +54,7 @@
 
 
 
-          <!-- Badges de Competencias -->
+          <!-- Skills badges -->
           <div class="d-flex flex-wrap gap-1 mt-auto pt-3 border-top border-subtle">
             <span *ngFor="let skill of item.skills" class="badge bg-dark border border-subtle text-secondary font-mono text-xs">
               {{ skill }}

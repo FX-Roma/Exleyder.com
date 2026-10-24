@@ -1,6 +1,6 @@
 <section class="skills-section font-body position-relative py-5 overflow-hidden" id="skills">
   
-  <!-- Canvas Boreal Controlado en Fondo -->
+  <!-- Controlled aurora background -->
   <div class="aurora-backdrop" aria-hidden="true">
     <div class="aurora-mesh glow-purple-skills"></div>
     <div class="aurora-mesh glow-emerald-skills"></div>
@@ -9,7 +9,7 @@
 
   <div class="container-fluid max-container px-3 px-md-4 position-relative z-2">
     
-    <!-- Header de Sección -->
+    <!-- Section header -->
     <header class="section-header text-center max-w-2xl mx-auto mb-5">
       <div class="d-inline-flex align-items-center gap-2 mb-2 px-3 py-1 rounded-pill section-tag-badge">
         <i class="bi bi-cpu text-cyan fs-6"></i>
@@ -23,7 +23,7 @@
       </p>
     </header>
 
-    <!-- Grid 3D de Tarjetas de Habilidades -->
+    <!-- 3D skills card grid -->
     <div class="skills-3d-grid">
       
       @for (cat of skillCategories(); track cat.id) {
@@ -33,10 +33,10 @@
           (mousemove)="onCardMouseMove($event, cardRef)"
           (mouseleave)="onCardMouseLeave(cardRef)">
           
-          <!-- Capa de Brillo 3D Especular -->
+          <!-- 3D specular highlight layer -->
           <div class="specular-light-layer" aria-hidden="true"></div>
 
-          <!-- Cabecera de Tarjeta -->
+          <!-- Card header -->
           <div class="d-flex align-items-center justify-content-between mb-3 position-3d">
             <div class="icon-box" [ngClass]="cat.iconType">
               @if (cat.iconType === 'frontend') {
@@ -61,7 +61,7 @@
             {{ cat.description }}
           </p>
 
-          <!-- Lista Tecnológica con Insignias de Contexto (Sin Porcentajes) -->
+          <!-- Technology list with context badges -->
           <div class="d-flex flex-column gap-2 mb-4 position-3d">
             @for (skill of cat.skills; track skill.name) {
               <div class="  skill-item-row p-2 rounded-3 d-flex align-items-center flex-column gap-2">
@@ -76,7 +76,7 @@
             }
           </div>
 
-          <!-- Evidencia Real en GitHub / Despliegue en Vivo -->
+          <!-- GitHub evidence / live deployment -->
           <div class="mt-auto pt-3 border-top border-subtle position-3d">
             <a 
               [href]="cat.projectEvidence.url" 

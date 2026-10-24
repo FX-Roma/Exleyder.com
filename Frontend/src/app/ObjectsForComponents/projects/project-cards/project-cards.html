@@ -3,7 +3,7 @@
     
     <div class="cyber-card-frame h-100 d-flex flex-column border border-subtle rounded-4 overflow-hidden">
       
-      <!-- 1. HEADER DE VENTANA MOCKUP -->
+      <!-- 1. MOCKUP WINDOW HEADER -->
       <div class="window-titlebar d-flex align-items-center justify-content-between px-3 py-2 bg-dark-surface border-bottom border-subtle">
         <div class="d-flex align-items-center gap-1.5">
           <span class="window-dot dot-close"></span>
@@ -14,7 +14,7 @@
         </div>
       </div>
 
-      <!-- 2. CONTENEDOR DE IMAGEN A COMPLETO ANCHO -->
+      <!-- 2. FULL-WIDTH IMAGE CONTAINER -->
       <div class="project-hero-image-wrapper position-relative w-100 overflow-hidden bg-black">
         <img 
           [src]="project.imageUrl" 
@@ -25,7 +25,7 @@
         <div class="image-gradient-overlay"></div>
       </div>
 
-      <!-- 3. BARRA DE ACCIONES PRINCIPALES (Live Demo & Inspect) -->
+      <!-- 3. PRIMARY ACTIONS (LIVE DEMO & INSPECT) -->
       <div class="action-buttons-strip p-2.5 bg-black-subtle border-bottom border-subtle d-flex gap-2">
         <a 
           *ngIf="project.liveUrl" 
@@ -46,10 +46,10 @@
         </button>
       </div>
 
-      <!-- 4. CUERPO DE LA TARJETA -->
+      <!-- 4. CARD CONTENT -->
       <div class="card-content-body p-4 d-flex flex-column flex-grow-1">
         
-        <!-- Título y Subtítulo -->
+        <!-- Title and subtitle -->
         <div class="mb-3">
           <h3 class="h5 font-display fw-bold text-light mb-1">{{ project.title }}</h3>
             <span class="badge bg-cyan-subtle text-cyan border border-cyan-subtle font-mono text-micro px-2 py-1 rounded-pill">
@@ -57,18 +57,18 @@
             </span>
         </div>
 
-        <!-- Descripción corta -->
+        <!-- Short description -->
         <p class="project-description text-secondary text-xs mb-3 flex-grow-1 leading-relaxed">
           {{ project.description }}
         </p>
 
-        <!-- Rol del Desarrollador -->
+        <!-- Developer role -->
         <div class="role-project d-flex align-items-center gap-2 mb-3 text-xs ">
           <i class="bi bi-person-badge text-cyan fs-6"></i>
           <span class="text-light fw-bold">{{ project.role }}</span>
         </div>
 
-        <!-- CAJA DE TELEMETRÍA DE ALTO CONTRASTE (Corregido) -->
+        <!-- HIGH-CONTRAST METRICS -->
         <div class="metrics-strip-box mb-3 p-2.5 rounded-3 bg-dark-surface border border-subtle font-mono text-micro d-flex justify-content-around">
           <div *ngFor="let metric of project.metrics" class="d-flex align-items-center gap-1.5">
             <i class="bi bi-graph-up-arrow text-cyan"></i>
@@ -77,14 +77,14 @@
           </div>
         </div>
 
-        <!-- Chips de Tecnologías -->
+        <!-- Technology chips -->
         <div class="d-flex flex-wrap gap-1.5 mb-4">
           <span *ngFor="let tech of project.technologies" class="tech-chip-badge font-mono text-micro px-2 py-1 rounded border border-subtle">
             {{ tech }}
           </span>
         </div>
 
-        <!-- 5. FOOTER DE LA TARJETA -->
+        <!-- 5. CARD FOOTER -->
         <div class="card-footer-actions d-flex align-items-center justify-content-between pt-3 border-top border-subtle mt-auto">
           <a *ngIf="project.githubUrl" [href]="project.githubUrl" target="_blank" rel="noopener noreferrer" class="link-explore-project text-cyan font-mono text-xs fw-bold text-decoration-none d-flex align-items-center gap-1">
             <span>View Project</span>
@@ -112,13 +112,13 @@
   </div>
 </div>
 
-<!-- Estado sin resultados -->
+<!-- Empty state -->
 <div *ngIf="projects.length === 0" class="text-center py-5 text-muted font-mono text-xs">
   <i class="bi bi-slash-circle fs-3 d-block mb-2 text-cyan"></i>
   <span>No projects found matching the active filter parameters.</span>
 </div>
 
-<!-- Modal Cyber-SaaS -->
+<!-- Project architecture modal -->
 <div *ngIf="activeProjectModal" class="modal-backdrop-custom d-flex align-items-center justify-content-center p-3">
   <div class="cyber-modal-card max-w-lg w-100 p-4 font-body animate-fadeIn rounded-4">
     

@@ -1,6 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { SITE_LINKS } from '../../models/links.model';
 
 @Component({
   selector: 'app-navbar',
@@ -13,13 +14,8 @@ export class NavbarComponent {
   public developerName: string = 'EXLEYDER GALLEGO';
   public isScrolled: boolean = false;
 
-  public navLinks = [
-  { label: 'Home', path: '/home' },
-  { label: 'Experience', path: '/projects' },
-  { label: 'Studies', path: '/studies' },
-  { label: 'Skills', path: '/skills' },
-  { label: 'Contact', path: '/contact' }
-];
+  public readonly links = SITE_LINKS;
+  public readonly navLinks = SITE_LINKS.navigation;
 
 
   @HostListener('window:scroll', [])

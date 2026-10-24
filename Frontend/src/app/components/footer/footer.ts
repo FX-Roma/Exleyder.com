@@ -3,6 +3,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { SITE_LINKS } from '../../models/links.model';
 
 @Component({
   selector: 'app-footer',
@@ -12,14 +13,15 @@ import { RouterLink } from '@angular/router';
   styleUrl: './footer.css'
 })
 export class Footer {
-  public developerName: string = 'OVER EXLEYDER OREJUELA GALLEGO';
-  public currentYear: number = new Date().getFullYear();
-  
-  readonly email = 'orejuelabreiman@gmail.com';
-  readonly linkedinUrl = 'https://www.linkedin.com/in/exleyder-gallego-4207b3320';
-  readonly githubUrl = 'https://github.com/FX-Roma';
+  public readonly developerName: string = 'OVER EXLEYDER OREJUELA GALLEGO';
+  public readonly currentYear: number = new Date().getFullYear();
+  public readonly links = SITE_LINKS;
 
-  copiarEmail(): void {
-    navigator.clipboard.writeText(this.email);
+  public readonly email: string = SITE_LINKS.contactChannels['email'].value;
+
+  public copyEmail(): void {
+    if (typeof navigator !== 'undefined' && navigator.clipboard) {
+      navigator.clipboard.writeText(this.email);
+    }
   }
 }

@@ -2,6 +2,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { SITE_LINKS } from '../../models/links.model';
 
 @Component({
   selector: 'app-overview',
@@ -11,6 +12,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './overview.css'
 })
 export class OverviewComponent {
+  public readonly links = SITE_LINKS;
   public developerRoleTag: string = 'FULL-STACK - AI DEVELOPER / AVAILABLE FOR OPPORTUNITIES';
   public developerBio: string = 'Full-Stack Developer with a passion for modern web technologies, AI and digital solutions. I turn ideas into functional products, combining technical skills, problem-solving and clear communication to create real value for users and clients.';
   

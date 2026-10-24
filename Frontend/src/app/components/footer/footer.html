@@ -1,68 +1,54 @@
+<!-- ARCHIVO: src/app/components/footer/footer.html -->
 <footer class="cyber-footer position-relative pt-5 pb-4 border-top border-subtle overflow-hidden">
   
-  <!-- Resplandor de Fondo sutil Cyber-SaaS -->
   <div class="footer-ambient-glow" aria-hidden="true"></div>
 
   <div class="container-fluid max-container px-3 px-md-4 position-relative z-2">
     
-    <!-- Fila Principal de Branding, Navegación y Estado -->
     <div class="row g-4 justify-content-between align-items-start mb-4">
       
-      <!-- Columna 1: Branding e Identidad Profesional -->
+      <!-- Identity -->
       <div class="col-lg-5 col-md-6">
         <div class="d-inline-flex align-items-center gap-2 mb-3">
           <span class="brand-logo-icon font-mono text-cyan fw-bold fs-5">&lt;/&gt;</span>
           <span class="font-display fw-bold fs-5 text-light tracking-wide">EXLEYDER GALLEGO</span>
         </div>
         <p class="text-secondary font-body text-xs leading-relaxed max-w-md mb-3">
-          Senior Full-Stack Engineer &amp; Software Architect. Especializado en aplicaciones Angular de alto rendimiento, arquitecturas desacopladas Node.js/Express, seguridad y sistemas escalables.
+          Senior Full-Stack Engineer &amp; Software Architect building high-performance Angular apps, decoupled Node.js/Express systems, secure APIs, and software that scales without drama.
         </p>
         
-        <!-- Indicador de Estado de Servidores / Disponibilidad -->
         <div class="d-inline-flex align-items-center gap-2.5 px-3 py-1.5 rounded-pill system-status-pill">
           <span class="status-pulse-dot"></span>
           <span class="font-mono text-micro text-cyan fw-semibold"> SYSTEM_STATUS: 100% OPERATIONAL</span>
         </div>
       </div>
 
-      <!-- Columna 2: Navegación Rápida -->
+      <!-- Quick Navigation -->
       <div class="col-lg-3 col-md-6">
         <h3 class="font-mono text-micro text-cyan fw-bold text-uppercase mb-3 tracking-wider"> NAVIGATION</h3>
         <ul class="list-unstyled footer-nav-links font-mono text-xs d-flex flex-column gap-2 mb-0">
-          <li>
-            <a href="#overview" class="footer-link text-decoration-none">
-              <i class="bi bi-chevron-right icon-arrow"></i> Overview &amp; Architecture
-            </a>
-          </li>
-          <li>
-            <a href="#experience" class="footer-link text-decoration-none">
-              <i class="bi bi-chevron-right icon-arrow"></i> Projects &amp; Trajectory
-            </a>
-          </li>
-          <li>
-            <a href="#skills" class="footer-link text-decoration-none">
-              <i class="bi bi-chevron-right icon-arrow"></i> Tech Stack &amp; Skills
-            </a>
-          </li>
-          <li>
-            <a href="#contact" class="footer-link text-decoration-none">
-              <i class="bi bi-chevron-right icon-arrow"></i> Initialize Contact
+          <li *ngFor="let link of links.footerNavigation">
+            <!-- USO SEGURO DE [fragment]: Garantiza que el tipo devuelto sea string | undefined -->
+            <a 
+              [routerLink]="link.path" 
+              [fragment]="link.fragment ?? undefined" 
+              class="footer-link text-decoration-none">
+              <i class="bi bi-chevron-right icon-arrow"></i> {{ link.label }}
             </a>
           </li>
         </ul>
       </div>
 
-      <!-- Columna 3: Arquitectura del Sitio y Canales Oficiales -->
+      <!-- Architecture & Networks -->
       <div class="col-lg-3 col-md-12">
         <h3 class="font-mono text-micro text-cyan fw-bold text-uppercase mb-3 tracking-wider"> ARCHITECTURE &amp; NETWORKS</h3>
         <p class="text-secondary font-mono text-micro mb-3">
           Built with Angular SSR, Node.js, Express &amp; Cyber-SaaS Design Tokens.
         </p>
         
-        <!-- Iconos de Redes Sociales -->
         <div class="d-flex align-items-center gap-2">
           <a 
-            href="https:github.com/FX-Roma" 
+            [href]="links.socials['github'].url" 
             target="_blank" 
             rel="noopener noreferrer" 
             class="footer-social-btn" 
@@ -70,7 +56,7 @@
             <i class="bi bi-github"></i>
           </a>
           <a 
-            href="https:www.linkedin.com/in/exleyder-gallego/" 
+            [href]="links.socials['linkedin'].url" 
             target="_blank" 
             rel="noopener noreferrer" 
             class="footer-social-btn" 
@@ -78,7 +64,7 @@
             <i class="bi bi-linkedin"></i>
           </a>
           <a 
-            href="mailto:exjobs7@gmail.com" 
+            [href]="links.contactChannels['email'].url" 
             class="footer-social-btn" 
             aria-label="Send Direct Email">
             <i class="bi bi-envelope-fill"></i>
@@ -88,25 +74,19 @@
 
     </div>
 
-    <!-- Divisor sutil -->
     <div class="footer-divider my-4"></div>
 
-    <!-- Fila Inferior: Derechos Reservados y Créditos de Ingeniero -->
-    <div class="d-flex flex-column flex-md-row align-items-center justify-content-between gap-3 text-center text-md-start font-mono text-micro text-red">
-      
-      <!-- Copy tight legal -->
+    <!-- Copyright -->
+    <div class="d-flex flex-column flex-md-row align-items-center justify-content-between gap-3 text-center text-md-start font-mono text-micro">
       <div>
         <span>&copy; {{ currentYear }} </span>
-        <strong class="text-red">Over Exleyder Orejuela Gallego</strong>. 
+        <strong class="text-light">{{ developerName }}</strong>. 
         <span>All Rights Reserved.</span>
       </div>
 
-      <!-- Sello de Calidad -->
       <div class="d-flex align-items-center gap-2">
-        <span class="text-cyan"></span>
-        <span>Designed &amp; Engineered by Exleyder Gallego</span>
+        <span class="text-cyan">Designed &amp; Engineered by Exleyder Gallego</span>
       </div>
-
     </div>
 
   </div>

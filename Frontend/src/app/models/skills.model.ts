@@ -1,3 +1,5 @@
+import { SITE_LINKS } from './links.model';
+
 export interface SkillItem {
   name: string;
   contextTag: string; // ej. "RxJS / Signals / SSR" (Sin porcentajes)
@@ -34,7 +36,7 @@ export const SKILLS_DATA: SkillCategory[] = [
     ],
     projectEvidence: {
       label: 'Applied in KEFEX Platform',
-      url: 'https://github.com/FX-Roma/KEFEX',
+      url: SITE_LINKS.projectExternalLinks['kefex-platform'].githubUrl,
       isExternal: true
     }
   },
@@ -52,7 +54,7 @@ export const SKILLS_DATA: SkillCategory[] = [
     ],
     projectEvidence: {
       label: 'Applied in School Core System',
-      url: 'https://github.com/CubbbMc/FullstackColegio',
+      url: SITE_LINKS.projectExternalLinks['fullstack-colegio'].githubUrl,
       isExternal: true
     }
   },
@@ -70,7 +72,7 @@ export const SKILLS_DATA: SkillCategory[] = [
     ],
     projectEvidence: {
       label: 'Applied in Brasilia Bosa Portal',
-      url: 'https://github.com/FX-Roma/Brasilia-Bosa-IED',
+      url: SITE_LINKS.projectExternalLinks['brasilia-bosa-ied'].githubUrl,
       isExternal: true
     }
   },
@@ -87,7 +89,7 @@ export const SKILLS_DATA: SkillCategory[] = [
     ],
     projectEvidence: {
       label: 'Applied in Portfolio Architecture',
-      url: 'https://github.com/FX-Roma',
+      url: SITE_LINKS.socials['github'].url,
       isExternal: true
     }
   }

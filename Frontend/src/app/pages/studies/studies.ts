@@ -35,7 +35,7 @@ export class StudiesComponent {
     });
   }
 
-  // Normaliza el tipo a un arreglo para simplificar el *ngFor en la plantilla HTML
+  // Normalize the item type to an array for simpler template iteration
   public getItemTypes(type: StudyType | StudyType[]): StudyType[] {
     return Array.isArray(type) ? type : [type];
   }

@@ -1,3 +1,5 @@
+import { SITE_LINKS } from './links.model';
+
 export interface ProjectMetric {
   label: string;
   value: string;
@@ -39,9 +41,7 @@ export const PROJECTS_DATA: Project[] = [
       { label: 'Search Latency', value: '< 50ms' },
       { label: 'Layout Shift', value: '0 CLS' }
     ],
-    githubUrl: 'https://github.com/FX-Roma/KEFEX',
-    fullstackRepoUrl: 'https://github.com/FX-Roma/Kefex-Fullstack',
-    liveUrl: 'https://fx-roma.github.io/KEFEX/Home.html',
+    ...SITE_LINKS.projectExternalLinks['kefex-platform'],
     imageUrl: 'Images/Kefex-live-demo.png',
     filterCategory: 'fullstack',
     isFeatured: true
@@ -63,8 +63,7 @@ export const PROJECTS_DATA: Project[] = [
       { label: 'Accessibility', value: '100% WCAG' },
       { label: 'Load Speed', value: '0.4s' }
     ],
-    githubUrl: 'https://github.com/FX-Roma/Brasilia-Bosa-IED',
-    liveUrl: 'https://fx-roma.github.io/Brasilia-Bosa-IED/',
+    ...SITE_LINKS.projectExternalLinks['brasilia-bosa-ied'],
     imageUrl: 'Images/Colegio-Brasilia-Bosa.png',
     filterCategory: 'frontend',
     isFeatured: true
@@ -86,8 +85,7 @@ export const PROJECTS_DATA: Project[] = [
       { label: 'API Endpoints', value: '20+ Routes' },
       { label: 'Auth Pipeline', value: 'RBAC Secured' }
     ],
-    githubUrl: 'https://github.com/CubbbMc/FullstackColegio',
-    fullstackRepoUrl: 'https://github.com/CubbbMc/FullstackColegio',
+    ...SITE_LINKS.projectExternalLinks['fullstack-colegio'],
     imageUrl: 'https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&w=800&q=80',
     filterCategory: 'fullstack',
     isFeatured: true
@@ -109,8 +107,7 @@ export const PROJECTS_DATA: Project[] = [
       { label: 'HTTP Resilience', value: '100% Handled' },
       { label: 'Parse Time', value: '< 15ms' }
     ],
-    githubUrl: 'https://github.com/FX-Roma/tallerConsumoApi',
-    liveUrl: 'https://fx-roma.github.io/tallerConsumoApi/',
+    ...SITE_LINKS.projectExternalLinks['taller-consumo-api'],
     imageUrl: 'Images/Taller-Consumo-API.png',
     filterCategory: 'api',
     isFeatured: false

@@ -8,6 +8,7 @@ import { HomeComponent } from './pages/home/home';
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
+  { path: 'overview', redirectTo: 'home', pathMatch: 'full' },
   { path: 'projects', component: ProjectsComponent },
   { path: 'experience', redirectTo: 'projects', pathMatch: 'full' },
   { path: 'skills', component: SkillsComponent },

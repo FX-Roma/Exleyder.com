@@ -2,7 +2,7 @@
   <div class="container-fluid max-container px-3 px-md-4">
     
     <!-- =================================================================== -->
-    <!-- VISTA 1: PRESENTACIÓN Y METODOLOGÍA FREELANCE (Estado Inicial)      -->
+    <!-- VIEW 1: FREELANCE APPROACH      -->
     <!-- =================================================================== -->
     <div *ngIf="!isExploreMode" class="freelance-overview-container animate-fade-in">
       
@@ -19,7 +19,7 @@
           </p>
         </div>
 
-        <!-- Botón Circular Estilo Apple para Explorar Proyectos -->
+        <!-- Circular project explorer button -->
         <div class="apple-trigger-wrapper text-center">
           <button 
             (click)="toggleExploreMode()" 
@@ -31,7 +31,7 @@
         </div>
       </div>
 
-      <!-- Tarjetas de Experiencia Freelance y Estándares Técnicos -->
+      <!-- Freelance experience and engineering standards -->
       <div class="row row-cols-1 row-cols-md-3 g-4 mb-4">
         
         <div class="col">
@@ -39,9 +39,9 @@
             <div class="feature-icon-wrapper mb-3">
               <i class="bi bi-layers-half text-cyan fs-3"></i>
             </div>
-            <h3 class="h5 font-display fw-bold text-light mb-2">Desarrollo End-to-End</h3>
+            <h3 class="h5 font-display fw-bold text-light mb-2">End-to-End Development</h3>
             <p class="text-secondary text-xs leading-relaxed mb-0">
-              Desde la concepción de la base de datos hasta la interfaz del cliente. Diseños desacoplados y mantenibles que garantizan estabilidad a largo plazo.
+              From database design to the client-facing interface. Decoupled, maintainable systems built for long-term stability.
             </p>
           </div>
         </div>
@@ -51,9 +51,9 @@
             <div class="feature-icon-wrapper mb-3">
               <i class="bi bi-lightning-charge-fill text-cyan fs-3"></i>
             </div>
-            <h3 class="h5 font-display fw-bold text-light mb-2">Rendimiento & Accesibilidad</h3>
+            <h3 class="h5 font-display fw-bold text-light mb-2">Performance & Accessibility</h3>
             <p class="text-secondary text-xs leading-relaxed mb-0">
-              Carga optimizada en sub-segundos, cumplimiento estricto de WCAG 2.1 AA y cero desplazamientos de diseño inesperados (0 CLS).
+              Sub-second loading, rigorous WCAG 2.1 AA accessibility, and zero unexpected layout shifts (0 CLS).
             </p>
           </div>
         </div>
@@ -63,9 +63,9 @@
             <div class="feature-icon-wrapper mb-3">
               <i class="bi bi-shield-check text-cyan fs-3"></i>
             </div>
-            <h3 class="h5 font-display fw-bold text-light mb-2">Seguridad & Producción</h3>
+            <h3 class="h5 font-display fw-bold text-light mb-2">Security & Production</h3>
             <p class="text-secondary text-xs leading-relaxed mb-0">
-              Autenticación JWT/RBAC, protección contra inyecciones y sanetización de datos lista para despliegues empresariales.
+              JWT/RBAC authentication, injection protection, and data sanitization designed for production deployments.
             </p>
           </div>
         </div>
@@ -75,11 +75,11 @@
     </div>
 
     <!-- =================================================================== -->
-    <!-- VISTA 2: BUSCADOR Y CATÁLOGO DE PROYECTOS (Al hacer clic en Apple CTA) -->
+    <!-- VIEW 2: PROJECT SEARCH AND CATALOG -->
     <!-- =================================================================== -->
     <div *ngIf="isExploreMode" class="explore-catalog-container animate-fade-in">
       
-      <!-- Top Bar con Botón para Regresar -->
+      <!-- Top bar and back button -->
       <div class="d-flex align-items-center justify-content-between mb-4 pb-3 border-bottom border-subtle">
         <button 
           (click)="toggleExploreMode()" 
@@ -90,7 +90,7 @@
 
       </div>
 
-      <!-- Toolbar de Búsqueda y Filtros -->
+      <!-- Search and filter toolbar -->
       <div class="cyber-toolbar-card p-3 p-md-4 rounded-4 mb-5 border border-subtle d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center justify-content-between gap-3">
         
         <!-- Buscador con icono animado -->
@@ -103,7 +103,7 @@
             [(ngModel)]="searchQuery">
         </div>
 
-        <!-- Filtros por Categoría -->
+        <!-- Category filters -->
         <div class="d-flex align-items-center flex-wrap gap-2">
           <button 
             *ngFor="let cat of categories"

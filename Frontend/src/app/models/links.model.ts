@@ -1,9 +1,9 @@
-// src/app/models/links.model.ts
+// ARCHIVO: src/app/models/links.model.ts
 
 export interface NavRoute {
   label: string;
   path: string;
-  fragment?: string;
+  fragment?: string; // Evaluado estrictamente como string | undefined (nunca null)
 }
 
 export interface SocialLink {
@@ -19,21 +19,56 @@ export interface ContactChannel {
   value: string;
   url: string;
   iconClass: string;
+  displayText?: string;
 }
 
-export interface PortfolioNavigationModel {
-  internalRoutes: NavRoute[];
+export interface ProjectExternalLinks {
+  githubUrl: string;
+  fullstackRepoUrl?: string;
+  liveUrl?: string;
+}
+
+export interface PortfolioLinksModel {
+  routes: {
+    home: string;
+    projects: string;
+    experience: string;
+    studies: string;
+    skills: string;
+    contact: string;
+  };
+  navigation: NavRoute[];
+  footerNavigation: NavRoute[];
   socials: Record<string, SocialLink>;
   contactChannels: Record<string, ContactChannel>;
+  whatsappCtaUrl: string;
+  projectExternalLinks: Record<string, ProjectExternalLinks>;
 }
 
-export const NAV_LINKS_CONFIG: PortfolioNavigationModel = {
-  internalRoutes: [
-    { label: 'Overview', path: '/home', fragment: 'overview' },
-    { label: 'Projects', path: '/home', fragment: 'projects' },
-    { label: 'Skills', path: '/home', fragment: 'skills' },
-    { label: 'Studies', path: '/home', fragment: 'studies' },
-    { label: 'Contact', path: '/home', fragment: 'contact' }
+const WHATSAPP_NUMBER = '573134500680';
+const WHATSAPP_MESSAGE = 'Hello Over, I saw your portfolio and would like to discuss an opportunity!';
+
+export const SITE_LINKS: PortfolioLinksModel = {
+  routes: {
+    home: '/home',
+    projects: '/projects',
+    experience: '/experience',
+    studies: '/studies',
+    skills: '/skills',
+    contact: '/contact'
+  },
+  navigation: [
+    { label: 'Home', path: '/home' },
+    { label: 'Experience', path: '/experience' },
+    { label: 'Studies', path: '/studies' },
+    { label: 'Skills', path: '/skills' },
+    { label: 'Contact', path: '/contact' }
+  ],
+  footerNavigation: [
+    { label: 'Overview & Architecture', path: '/home', fragment: 'overview' },
+    { label: 'Projects & Experience', path: '/experience' },
+    { label: 'Tech Stack & Skills', path: '/skills' },
+    { label: 'Get in Touch', path: '/contact' }
   ],
   socials: {
     github: {
@@ -61,15 +96,38 @@ export const NAV_LINKS_CONFIG: PortfolioNavigationModel = {
       key: 'DIRECT_WHATSAPP',
       label: 'WhatsApp Direct',
       value: '+57 313 450 0680',
-      url: 'https://wa.me/573134500680',
+      url: `https://wa.me/${WHATSAPP_NUMBER}`,
       iconClass: 'bi bi-whatsapp'
     },
     location: {
       key: 'LOCATION_MODE',
       label: 'Location',
-      value: 'Bogotá, Colombia • Remote & Relocation',
+      value: 'Bogotá, Colombia',
       url: 'https://maps.google.com/?q=Bogota,Colombia',
-      iconClass: 'bi bi-geo-alt-fill'
+      iconClass: 'bi bi-geo-alt-fill',
+      displayText: 'Bogotá, Colombia · Remote & Relocation'
+    }
+  },
+  whatsappCtaUrl: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`,
+  projectExternalLinks: {
+    'kefex-platform': {
+      githubUrl: 'https://github.com/FX-Roma/KEFEX',
+      fullstackRepoUrl: 'https://github.com/FX-Roma/Kefex-Fullstack',
+      liveUrl: 'https://fx-roma.github.io/KEFEX/Home.html'
+    },
+    'brasilia-bosa-ied': {
+      githubUrl: 'https://github.com/FX-Roma/Brasilia-Bosa-IED',
+      liveUrl: 'https://fx-roma.github.io/Brasilia-Bosa-IED/'
+    },
+    'fullstack-colegio': {
+      githubUrl: 'https://github.com/CubbbMc/FullstackColegio',
+      fullstackRepoUrl: 'https://github.com/CubbbMc/FullstackColegio'
+    },
+    'taller-consumo-api': {
+      githubUrl: 'https://github.com/FX-Roma/tallerConsumoApi',
+      liveUrl: 'https://fx-roma.github.io/tallerConsumoApi/'
     }
   }
 };
+
+export const NAV_LINKS_CONFIG = SITE_LINKS;
