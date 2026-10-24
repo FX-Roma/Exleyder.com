@@ -95,14 +95,14 @@ app.post('/api/contact', rateLimiterMiddleware, async (req: express.Request, res
 
     // 3. Verificación de variables de entorno del servidor
     const resendApiKey = process.env['RESEND_API_KEY'];
-    const toEmail = process.env['CONTACT_TO_EMAIL'] || 'exjobs7@gmail.com';
+    const toEmail = process.env['CONTACT_TO_EMAIL'] || 'orejuelabreiman@gmail.com';
     const fromEmail = process.env['CONTACT_FROM_EMAIL'] || 'Portfolio Contact <onboarding@resend.dev>';
 
     if (!resendApiKey) {
       console.error('[CONTACT_API_ERROR]: RESEND_API_KEY no configurada en las variables de entorno.');
       return res.status(503).json({
         success: false,
-        error: 'El servicio de mensajería no está disponible actualmente. Por favor contáctame directamente a exjobs7@gmail.com o vía WhatsApp.'
+        error: 'El servicio de mensajería no está disponible actualmente. Por favor contáctame directamente a orejuelabreiman@gmail.com o vía WhatsApp.'
       });
     }
 

@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { SITE_LINKS } from '../../models/links.model';
 
 export interface ContactDispatchPayload {
   clientName: string;
@@ -25,6 +26,7 @@ export interface ContactApiResponse {
   styleUrl: './contact.css'
 })
 export class ContactComponent {
+  public readonly links = SITE_LINKS;
   private fb = inject(FormBuilder);
   private http = inject(HttpClient);
 
@@ -60,7 +62,7 @@ export class ContactComponent {
   public sendDispatch(): void {
     if (this.contactForm.invalid) {
       this.contactForm.markAllAsTouched();
-      this.dispatchError = 'Por favor completa y corrige todos los campos marcados antes de enviar.';
+      this.dispatchError = 'Please complete and correct the highlighted fields before sending.';
       return;
     }
 
@@ -83,13 +85,13 @@ export class ContactComponent {
             website: ''
           });
         } else {
-          this.dispatchError = response.error || 'No se pudo procesar la solicitud.';
+          this.dispatchError = response.error || 'The request could not be processed.';
         }
       },
       error: (httpError) => {
         this.isSubmitting = false;
         const serverError = httpError?.error?.error;
-        this.dispatchError = serverError || 'Error al conectar con el servidor. Por favor verifica tu red o intenta más tarde.';
+        this.dispatchError = serverError || 'Could not connect to the server. Check your connection and try again later.';
       }
     });
   }
