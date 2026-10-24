@@ -1,5 +1,5 @@
 export default `<!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <title>Exleyder Gallego | Full-Stack Developer & Software Architect</title>
@@ -24,5 +24,5 @@ export default `<!DOCTYPE html>
 
   <!-- Bootstrap 5 JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="main-PPZSQJSD.js" type="module"></script></body>
+<script src="main-FCQ4IHUS.js" type="module"></script></body>
 </html>`;
