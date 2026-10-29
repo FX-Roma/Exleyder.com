@@ -38,3 +38,7 @@ The Vercel function is deployed from `api/contact.js`. After changing environmen
 `POST /api/contact` accepts JSON with `clientName`, `clientEmail`, `serviceType`, `projectMessage`, and an optional `website` honeypot field. Validation is repeated on the server because browser-side form validation is not a security boundary.
 
 Run `npm run test:contact` to test method handling, JSON content-type enforcement, input validation, honeypot behavior, payload construction, HTML escaping, provider failures, and missing configuration. The tests mock Resend and do not send an actual email.
+
+
+
+Waiting next deployment
