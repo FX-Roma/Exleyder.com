@@ -1,10 +1,11 @@
+# Local-only directories and generated output
 non-related/
-/dist
 node_modules/
 dist/
 .angular/
+.vercel/
+
+# Secrets: commit only the placeholder template
 .env
 .env.*
 !.env.example
-.vercel
-.env
