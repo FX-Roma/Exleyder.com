@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { SITE_LINKS } from '../../models/links.model';
+import { STATIC_FORMS_API_KEY } from './static-forms.config';
 
 export interface ContactDispatchPayload {
   clientName: string;
@@ -12,7 +13,7 @@ export interface ContactDispatchPayload {
   website?: string;
 }
 
-export interface ContactApiResponse {
+export interface StaticFormsResponse {
   success: boolean;
   message?: string;
   error?: string;
@@ -59,10 +60,22 @@ export class ContactComponent {
     return !!(field && field.invalid && (field.touched || field.dirty));
   }
 
+
   public sendDispatch(): void {
     if (this.contactForm.invalid) {
       this.contactForm.markAllAsTouched();
-      this.dispatchError = 'Please complete and correct the highlighted fields before sending.';
+      this.dispatchError =
+        'Please complete and correct the highlighted fields before sending.';
+      return;
+    }
+
+    if (!STATIC_FORMS_API_KEY) {
+      this.dispatchError =
+        'The contact form is not configured yet. Please use the direct email or WhatsApp links.';
+      return;
+    }
+
+    if (this.isSubmitting) {
       return;
     }
 
@@ -70,29 +83,62 @@ export class ContactComponent {
     this.dispatchError = null;
     this.dispatchSuccess = false;
 
-    const payload: ContactDispatchPayload = this.contactForm.value;
+    const payload = this.contactForm.getRawValue() as ContactDispatchPayload;
+    const formData = new FormData();
 
-    this.http.post<ContactApiResponse>('/api/contact', payload).subscribe({
-      next: (response) => {
-        this.isSubmitting = false;
-        if (response && response.success) {
-          this.dispatchSuccess = true;
-          this.contactForm.reset({
-            clientName: '',
-            clientEmail: '',
-            serviceType: this.availableServices[0],
-            projectMessage: '',
-            website: ''
-          });
-        } else {
-          this.dispatchError = response.error || 'The request could not be processed.';
+    formData.append('apiKey', STATIC_FORMS_API_KEY);
+    formData.append('name', payload.clientName.trim());
+    formData.append('email', payload.clientEmail.trim());
+    formData.append('serviceType', payload.serviceType);
+    formData.append('message', payload.projectMessage.trim());
+    formData.append(
+      'subject',
+      `Portfolio contact: ${payload.serviceType} - ${payload.clientName.trim().replace(/[\r\n]+/g, ' ')}`
+    );
+    formData.append('honeypot', payload.website?.trim() ?? '');
+
+    this.http
+      .post<StaticFormsResponse>(
+        'https://api.staticforms.dev/submit',
+        formData
+      )
+      .subscribe({
+        next: (response) => {
+          this.isSubmitting = false;
+
+          if (response?.success === true) {
+            this.dispatchSuccess = true;
+
+            this.contactForm.reset({
+              clientName: '',
+              clientEmail: '',
+              serviceType: this.availableServices[0],
+              projectMessage: '',
+              website: ''
+            });
+          } else {
+            this.dispatchError =
+              response?.error ||
+              response?.message ||
+              'Static Forms did not confirm the submission. Please try again.';
+          }
+        },
+        error: (httpError) => {
+          this.isSubmitting = false;
+
+          const body = httpError?.error;
+          const providerError =
+            typeof body?.error === 'string'
+              ? body.error
+              : typeof body?.message === 'string'
+                ? body.message
+                : null;
+
+          this.dispatchError =
+            providerError ||
+            `Could not submit the message (HTTP ${httpError.status || 'unknown'}). Please try again later or use the direct contact links.`;
         }
-      },
-      error: (httpError) => {
-        this.isSubmitting = false;
-        const serverError = httpError?.error?.error;
-        this.dispatchError = serverError || 'Could not connect to the server. Check your connection and try again later.';
-      }
-    });
+      });
   }
+
 }

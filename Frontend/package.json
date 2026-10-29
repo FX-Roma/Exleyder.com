@@ -8,7 +8,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:FRONT-END": "node dist/FRONT-END/server/server.mjs",
-    "test:contact": "node --test tests/contact-api.test.cjs"
+    "test:contact": "node --test tests/contact-api.test.cjs",
+    "prestart": "node scripts/generate-static-forms-config.cjs",
+    "prebuild": "node scripts/generate-static-forms-config.cjs"
   },
   "private": true,
   "packageManager": "npm@11.17.0",

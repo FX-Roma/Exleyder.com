@@ -9,3 +9,6 @@ dist/
 .env
 .env.*
 !.env.example
+
+# Generated from STATIC_FORMS_API_KEY in local .env or Vercel build environment
+src/app/pages/contact/static-forms.config.ts
