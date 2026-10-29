@@ -4,7 +4,7 @@ Angular portfolio application deployed to Vercel. This directory is the Vercel p
 
 ## Requirements
 
-- Node.js: use `.nvmrc` (`22.22.3`). Angular 22 requires a recent supported Node 22 release; avoid older Node 22 minor releases.
+- Node.js: use `.nvmrc` (`24.19.0`). Angular 22.2 supports Node.js 24.15.0 and newer within the 24.x line. Vercel should use Node.js 24.x as well.
 - npm: use the lockfile with `npm ci`.
 
 ## Commands

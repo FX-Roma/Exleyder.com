@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "npx ng build",
+    "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:FRONT-END": "node dist/FRONT-END/server/server.mjs",
@@ -40,6 +40,6 @@
     "vitest": "^5.0.0"
   },
   "engines": {
-    "node": "22.x"
+    "node": "24.x"
   }
 }
